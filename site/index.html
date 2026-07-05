@@ -31,7 +31,10 @@
     <main class="page">
       <div class="toolbar">
         <div id="fil" class="fil"></div>
-        <button id="btn-pdf" class="btn-pdf" title="Dans la fenêtre d'impression, choisissez « Enregistrer au format PDF »">📄 Enregistrer en PDF</button>
+        <div class="boutons">
+          <a id="btn-fiches" class="btn-pdf btn-fiches" hidden title="Feuilles individuelles pour les élèves, à photocopier">🖨️ Fiches élève (PDF)</a>
+          <a id="btn-pdf" class="btn-pdf" hidden title="PDF prêt à imprimer, avec les dates de votre zone">📥 Télécharger le PDF</a>
+        </div>
       </div>
       <div id="print-header" class="print-header"></div>
       <article id="contenu" class="contenu" aria-live="polite">
@@ -45,6 +48,7 @@
   </div>
 
   <script src="marked.min.js"></script>
+  <script src="commun.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,83 @@
+/* Fiches élève — mise en page A4, une fiche par page. */
+@page { size: A4; margin: 10mm 12mm; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; color: #1c242c;
+  font-family: "Segoe UI", -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 12pt; line-height: 1.45;
+}
+.fiche { page-break-after: always; padding-top: 2mm; }
+.fiche:last-child { page-break-after: auto; }
+
+/* — En-tête de fiche — */
+.entete { display: flex; gap: 4mm; align-items: stretch; border: 1.2pt solid #333; border-radius: 3mm; overflow: hidden; margin-bottom: 4mm; }
+.entete .idext { flex: 1; padding: 2.5mm 4mm; font-size: 11pt; }
+.entete .idext .champ { display: inline-block; margin-right: 8mm; }
+.entete .idext .trait { display: inline-block; min-width: 45mm; border-bottom: 1pt solid #333; }
+.entete .cartouche { background: #e7f3ec; padding: 2.5mm 4mm; text-align: right; min-width: 58mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.entete .cartouche .ref { font-size: 8.5pt; color: #1d5c3a; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.entete .cartouche .dom { font-size: 8pt; color: #444; }
+.titre { font-size: 14pt; font-weight: 700; color: #1d5c3a; margin: 0 0 2mm; }
+.consigne {
+  border: 1pt dashed #b08d2f; background: #fdf6e0; border-radius: 2mm;
+  padding: 2mm 4mm; font-size: 9.5pt; color: #4a3f1d; margin-bottom: 4mm;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.consigne strong { color: #7a5c10; }
+.pied-fiche { margin-top: 4mm; font-size: 8pt; color: #666; display: flex; justify-content: space-between; gap: 4mm; }
+.pied-fiche .codage { border: .8pt solid #999; border-radius: 2mm; padding: .5mm 3mm; }
+
+/* — Exercices — */
+.exo { margin: 4mm 0; }
+.exo .num { display: inline-block; width: 7mm; height: 7mm; line-height: 7mm; text-align: center; background: #1d5c3a; color: #fff; border-radius: 50%; font-weight: 700; font-size: 10.5pt; margin-right: 2mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.exo .enonce { font-size: 10pt; color: #333; }
+
+.grille { display: grid; gap: 3mm; margin-top: 3mm; }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+.g5 { grid-template-columns: repeat(5, 1fr); }
+.g6 { grid-template-columns: repeat(6, 1fr); }
+
+.case { border: 1pt solid #333; border-radius: 2mm; text-align: center; padding: 2mm 1mm; }
+.case .img { font-size: 26pt; line-height: 1.2; display: block; }
+.case .rep { margin: 2mm auto 0; height: 11mm; width: 85%; border: .8pt solid #888; border-radius: 1.5mm; }
+.case.sans-bord { border: none; }
+
+.chiffre-case { display: inline-block; width: 13mm; height: 15mm; border: 1.2pt solid #333; border-radius: 1.5mm; vertical-align: middle; }
+.lettre-case { display: inline-block; width: 10mm; height: 12mm; border: 1pt solid #333; border-radius: 1.5mm; vertical-align: middle; margin-right: 1mm; }
+
+.ligne-ecriture {
+  height: 13mm; margin: 3mm 0; position: relative;
+  background:
+    linear-gradient(to bottom, transparent 0, transparent 3.9mm, #c9d6e4 3.9mm, #c9d6e4 4.2mm, transparent 4.2mm),
+    linear-gradient(to bottom, transparent 0, transparent 8.4mm, #333 8.4mm, #333 8.7mm, transparent 8.7mm);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.modele { border: 1pt dashed #888; border-radius: 2mm; padding: 1mm 3mm; color: #777; font-size: 8.5pt; min-height: 12mm; }
+.trace { color: #b9c4cf; font-weight: 700; letter-spacing: .35em; font-size: 26pt; }
+
+table.tab { border-collapse: collapse; width: 100%; margin-top: 2mm; }
+table.tab th, table.tab td { border: 1pt solid #333; padding: 2mm; text-align: center; font-size: 10.5pt; }
+table.tab th { background: #e7f3ec; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+table.tab .img { font-size: 20pt; }
+td.coche { width: 22mm; height: 12mm; }
+
+.bande { display: flex; gap: 0; margin-top: 3mm; }
+.bande .c { width: 14mm; height: 14mm; border: 1.2pt solid #333; margin-left: -1.2pt; display: flex; align-items: center; justify-content: center; font-size: 14pt; font-weight: 700; }
+.bande .vide { background: #f2f6f9; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+.motif { display: flex; gap: 2.5mm; align-items: center; margin: 3mm 0; flex-wrap: wrap; }
+.motif svg { flex-shrink: 0; }
+.slot { width: 11mm; height: 11mm; border: 1pt dashed #999; border-radius: 1.5mm; }
+
+.quadrillage { border-collapse: collapse; margin-top: 3mm; }
+.quadrillage td { width: 14mm; height: 14mm; border: 1.2pt solid #333; text-align: center; font-size: 16pt; }
+
+.deuxcol { display: flex; gap: 6mm; }
+.deuxcol > div { flex: 1; }
+.appariement { display: flex; justify-content: space-between; gap: 10mm; margin-top: 3mm; }
+.appariement .col { display: flex; flex-direction: column; gap: 3mm; flex: 1; }
+.appariement .item { border: 1pt solid #333; border-radius: 2mm; text-align: center; padding: 1.5mm; font-size: 16pt; }
+.grand-espace { min-height: 30mm; border: 1pt solid #333; border-radius: 2mm; margin-top: 2mm; }
+.rond-a-dessiner { font-size: 15pt; letter-spacing: 2mm; }

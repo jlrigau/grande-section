@@ -48,7 +48,12 @@ L'année est organisée autour de cinq milieux, un par période :
 - [`03-progressions/06-monde-vivant-matiere-objets.md`](03-progressions/06-monde-vivant-matiere-objets.md) — découvrir le monde du vivant, de la matière et des objets.
 - [`03-progressions/07-evar.md`](03-progressions/07-evar.md) — éducation à la vie affective et relationnelle (3 séances spécifiques obligatoires).
 
-### 3. Fiches d'évaluation (une batterie par période, adaptée au thème)
+### 3. Site en ligne, fiches élève et PDF
+- `site/` — l'application web (navigation, sélecteur de zone A/B/C, téléchargement des PDF).
+- `site/fiches/` — les **fiches élève** imprimables (une page A4 par fiche, consigne donnée à l'oral par l'enseignante), un cahier par période.
+- `scripts/generer-pdf.sh` — génération automatique, à chaque déploiement, de tous les PDF : chaque document dans chaque zone (`pdf/zone-A|B|C/…`) + les 5 cahiers de fiches élève (`pdf/fiches-eleve-periode-N.pdf`).
+
+### 4. Fiches d'évaluation (une batterie par période, adaptée au thème)
 - [`04-evaluations/00-mode-emploi-et-livret-de-suivi.md`](04-evaluations/00-mode-emploi-et-livret-de-suivi.md) — principes d'évaluation positive, codage, grille de suivi annuelle.
 - [`04-evaluations/periode-1-ville.md`](04-evaluations/periode-1-ville.md)
 - [`04-evaluations/periode-2-foret.md`](04-evaluations/periode-2-foret.md)

@@ -55,12 +55,15 @@ body {
 .page { flex: 1; min-width: 0; padding: 1.4rem clamp(1rem, 4vw, 3rem) 3rem; }
 .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .8rem; }
 .fil { font-size: .88rem; color: var(--gris); }
+.boutons { display: flex; gap: .5rem; flex-wrap: wrap; }
 .btn-pdf {
-  background: var(--bleu); color: #fff; border: none; border-radius: 999px;
-  padding: .5rem 1.1rem; font-size: .92rem; font-weight: 600; cursor: pointer;
+  display: inline-block; background: var(--bleu); color: #fff; border: none; border-radius: 999px;
+  padding: .5rem 1.1rem; font-size: .92rem; font-weight: 600; cursor: pointer; text-decoration: none;
   box-shadow: 0 2px 6px rgba(43,108,176,.35); transition: transform .1s, box-shadow .1s;
 }
 .btn-pdf:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(43,108,176,.4); }
+.btn-fiches { background: var(--vert); box-shadow: 0 2px 6px rgba(46,125,82,.35); }
+.btn-fiches:hover { box-shadow: 0 4px 10px rgba(46,125,82,.4); }
 
 /* — Contenu — */
 .contenu { background: var(--blanc); border: 1px solid var(--bord); border-radius: var(--rayon); padding: clamp(1.2rem, 3vw, 2.4rem); box-shadow: 0 1px 4px rgba(0,0,0,.05); }

@@ -20,12 +20,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Polices emoji pour les PDF
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-color-emoji
       - name: Assembler le site (application + contenus)
         run: |
           mkdir -p _site/content
           cp -r site/. _site/
           cp 01-projet-annuel.md 02-programmation-annuelle.md _site/content/
           cp -r 03-progressions 04-evaluations _site/content/
+      - name: Générer les PDF (documents × zones + fiches élève)
+        run: bash scripts/generer-pdf.sh _site
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:

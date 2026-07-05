@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Impression</title>
+  <link rel="stylesheet" href="impression.css">
+</head>
+<body>
+  <div id="bandeau" class="bandeau"></div>
+  <article id="contenu"></article>
+  <script src="marked.min.js"></script>
+  <script src="commun.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var params = new URLSearchParams(location.search);
+      var id = params.get('doc') || 'projet-annuel';
+      var zone = params.get('zone') || 'A';
+      if (['A', 'B', 'C'].indexOf(zone) === -1) zone = 'A';
+      var doc = GS.DOCS.find(function (x) { return x.id === id; });
+      if (!doc || !doc.md) { document.getElementById('contenu').textContent = 'Document inconnu.'; return; }
+
+      document.title = 'GS 2026-2027 — ' + doc.titre + ' (zone ' + zone + ')';
+      document.getElementById('bandeau').innerHTML =
+        '<span>Grande Section 2026-2027 · À la découverte de la faune et de la flore</span>' +
+        '<span>' + (doc.groupe ? doc.groupe + ' · ' : '') + doc.titre + ' — Zone ' + zone + '</span>';
+
+      marked.use({ gfm: true, breaks: false });
+      fetch(doc.md).then(function (r) { return r.text(); }).then(function (md) {
+        var contenu = document.getElementById('contenu');
+        contenu.innerHTML = marked.parse(GS.nettoieMarkdown(md));
+        GS.annoteTitres(contenu, zone);
+        document.body.dataset.pret = '1';
+      });
+    })();
+  </script>
+</body>
+</html>
