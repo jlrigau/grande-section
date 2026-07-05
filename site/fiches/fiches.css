@@ -1,5 +1,9 @@
-/* Fiches élève — mise en page A4, une fiche par page. */
-@page { size: A4; margin: 10mm 12mm; }
+/* Fiches élève — mise en page A4, une fiche par page.
+   Les fiches à grand format (lettres, bandes, appariements) utilisent
+   la classe .paysage : leur page passe en orientation paysage. */
+@page { size: A4 portrait; margin: 10mm 12mm; }
+@page paysage { size: A4 landscape; margin: 10mm 12mm; }
+.fiche.paysage { page: paysage; }
 * { box-sizing: border-box; }
 body {
   margin: 0; color: #1c242c;
@@ -81,3 +85,33 @@ td.coche { width: 22mm; height: 12mm; }
 .appariement .item { border: 1pt solid #333; border-radius: 2mm; text-align: center; padding: 1.5mm; font-size: 16pt; }
 .grand-espace { min-height: 30mm; border: 1pt solid #333; border-radius: 2mm; margin-top: 2mm; }
 .rond-a-dessiner { font-size: 15pt; letter-spacing: 2mm; }
+
+/* — Niveaux et défis — */
+.niveau { display: inline-block; font-size: 8pt; font-weight: 700; border-radius: 999px; padding: .4mm 3mm; margin-left: 2mm; vertical-align: middle; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.niveau.n1 { background: #e7f3ec; color: #1d5c3a; border: .8pt solid #7fae93; }
+.niveau.n2 { background: #e8f1fa; color: #1c4f80; border: .8pt solid #7fa8cd; }
+.sous-objectif { font-size: 8.5pt; color: #1c4f80; background: #eef4fb; border-left: 3pt solid #7fa8cd; padding: 1.5mm 3mm; margin: 0 0 3mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.defi { border: 1.2pt solid #b0762f; background: #fdf1e0; border-radius: 2mm; padding: 2mm 4mm; margin-top: 4mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.defi .etoile { font-weight: 700; color: #9a5f14; }
+
+/* — Grandes lettres et cases à découper (format paysage) — */
+.lettres-decoupe { display: flex; gap: 3.5mm; flex-wrap: wrap; margin-top: 2.5mm; }
+.lettres-decoupe .carte-lettre {
+  width: 20mm; height: 23mm; border: 1.2pt dashed #555; border-radius: 2mm;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30pt; font-weight: 700;
+}
+.grandes-cases { display: flex; gap: 2.5mm; margin-top: 2mm; flex-wrap: wrap; }
+.grandes-cases .gc { width: 20mm; height: 23mm; border: 1.4pt solid #333; border-radius: 2mm; }
+.mot-grand { font-size: 30pt; font-weight: 700; letter-spacing: .25em; }
+.ciseaux { font-size: 9pt; color: #666; }
+
+/* Compactage des fiches paysage (hauteur utile réduite) */
+.paysage .exo { margin: 2mm 0; }
+.paysage .consigne { margin-bottom: 2mm; padding: 1.5mm 3.5mm; }
+.paysage .entete { margin-bottom: 2mm; }
+.paysage .ligne-ecriture { margin: 2mm 0; }
+.paysage .titre { font-size: 13pt; margin-bottom: 1.5mm; }
+.paysage .sous-objectif { margin-bottom: 2mm; padding: 1mm 3mm; }
+.paysage .pied-fiche { margin-top: 2mm; }
+.paysage .lettres-decoupe .carte-lettre, .paysage .grandes-cases .gc { height: 21mm; }

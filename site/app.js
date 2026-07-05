@@ -82,9 +82,12 @@
         '<span class="t">' + doc.titre + '</span><div class="d">' + doc.desc + '</div></a>';
     }).join('');
     var fiches = [1, 2, 3, 4, 5].map(function (n) {
-      return '<a class="carte" href="pdf/fiches-eleve-periode-' + n + '.pdf" download><span class="em">🖨️</span>' +
-        '<span class="t">Fiches élève · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
-        ' — feuilles individuelles à photocopier, consignes données à l’oral.</div></a>';
+      return '<a class="carte" href="pdf/fiches-entrainement-periode-' + n + '.pdf" download><span class="em">✏️</span>' +
+        '<span class="t">Entraînement · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
+        ' — 12 fiches avec sous-objectifs, 2 niveaux (★ je m’entraîne / ★★ je consolide) et défis.</div></a>' +
+        '<a class="carte" href="pdf/fiches-eleve-periode-' + n + '.pdf" download><span class="em">🖨️</span>' +
+        '<span class="t">Évaluation · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
+        ' — les fiches élève de l’évaluation de fin de période.</div></a>';
     }).join('');
 
     document.getElementById('contenu').innerHTML =
@@ -101,8 +104,9 @@
       '<li><strong>Pont de l’Ascension</strong> : pas de classe du jeudi 6 au dimanche 9 mai 2027</li>' +
       '<li><strong>Rentrée des élèves</strong> : mardi 1er septembre 2026 — <strong>fin des cours</strong> : vendredi 2 juillet 2027</li></ul>' +
       '<h2>🖨️ Mes fiches élève à imprimer</h2>' +
-      '<p>Des feuilles individuelles pour les élèves (une par élève, à photocopier) : l’enfant travaille seul sur sa feuille ' +
-      'après la <strong>consigne donnée à l’oral</strong> par l’enseignante. Chaque cahier de fiches correspond aux évaluations de la période.</p>' +
+      '<p>Des feuilles individuelles à photocopier (l’enseignante donne la consigne à l’oral, elle est rappelée sur la fiche pour les familles). ' +
+      'Pour chaque période : un cahier d’<strong>entraînement</strong> (12 fiches en 2 séries, avec sous-objectifs et défis ⭐ — de quoi travailler 2 à 3 fiches par semaine) ' +
+      'et un cahier d’<strong>évaluation</strong> de fin de période.</p>' +
       '<div class="cartes">' + fiches + '</div>' +
       '<h2>Mes documents</h2><div class="cartes">' + cartes + '</div>';
     window.scrollTo(0, 0);
@@ -123,12 +127,17 @@
     } else {
       btnPdf.hidden = true;
     }
+    var btnEntr = document.getElementById('btn-entrainement');
     if (doc.fiches) {
       btnFiches.hidden = false;
       btnFiches.href = 'pdf/fiches-eleve-periode-' + doc.fiches + '.pdf';
       btnFiches.setAttribute('download', 'GS-fiches-eleve-periode-' + doc.fiches + '.pdf');
+      btnEntr.hidden = false;
+      btnEntr.href = 'pdf/fiches-entrainement-periode-' + doc.fiches + '.pdf';
+      btnEntr.setAttribute('download', 'GS-fiches-entrainement-periode-' + doc.fiches + '.pdf');
     } else {
       btnFiches.hidden = true;
+      btnEntr.hidden = true;
     }
 
     if (doc.md) rendDocument(doc); else rendAccueil();

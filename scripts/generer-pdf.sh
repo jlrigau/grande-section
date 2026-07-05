@@ -34,6 +34,7 @@ done
 
 for N in 1 2 3 4 5; do
   imprime "http://127.0.0.1:$PORT/fiches/periode-$N.html" "$OUT/fiches-eleve-periode-$N.pdf"
+  imprime "http://127.0.0.1:$PORT/fiches/entrainement-periode-$N.html" "$OUT/fiches-entrainement-periode-$N.pdf"
 done
-echo "Fiches élève : 5 PDF"
+echo "Fiches élève : 5 PDF évaluation + 5 PDF entraînement"
 echo "Total : $(find "$OUT" -name '*.pdf' | wc -l) PDF générés dans $OUT"
