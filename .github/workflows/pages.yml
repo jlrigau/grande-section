@@ -1,4 +1,4 @@
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Déploiement du site
 
 on:
   push:
@@ -20,15 +20,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Assembler le site (application + contenus)
+        run: |
+          mkdir -p _site/content
+          cp -r site/. _site/
+          cp 01-projet-annuel.md 02-programmation-annuelle.md _site/content/
+          cp -r 03-progressions 04-evaluations _site/content/
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 

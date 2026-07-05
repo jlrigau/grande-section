@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ma Grande Section 2026-2027 · À la découverte de la faune et de la flore</title>
+  <meta name="description" content="Toutes les progressions, la programmation et les évaluations de l'année de Grande Section, adaptées à votre zone de vacances, à consulter et à imprimer en PDF.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+    <div class="brand">
+      <span class="brand-emoji">🐾</span>
+      <div>
+        <div class="brand-title">Ma Grande Section 2026-2027</div>
+        <div class="brand-sub">À la découverte de la faune et de la flore</div>
+      </div>
+    </div>
+    <div class="zone-picker" role="group" aria-label="Choix de la zone de vacances">
+      <span class="zone-label">Ma zone :</span>
+      <button type="button" class="zone-btn" data-zone="A" aria-pressed="false">A</button>
+      <button type="button" class="zone-btn" data-zone="B" aria-pressed="false">B</button>
+      <button type="button" class="zone-btn" data-zone="C" aria-pressed="false">C</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar" aria-label="Documents de l'année"></nav>
+    <main class="page">
+      <div class="toolbar">
+        <div id="fil" class="fil"></div>
+        <button id="btn-pdf" class="btn-pdf" title="Dans la fenêtre d'impression, choisissez « Enregistrer au format PDF »">📄 Enregistrer en PDF</button>
+      </div>
+      <div id="print-header" class="print-header"></div>
+      <article id="contenu" class="contenu" aria-live="polite">
+        <p class="chargement">Chargement…</p>
+      </article>
+      <footer class="pied">
+        Conforme au programme officiel de l'école maternelle (cycle 1, 2024-2026) et au programme d'éducation à la vie affective et relationnelle.
+        Dates des vacances : calendrier scolaire officiel 2026-2027.
+      </footer>
+    </main>
+  </div>
+
+  <script src="marked.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
