@@ -13,13 +13,15 @@ Fils rouges sur l'année :
 
 ## 2. Calendrier 2026-2027 (à ajuster selon la zone)
 
+> 🅰️🅱️©️ Sur le [site en ligne](https://jlrigau.github.io/grande-section/), le sélecteur de zone (en haut de page) affiche les dates exactes de chaque période pour les zones A, B et C.
+
 | Période | Semaines | Thème | Événements et sorties envisagés |
 |---|---|---|---|
 | P1 | 1/09 → 16/10/2026 (7 sem.) | 🏙️ La ville | Sortie « quartier » (bâtiments, arbres d'alignement, oiseaux des villes) ; visite du parc municipal ; Semaine du goût. |
 | P2 | 2/11 → 18/12/2026 (7 sem.) | 🌳 La forêt | Sortie en forêt ou parc boisé (collecte de feuilles, fruits d'automne, empreintes) ; spectacle de fin d'année. |
 | P3 | 4/01 → vac. d'hiver 2027 (5-7 sem.) | ⛰️ La montagne | Intervention « milieu montagnard » ou malle documentaire ; expériences neige/glace ; carnaval éventuel. |
 | P4 | mars → vac. de printemps (≈ 6 sem.) | 🌾 La campagne | **Sortie à la ferme pédagogique** (temps fort de l'année) ; semis et potager de l'école. |
-| P5 | avril/mai → 6/07/2027 (≈ 9-10 sem.) | 🌊 La mer | Sortie aquarium (ou classe de mer selon projet d'école) ; exposition de fin d'année « Notre tour des cinq milieux » présentée aux familles ; liaison GS-CP. |
+| P5 | avril/mai → 2/07/2027 (9 à 11 sem. selon zone) | 🌊 La mer | Sortie aquarium (ou classe de mer selon projet d'école) ; exposition de fin d'année « Notre tour des cinq milieux » présentée aux familles ; liaison GS-CP. |
 
 ## 3. Corpus de vocabulaire (3 corpus par période, conformément au programme GS)
 

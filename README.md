@@ -14,9 +14,24 @@ L'année est organisée autour de cinq milieux, un par période :
 | **Période 2** | 🌳 La forêt | 2 novembre → 18 décembre 2026 (7 semaines) |
 | **Période 3** | ⛰️ La montagne | 4 janvier → vacances d'hiver 2027 (5 à 7 semaines selon zone) |
 | **Période 4** | 🌾 La campagne | retour des vacances d'hiver → vacances de printemps (≈ 6 semaines) |
-| **Période 5** | 🌊 La mer | retour des vacances de printemps → 6 juillet 2027 (≈ 9-10 semaines) |
+| **Période 5** | 🌊 La mer | retour des vacances de printemps → 2 juillet 2027 (9 à 11 semaines selon zone) |
 
-> Les dates des vacances d'hiver et de printemps dépendent de la zone (A, B ou C) : ajuster le découpage des périodes 3, 4 et 5 en conséquence.
+## Calendrier selon votre zone de vacances
+
+> 🅰️🅱️©️ **Sur le [site en ligne](https://jlrigau.github.io/grande-section/)**, sélectionnez votre zone de vacances (A, B ou C) en haut de page : le calendrier ci-dessous et les dates de toutes les périodes, dans toutes les progressions et évaluations, s'adaptent automatiquement. Les dates proviennent du jeu de données officiel [fr-en-calendrier-scolaire](https://data.education.gouv.fr/explore/dataset/fr-en-calendrier-scolaire/) (open data du ministère).
+
+<p id="zone-hint" class="zone-hint"></p>
+<div id="calendrier-zones">
+
+| Vacances 2026-2027 | Zone A | Zone B | Zone C |
+|---|---|---|---|
+| Toussaint | 17 oct. → 1er nov. 2026 | idem | idem |
+| Noël | 19 déc. 2026 → 3 janv. 2027 | idem | idem |
+| Hiver | 13 févr. → 28 févr. 2027 | 20 févr. → 7 mars 2027 | 6 févr. → 21 févr. 2027 |
+| Printemps | 10 avr. → 25 avr. 2027 | 17 avr. → 2 mai 2027 | 3 avr. → 18 avr. 2027 |
+| Été | à partir du 3 juillet 2027 | idem | idem |
+
+</div>
 
 ## Contenu du dépôt
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <style>
+    .zone-picker { margin: 1rem auto 0; display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; align-items: center; }
+    .zone-picker span { font-weight: 600; opacity: .9; }
+    .zone-btn { border: 2px solid rgba(255,255,255,.6); background: rgba(255,255,255,.12); color: #fff; padding: .35rem 1rem; border-radius: 999px; cursor: pointer; font-size: .95rem; font-weight: 600; transition: all .15s; }
+    .zone-btn:hover { background: rgba(255,255,255,.3); }
+    .zone-btn[aria-pressed="true"] { background: #fff; color: #155799; border-color: #fff; }
+    .site-nav { margin-top: 1.2rem; font-size: .9rem; line-height: 1.9; }
+    .site-nav a { color: #fff; text-decoration: none; opacity: .85; margin: 0 .45rem; white-space: nowrap; }
+    .site-nav a:hover { opacity: 1; text-decoration: underline; }
+    .site-nav .nav-group { display: block; }
+    .zone-badge { display: inline-block; font-size: .68em; font-weight: 600; vertical-align: middle; background: #e7f1fa; color: #155799; border: 1px solid #b7d3ea; border-radius: 999px; padding: .15em .8em; margin-left: .6em; }
+    h1 .zone-badge, h2 .zone-badge, h3 .zone-badge { line-height: 1.6; }
+    #calendrier-zones table { width: 100%; }
+    #calendrier-zones .vac { font-size: .9em; color: #4a5560; }
+    .zone-hint { background: #fff8e1; border: 1px solid #f0dc9a; border-radius: 6px; padding: .6rem 1rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <header class="page-header" role="banner">
+    <h1 class="project-name"><a href="{{ '/' | relative_url }}" style="color:#fff;text-decoration:none">🐾 {{ site.title }}</a></h1>
+    <h2 class="project-tagline">{{ site.description }}</h2>
+    <div class="zone-picker" role="group" aria-label="Choix de la zone de vacances">
+      <span>Ma zone de vacances :</span>
+      <button type="button" class="zone-btn" data-zone="A" aria-pressed="false">Zone A</button>
+      <button type="button" class="zone-btn" data-zone="B" aria-pressed="false">Zone B</button>
+      <button type="button" class="zone-btn" data-zone="C" aria-pressed="false">Zone C</button>
+    </div>
+    <nav class="site-nav" aria-label="Navigation du site">
+      <span class="nav-group">
+        <a href="{{ '/' | relative_url }}">🏠 Accueil</a> ·
+        <a href="{{ '/01-projet-annuel.html' | relative_url }}">📌 Projet annuel</a> ·
+        <a href="{{ '/02-programmation-annuelle.html' | relative_url }}">🗓️ Programmation</a>
+      </span>
+      <span class="nav-group">
+        Progressions :
+        <a href="{{ '/03-progressions/01-langage-oral-ecrit.html' | relative_url }}">Langage</a> ·
+        <a href="{{ '/03-progressions/02-mathematiques.html' | relative_url }}">Maths</a> ·
+        <a href="{{ '/03-progressions/03-activites-physiques.html' | relative_url }}">EPS</a> ·
+        <a href="{{ '/03-progressions/04-activites-artistiques.html' | relative_url }}">Arts</a> ·
+        <a href="{{ '/03-progressions/05-temps-espace.html' | relative_url }}">Temps-Espace</a> ·
+        <a href="{{ '/03-progressions/06-monde-vivant-matiere-objets.html' | relative_url }}">Le monde</a> ·
+        <a href="{{ '/03-progressions/07-evar.html' | relative_url }}">EVAR</a>
+      </span>
+      <span class="nav-group">
+        Évaluations :
+        <a href="{{ '/04-evaluations/00-mode-emploi-et-livret-de-suivi.html' | relative_url }}">Mode d'emploi</a> ·
+        <a href="{{ '/04-evaluations/periode-1-ville.html' | relative_url }}">P1 Ville</a> ·
+        <a href="{{ '/04-evaluations/periode-2-foret.html' | relative_url }}">P2 Forêt</a> ·
+        <a href="{{ '/04-evaluations/periode-3-montagne.html' | relative_url }}">P3 Montagne</a> ·
+        <a href="{{ '/04-evaluations/periode-4-campagne.html' | relative_url }}">P4 Campagne</a> ·
+        <a href="{{ '/04-evaluations/periode-5-mer.html' | relative_url }}">P5 Mer</a>
+      </span>
+    </nav>
+  </header>
+
+  <main class="main-content" role="main">
+    {{ content }}
+    <footer class="site-footer">
+      <span class="site-footer-credits">
+        Année scolaire 2026-2027 · Dates des vacances par zone issues du
+        <a href="https://data.education.gouv.fr/explore/dataset/fr-en-calendrier-scolaire/">calendrier scolaire officiel (open data)</a> ·
+        <a href="https://github.com/jlrigau/grande-section">Dépôt GitHub</a>
+      </span>
+    </footer>
+  </main>
+  <script src="{{ '/assets/js/zones.js' | relative_url }}"></script>
+</body>
+</html>
