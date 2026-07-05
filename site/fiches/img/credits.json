@@ -1,0 +1,44 @@
+{
+ "velo": {
+  "fichier": "velo.png",
+  "source": "File:Bike-next.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bike-next.svg",
+  "licence": "CC0",
+  "auteur": "bianchessi  (original picture), modification: Mielon"
+ },
+ "pigeon": {
+  "fichier": "pigeon.jpg",
+  "source": "File:Bird life at the basin - geograph.org.uk - 1551006.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bird_life_at_the_basin_-_geograph.org.uk_-_1551006.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "E Gammie"
+ },
+ "helicoptere": {
+  "fichier": "helicoptere.png",
+  "source": "File:Mil Mi-17 (\"Hip\") helicopter - side view.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mil_Mi-17_(%22Hip%22)_helicopter_-_side_view.svg",
+  "licence": "CC0",
+  "auteur": "Juhele"
+ },
+ "baleine": {
+  "fichier": "baleine.png",
+  "source": "File:Whale cute marine animal and mammal cartoon clipart vector.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Whale_cute_marine_animal_and_mammal_cartoon_clipart_vector.svg",
+  "licence": "CC BY 3.0",
+  "auteur": "Satheeshsankaran"
+ },
+ "personne": {
+  "fichier": "personne.png",
+  "source": "File:Pictograms-nps-land-exercise-fitness-2.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pictograms-nps-land-exercise-fitness-2.svg",
+  "licence": "Public domain",
+  "auteur": "NPS Graphics, converted by User:ZyMOS"
+ },
+ "loup": {
+  "fichier": "loup.png",
+  "source": "File:Wolf 2.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Wolf_2.svg",
+  "licence": "Public domain",
+  "auteur": "Virginia Frances Sterrett"
+ }
+}

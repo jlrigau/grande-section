@@ -5,6 +5,9 @@ body {
   margin: 0; color: #222;
   font-family: "Segoe UI", -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 10.5pt; line-height: 1.5;
+  /* retrait de sécurité : bordures droites des tableaux rognées par
+     certains lecteurs PDF (border-collapse à cheval sur le bord du bloc) */
+  padding-right: 1.2mm;
 }
 .bandeau {
   display: flex; justify-content: space-between; gap: 1rem;
