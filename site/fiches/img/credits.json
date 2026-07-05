@@ -558,5 +558,320 @@
   "page": "https://commons.wikimedia.org/wiki/File:Chocolate02.jpg",
   "licence": "CC BY-SA 3.0",
   "auteur": ""
+ },
+ "fourmi": {
+  "fichier": "fourmi.jpg",
+  "source": "File:Another World (69172103).jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File:Another_World_(69172103).jpeg",
+  "licence": "CC BY 3.0",
+  "auteur": "Rob Upchurch"
+ },
+ "feu-tricolore": {
+  "fichier": "feu-tricolore.jpg",
+  "source": "File:EB US129 GA44 Traffic light ahead MM 9, Eatonton.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:EB_US129_GA44_Traffic_light_ahead_MM_9,_Eatonton.jpg",
+  "licence": "CC BY 4.0",
+  "auteur": "Michael Rivera"
+ },
+ "maison": {
+  "fichier": "maison.jpg",
+  "source": "File:The single-family house area of Kori housing complex.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_single-family_house_area_of_Kori_housing_complex.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "NISHIGUCHI,Masahiro (Nisiguti)"
+ },
+ "helicoptere": {
+  "fichier": "helicoptere.jpg",
+  "source": "File:Helicopter hovers two feet up. Avoiding sand clouds (37376497290).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Helicopter_hovers_two_feet_up._Avoiding_sand_clouds_(37376497290).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Dr Mary Gillham Archive Project"
+ },
+ "ecole": {
+  "fichier": "ecole.jpg",
+  "source": "File:Hôtel Mérault et de Gourgues, au 54 rue de Turenne, actuellement école primaire, 3ème arrondissement, Paris. PH21298.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_M%C3%A9rault_et_de_Gourgues,_au_54_rue_de_Turenne,_actuellement_%C3%A9cole_primaire,_3%C3%A8me_arrondissement,_Paris._PH21298.jpg",
+  "licence": "CC0",
+  "auteur": "Lansiaux, Charles Joseph Antoine (Aniche, 09–03–1855 - Paris, après 06–04–1939),"
+ },
+ "caillou": {
+  "fichier": "caillou.jpg",
+  "source": "File:(1648) Pebble Hook-tip (Drepana falcataria) (28501106511).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:(1648)_Pebble_Hook-tip_(Drepana_falcataria)_(28501106511).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Ben Sale from UK"
+ },
+ "sapin": {
+  "fichier": "sapin.jpg",
+  "source": "File:11-5-11 tree - Flickr - USDAgov.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:11-5-11_tree_-_Flickr_-_USDAgov.jpg",
+  "licence": "Public domain",
+  "auteur": "U.S. Department of Agriculture"
+ },
+ "marron": {
+  "fichier": "marron.jpg",
+  "source": "File:Horse chestnut conkers - geograph.org.uk - 7621860.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Horse_chestnut_conkers_-_geograph.org.uk_-_7621860.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Philip Halling"
+ },
+ "noisette": {
+  "fichier": "noisette.jpg",
+  "source": "File:Hazelnuts without shell.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hazelnuts_without_shell.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "William Ismael"
+ },
+ "ourson": {
+  "fichier": "ourson.jpg",
+  "source": "File:Missie Brown and teddy bear, Montreal, QC, 1921 (5263692356).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Missie_Brown_and_teddy_bear,_Montreal,_QC,_1921_(5263692356).jpg",
+  "licence": "No restrictions",
+  "auteur": "Musée McCord Museum"
+ },
+ "ver-de-terre": {
+  "fichier": "ver-de-terre.jpg",
+  "source": "File:Regenwurm1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Regenwurm1.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Michael Linnenbach"
+ },
+ "ballon": {
+  "fichier": "ballon.jpg",
+  "source": "File:City of London Cemetery grave balloons red Solo party cup wine bottles and flowers 1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:City_of_London_Cemetery_grave_balloons_red_Solo_party_cup_wine_bottles_and_flowers_1.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Arthur Scraggit"
+ },
+ "buche": {
+  "fichier": "buche.jpg",
+  "source": "File:Stacked cut log by East Knockbain Wood - geograph.org.uk - 8277225.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Stacked_cut_log_by_East_Knockbain_Wood_-_geograph.org.uk_-_8277225.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Julian Paren"
+ },
+ "flocon": {
+  "fichier": "flocon.jpg",
+  "source": "File:\"Footsteps In The Snow\" - Silicon dioxide nanoparticles.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:%22Footsteps_In_The_Snow%22_-_Silicon_dioxide_nanoparticles.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Sergei Sergeevich Langin (www.clck.ru/3DtB5f and www.tiktok.cn/qpeekqpeek)"
+ },
+ "luge": {
+  "fichier": "luge.jpg",
+  "source": "File:Four women on sled in the snow (4323204182).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Four_women_on_sled_in_the_snow_(4323204182).jpg",
+  "licence": "No restrictions",
+  "auteur": "UW Digital Collections"
+ },
+ "moto": {
+  "fichier": "moto.jpg",
+  "source": "File:Side car motorbike \"Ural\" (47562824862).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Side_car_motorbike_%22Ural%22_(47562824862).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Pedro Ribeiro Simões from Lisboa, Portugal"
+ },
+ "lama": {
+  "fichier": "lama.jpg",
+  "source": "File:Llama Portrait (8564867495).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Llama_Portrait_(8564867495).jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Eric Kilby from Somerville, MA, USA"
+ },
+ "ski": {
+  "fichier": "ski.jpg",
+  "source": "File:El Condor Pasa (122006897).jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File:El_Condor_Pasa_(122006897).jpeg",
+  "licence": "CC BY 3.0",
+  "auteur": "Mathieu Dupouy"
+ },
+ "pluie": {
+  "fichier": "pluie.jpg",
+  "source": "File:Slush on window in three lights.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Slush_on_window_in_three_lights.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "W.carter"
+ },
+ "bonhomme-neige": {
+  "fichier": "bonhomme-neige.jpg",
+  "source": "File:PIA20011-SaturnMoon-Enceladus-NPole-Closeup-20151014.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:PIA20011-SaturnMoon-Enceladus-NPole-Closeup-20151014.jpg",
+  "licence": "Attribution",
+  "auteur": "NASA/JPL-Caltech/Space Science Institute"
+ },
+ "robinet": {
+  "fichier": "robinet.jpg",
+  "source": "File:Water on tap (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Water_on_tap_(Unsplash).jpg",
+  "licence": "CC0",
+  "auteur": "Luis Tosta luis_tosta"
+ },
+ "soleil": {
+  "fichier": "soleil.png",
+  "source": "File:Mid-Level Flare Erupts From Sun (SVS14078 - Full-Disk 171 final).gif",
+  "page": "https://commons.wikimedia.org/wiki/File:Mid-Level_Flare_Erupts_From_Sun_(SVS14078_-_Full-Disk_171_final).gif",
+  "licence": "Public domain",
+  "auteur": "NASA's Scientific Visualization Studio - KBR Wyle Services, LLC/Joy Ng, Telophas"
+ },
+ "manteau": {
+  "fichier": "manteau.jpg",
+  "source": "File:Duffle coat.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Duffle_coat.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "The original uploader was Daniel Case at English Wikipedia."
+ },
+ "chapeau-soleil": {
+  "fichier": "chapeau-soleil.jpg",
+  "source": "File:Selective Use of Color (33428154893).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Selective_Use_of_Color_(33428154893).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "cloud.shepherd"
+ },
+ "maillot": {
+  "fichier": "maillot.jpg",
+  "source": "File:Broad Man in Nike Swim Trunks (49145725328).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Broad_Man_in_Nike_Swim_Trunks_(49145725328).jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Chris Hunkeler from Carlsbad, California, USA"
+ },
+ "salade": {
+  "fichier": "salade.jpg",
+  "source": "File:Lettuce (220083045).jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lettuce_(220083045).jpeg",
+  "licence": "CC BY 3.0",
+  "auteur": "Vladislav Pashaiev"
+ },
+ "cheval": {
+  "fichier": "cheval.jpg",
+  "source": "File:Horse pasture and rusty barn - geograph.org.uk - 1133376.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Horse_pasture_and_rusty_barn_-_geograph.org.uk_-_1133376.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Maurice Pullin"
+ },
+ "poussin": {
+  "fichier": "poussin.jpg",
+  "source": "File:隣犬 (30663875067).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:%E9%9A%A3%E7%8A%AC_(30663875067).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Michael Ocampo from United States"
+ },
+ "radis": {
+  "fichier": "radis.jpg",
+  "source": "File:Wholesale price list of requisites for florists and market gardeners (16569309217).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Wholesale_price_list_of_requisites_for_florists_and_market_gardeners_(16569309217).jpg",
+  "licence": "Public domain",
+  "auteur": "Henderson, Peter &amp; Co.; Stumpp &amp; Walter Co. (New York, N.Y.)"
+ },
+ "carotte": {
+  "fichier": "carotte.jpg",
+  "source": "File:The standard cyclopedia of modern agriculture and rural economy, by the most distinguished authorities and specialists under the editorship of Professor R. Patrick Wright (1908) (14598365478).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_standard_cyclopedia_of_modern_agriculture_and_rural_economy,_by_the_most_distinguished_authorities_and_specialists_under_the_editorship_of_Professor_R._Patrick_Wright_(1908)_(14598365478).jpg",
+  "licence": "No restrictions",
+  "auteur": "Internet Archive Book Images"
+ },
+ "lapin": {
+  "fichier": "lapin.jpg",
+  "source": "File:European Rabbit (Oryctolagus cuniculus) (4518734625).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:European_Rabbit_(Oryctolagus_cuniculus)_(4518734625).jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "AnemoneProjectors (talk)"
+ },
+ "citrouille": {
+  "fichier": "citrouille.jpg",
+  "source": "File:Handbook of the trees of the northern states and Canada east of the Rocky mountains. Photo-descriptive (1907) (14784917105).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Handbook_of_the_trees_of_the_northern_states_and_Canada_east_of_the_Rocky_mountains._Photo-descriptive_(1907)_(14784917105).jpg",
+  "licence": "No restrictions",
+  "auteur": "Internet Archive Book Images"
+ },
+ "haricot": {
+  "fichier": "haricot.jpg",
+  "source": "File:Travels in the gold and diamond districts of Brazil; describing the methods of working the mines, the natural productions, agriculture, and commerce, and the customs and manners of the inhabitants- to (14773910504).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Travels_in_the_gold_and_diamond_districts_of_Brazil;_describing_the_methods_of_working_the_mines,_the_natural_productions,_agriculture,_and_commerce,_and_the_customs_and_manners_of_the_inhabitants-_to_(14773910504).jpg",
+  "licence": "No restrictions",
+  "auteur": "Mawe, John, 1764-1829"
+ },
+ "voiture": {
+  "fichier": "voiture.jpg",
+  "source": "File:City Sightseeing red open-top bus in Cardiff city centre - geograph.org.uk - 5421088.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:City_Sightseeing_red_open-top_bus_in_Cardiff_city_centre_-_geograph.org.uk_-_5421088.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Jaggery"
+ },
+ "vent": {
+  "fichier": "vent.jpg",
+  "source": "File:DSC 0648 (50744914317).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:DSC_0648_(50744914317).jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Tracie Hall from Orange County, us"
+ },
+ "phare": {
+  "fichier": "phare.jpg",
+  "source": "File:Red and white with a light at night - geograph.org.uk - 3001631.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Red_and_white_with_a_light_at_night_-_geograph.org.uk_-_3001631.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Richard Humphrey"
+ },
+ "vague": {
+  "fichier": "vague.jpg",
+  "source": "File:Crashing surf - geograph.org.uk - 1327459.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Crashing_surf_-_geograph.org.uk_-_1327459.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Pauline Eccles"
+ },
+ "seau-plage": {
+  "fichier": "seau-plage.png",
+  "source": "File:Sandbox - OpenClipart.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Sandbox_-_OpenClipart.svg",
+  "licence": "CC0",
+  "auteur": "gnokii at openclipart.org"
+ },
+ "pelle-plage": {
+  "fichier": "pelle-plage.jpg",
+  "source": "File:Beach toys and window display at Broadstairs Kent England.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Beach_toys_and_window_display_at_Broadstairs_Kent_England.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Acabashi"
+ },
+ "poisson": {
+  "fichier": "poisson.jpg",
+  "source": "File:Goldfish varieties and tropical aquarium fishes; a complete guide to aquaria and related subjects (1917) (14597768689).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Goldfish_varieties_and_tropical_aquarium_fishes;_a_complete_guide_to_aquaria_and_related_subjects_(1917)_(14597768689).jpg",
+  "licence": "No restrictions",
+  "auteur": "Internet Archive Book Images"
+ },
+ "bois": {
+  "fichier": "bois.jpg",
+  "source": "File:Old painted planks texture 03.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Old_painted_planks_texture_03.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Nikodem Nijaki"
+ },
+ "fer": {
+  "fichier": "fer.jpg",
+  "source": "File:RUSTED IRON HAND PUMP ON LAND WHICH USED TO BE COVERED BY TALLGRASS PRAIRIE IN JOHNSON COUNTY KANSAS NEAR KANSAS... - NARA - 557142.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:RUSTED_IRON_HAND_PUMP_ON_LAND_WHICH_USED_TO_BE_COVERED_BY_TALLGRASS_PRAIRIE_IN_JOHNSON_COUNTY_KANSAS_NEAR_KANSAS..._-_NARA_-_557142.jpg",
+  "licence": "Public domain",
+  "auteur": "Patricia DuBose Duncan"
+ },
+ "riz": {
+  "fichier": "riz.jpg",
+  "source": "File:Chanel ( explored ) - Flickr - mayeesherr..jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chanel_(_explored_)_-_Flickr_-_mayeesherr..jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "mayeesherr."
+ },
+ "pousse": {
+  "fichier": "pousse.jpg",
+  "source": "File:The seedling-inarch and nurse-plant methods of propagation (1911) (14783265412).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_seedling-inarch_and_nurse-plant_methods_of_propagation_(1911)_(14783265412).jpg",
+  "licence": "No restrictions",
+  "auteur": "Internet Archive Book Images"
+ },
+ "tee-shirt": {
+  "fichier": "tee-shirt.jpg",
+  "source": "File:Very excellent t-shirt (48286498492).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Very_excellent_t-shirt_(48286498492).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "istolethetv"
  }
 }
