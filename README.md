@@ -1,5 +1,7 @@
 # Grande Section — Année 2026-2027
 
+> 📖 **Consulter en ligne** : [jlrigau.github.io/grande-section](https://jlrigau.github.io/grande-section/) · 📦 **Dépôt** : [github.com/jlrigau/grande-section](https://github.com/jlrigau/grande-section)
+
 ## Projet annuel : « À la découverte de la faune et de la flore »
 
 Ce dépôt contient l'ensemble du matériel de préparation pour une classe de **Grande Section de maternelle** pour l'année scolaire **2026-2027**, conforme au **programme du cycle 1 (2024-2026, BO n°19 du 7 mai 2026 et BO n°41 du 31 octobre 2024)**, y compris le programme d'**éducation à la vie affective et relationnelle (EVAR)**.
