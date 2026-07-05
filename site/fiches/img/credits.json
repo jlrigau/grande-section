@@ -1,24 +1,10 @@
 {
- "baleine": {
-  "fichier": "baleine.png",
-  "source": "File:Whale cute marine animal and mammal cartoon clipart vector.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Whale_cute_marine_animal_and_mammal_cartoon_clipart_vector.svg",
-  "licence": "CC BY 3.0",
-  "auteur": "Satheeshsankaran"
- },
  "personne": {
   "fichier": "personne.png",
   "source": "File:Pictograms-nps-land-exercise-fitness-2.svg",
   "page": "https://commons.wikimedia.org/wiki/File:Pictograms-nps-land-exercise-fitness-2.svg",
   "licence": "Public domain",
   "auteur": "NPS Graphics, converted by User:ZyMOS"
- },
- "fourmi": {
-  "fichier": "fourmi.png",
-  "source": "File:Ant clipart.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Ant_clipart.svg",
-  "licence": "CC0",
-  "auteur": "http://openclipart.org/"
  },
  "escargot": {
   "fichier": "escargot.jpg",
@@ -27,40 +13,12 @@
   "licence": "CC BY-SA 3.0",
   "auteur": "Jürgen Schoner"
  },
- "feu-tricolore": {
-  "fichier": "feu-tricolore.png",
-  "source": "File:Redtrafficlight.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Redtrafficlight.svg",
-  "licence": "CC0",
-  "auteur": "Unknown authorUnknown author"
- },
- "ecole": {
-  "fichier": "ecole.png",
-  "source": "File:School-colour.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:School-colour.svg",
-  "licence": "CC0",
-  "auteur": "j4p4n"
- },
- "hibou": {
-  "fichier": "hibou.png",
-  "source": "File:Owl bored.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Owl_bored.svg",
-  "licence": "CC0",
-  "auteur": "rones"
- },
  "herisson": {
   "fichier": "herisson.jpg",
   "source": "File:Erinaceus roumanicus 2020 G2.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Erinaceus_roumanicus_2020_G2.jpg",
   "licence": "Public domain",
   "auteur": "George Chernilevsky"
- },
- "champignon": {
-  "fichier": "champignon.png",
-  "source": "File:Lemmling-Mushroom-house.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Lemmling-Mushroom-house.svg",
-  "licence": "CC0",
-  "auteur": "lemmling"
  },
  "ecureuil": {
   "fichier": "ecureuil.jpg",
@@ -118,27 +76,6 @@
   "licence": "CC BY 3.0",
   "auteur": "Acarpentier"
  },
- "ourson": {
-  "fichier": "ourson.jpg",
-  "source": "File:The white background didn't work bc of his B&W fur (8264801927).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:The_white_background_didn%27t_work_bc_of_his_B%26W_fur_(8264801927).jpg",
-  "licence": "CC BY-SA 2.0",
-  "auteur": "thepeachpeddler from USA"
- },
- "ballon": {
-  "fichier": "ballon.png",
-  "source": "File:Red toy balloon.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Red_toy_balloon.svg",
-  "licence": "CC0",
-  "auteur": "AJ"
- },
- "moto": {
-  "fichier": "moto.png",
-  "source": "File:Clipart Motorcycle.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Clipart_Motorcycle.svg",
-  "licence": "Public domain",
-  "auteur": "User:Pil56 (original image) + user:Jazzmanian (svg)"
- },
  "aigle": {
   "fichier": "aigle.jpg",
   "source": "File:001 Wild Golden Eagle and Majinghorn Pfyn-Finges Photo by Giles Laurent.jpg",
@@ -159,20 +96,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:021_Wild_Baby_Alpine_Ibex_Creux_du_Van_Photo_by_Giles_Laurent.jpg",
   "licence": "CC BY-SA 4.0",
   "auteur": "Giles Laurent"
- },
- "pluie": {
-  "fichier": "pluie.png",
-  "source": "File:Weather icon - heavy rain.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Weather_icon_-_heavy_rain.svg",
-  "licence": "CC0",
-  "auteur": "gnokii"
- },
- "robinet": {
-  "fichier": "robinet.jpg",
-  "source": "File:Robinet clipart.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Robinet_clipart.jpg",
-  "licence": "CC0",
-  "auteur": "Clker-Free-Vector-Images"
  },
  "glacier": {
   "fichier": "glacier.jpg",
@@ -201,13 +124,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Danaus_plexippus_Vertical_Caterpillar_2000px.jpg",
   "licence": "GFDL 1.2",
   "auteur": "Photo (c)2007 Derek Ramsey (Ram-Man)"
- },
- "cheval": {
-  "fichier": "cheval.jpg",
-  "source": "File:Wild horses, Šar Mountains.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Wild_horses,_%C5%A0ar_Mountains.jpg",
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Aljabakphoto"
  },
  "souris": {
   "fichier": "souris.jpg",
@@ -251,13 +167,6 @@
   "licence": "CC BY-SA 3.0",
   "auteur": "FoeNyx, France"
  },
- "pot-de-fleur": {
-  "fichier": "pot-de-fleur.png",
-  "source": "File:Wikipedia nowruz 1400.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Wikipedia_nowruz_1400.svg",
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Samuel T.Owen"
- },
  "sucre": {
   "fichier": "sucre.jpg",
   "source": "File:Würfelzucker -- 2018 -- 3564.jpg",
@@ -271,20 +180,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:Russet_potato_cultivar_with_sprouts.jpg",
   "licence": "Public domain",
   "auteur": "ZooFari"
- },
- "television": {
-  "fichier": "television.png",
-  "source": "File:Television-comic.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Television-comic.svg",
-  "licence": "CC0",
-  "auteur": "television comic style — rg1024 (Open Clip Art Library)"
- },
- "phare": {
-  "fichier": "phare.png",
-  "source": "File:Lighthouse.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Lighthouse.svg",
-  "licence": "Public domain",
-  "auteur": "matthewg42"
  },
  "dauphin": {
   "fichier": "dauphin.jpg",
@@ -342,13 +237,6 @@
   "licence": "CC BY-SA 4.0",
   "auteur": "W.carter"
  },
- "buche": {
-  "fichier": "buche.jpg",
-  "source": "File:Logs for firewood - geograph.org.uk - 2902812.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Logs_for_firewood_-_geograph.org.uk_-_2902812.jpg",
-  "licence": "CC BY-SA 2.0",
-  "auteur": "Dave Croker"
- },
  "chocolat-chaud": {
   "fichier": "chocolat-chaud.jpg",
   "source": "File:Citizen Cafe Hot Chocolate (22556789633).jpg",
@@ -377,20 +265,6 @@
   "licence": "CC BY 2.0",
   "auteur": "Dubravko Sorić SoraZG on Flickr"
  },
- "fer": {
-  "fichier": "fer.jpg",
-  "source": "File:Nails-for-nailer.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Nails-for-nailer.jpg",
-  "licence": "CC BY-SA 4.0",
-  "auteur": "Grzegorz W. Tężycki"
- },
- "bouchon-liege": {
-  "fichier": "bouchon-liege.jpg",
-  "source": "File:Wine corks, Rostov-on-Don, Russia.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Wine_corks,_Rostov-on-Don,_Russia.jpg",
-  "licence": "CC BY 4.0",
-  "auteur": "Vyacheslav Argenberg"
- },
  "plage": {
   "fichier": "plage.jpg",
   "source": "File:Havelock Island, Sandy lagoon, Andaman Islands.jpg",
@@ -418,5 +292,271 @@
   "page": "https://commons.wikimedia.org/wiki/File:Malapascua_(island),_Reclining_tropical_palm_trees,_Philippines.jpg",
   "licence": "CC BY 4.0",
   "auteur": "Vyacheslav Argenberg"
+ },
+ "velo": {
+  "fichier": "velo.jpg",
+  "source": "File:Left side of Flying Pigeon.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Left_side_of_Flying_Pigeon.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "齐健 from Peking, People's Republic of China"
+ },
+ "pigeon": {
+  "fichier": "pigeon.jpg",
+  "source": "File:Rock dove - natures pics.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Rock_dove_-_natures_pics.jpg",
+  "licence": "CC BY-SA 2.5",
+  "auteur": "Alan D. Wilson, www.naturespicsonline.com"
+ },
+ "coccinelle": {
+  "fichier": "coccinelle.jpg",
+  "source": "File:Macro shot of a seven-spot ladybird.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Macro_shot_of_a_seven-spot_ladybird.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Humoyun Mehridinov"
+ },
+ "moineau": {
+  "fichier": "moineau.jpg",
+  "source": "File:Passer domesticus perched on Thuja occidentalis.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Passer_domesticus_perched_on_Thuja_occidentalis.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Grendelkhan"
+ },
+ "immeuble": {
+  "fichier": "immeuble.jpg",
+  "source": "File:Apartment block with a 1930s facade, Baker Street, London - geograph.org.uk - 2802882.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Apartment_block_with_a_1930s_facade,_Baker_Street,_London_-_geograph.org.uk_-_2802882.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Ruth Sharville"
+ },
+ "hopital": {
+  "fichier": "hopital.jpg",
+  "source": "File:Suburban Hospital main entrance Bethesda MD 20210430 073615 1 crop.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Suburban_Hospital_main_entrance_Bethesda_MD_20210430_073615_1_crop.jpg",
+  "licence": "CC BY 4.0",
+  "auteur": "G. Edward Johnson"
+ },
+ "nid": {
+  "fichier": "nid.jpg",
+  "source": "File:-2021-07-07 Blackbird’s nest with eggs, Trimingham, Norfolk.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:-2021-07-07_Blackbird%E2%80%99s_nest_with_eggs,_Trimingham,_Norfolk.JPG",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Kolforn (Kolforn)\nI'd appreciate if you could mail me (Kolforn@gmail.com) if you"
+ },
+ "piscine": {
+  "fichier": "piscine.jpg",
+  "source": "File:Swimming Pool Lanes (194912721).jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File:Swimming_Pool_Lanes_(194912721).jpeg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Georgios Liakopoulos"
+ },
+ "loup": {
+  "fichier": "loup.jpg",
+  "source": "File:Adara (Canis lupus)2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Adara_(Canis_lupus)2.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Nomadic Lass"
+ },
+ "renard": {
+  "fichier": "renard.jpg",
+  "source": "File:Vulpes vulpes laying in snow.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Vulpes_vulpes_laying_in_snow.jpg",
+  "licence": "Attribution",
+  "auteur": "Shiretoko-Shari Tourist Association"
+ },
+ "fourmiliere": {
+  "fichier": "fourmiliere.jpg",
+  "source": "File:Wood ant nest, Slaley Forest - geograph.org.uk - 2032526.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Wood_ant_nest,_Slaley_Forest_-_geograph.org.uk_-_2032526.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Andrew Curtis"
+ },
+ "chamois": {
+  "fichier": "chamois.jpg",
+  "source": "File:006 Wild Baby Alpine Chamois Creux du Van and Swiss Alps Sunset colors Photo by Giles Laurent.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:006_Wild_Baby_Alpine_Chamois_Creux_du_Van_and_Swiss_Alps_Sunset_colors_Photo_by_Giles_Laurent.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Giles Laurent"
+ },
+ "igloo": {
+  "fichier": "igloo.jpg",
+  "source": "File:Igloo.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Igloo.jpg",
+  "licence": "Public domain",
+  "auteur": ""
+ },
+ "montagne": {
+  "fichier": "montagne.jpg",
+  "source": "File:Matterhorn from Domhütte - 2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Matterhorn_from_Domh%C3%BCtte_-_2.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Photo: chil, on Camptocamp.org\nDerivative work:Zacharie Grossen"
+ },
+ "glacon": {
+  "fichier": "glacon.jpg",
+  "source": "File:Ice cubes in glass.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ice_cubes_in_glass.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": ""
+ },
+ "goutte": {
+  "fichier": "goutte.jpg",
+  "source": "File:Splish Splash (4083880303).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Splish_Splash_(4083880303).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "LASZLO ILYES from Cleveland, Ohio, USA"
+ },
+ "mouton": {
+  "fichier": "mouton.jpg",
+  "source": "File:Couple (220970835).jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File:Couple_(220970835).jpeg",
+  "licence": "CC BY 3.0",
+  "auteur": "Vitalii Shmorgun"
+ },
+ "avion": {
+  "fichier": "avion.jpg",
+  "source": "File:Citilink Airbus A320 PK-GQQ Jakarta 2025 (03).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Citilink_Airbus_A320_PK-GQQ_Jakarta_2025_(03).jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Bahnfrend"
+ },
+ "vache": {
+  "fichier": "vache.jpg",
+  "source": "File:Cow female black white.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cow_female_black_white.jpg",
+  "licence": "Public domain",
+  "auteur": "Keith Weller/USDA"
+ },
+ "tomate": {
+  "fichier": "tomate.jpg",
+  "source": "File:Tomato je.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Tomato_je.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Softeis"
+ },
+ "graine": {
+  "fichier": "graine.jpg",
+  "source": "File:Pumpkin Seeds macro 1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pumpkin_Seeds_macro_1.jpg",
+  "licence": "CC BY 3.0",
+  "auteur": "Daniel Schwen"
+ },
+ "papillon": {
+  "fichier": "papillon.jpg",
+  "source": "File:Vanessa atalanta - geograph.org.uk - 215963.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Vanessa_atalanta_-_geograph.org.uk_-_215963.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Anne Burgess"
+ },
+ "chrysalide": {
+  "fichier": "chrysalide.jpg",
+  "source": "File:Monarch Chrysalis (5612179133).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Monarch_Chrysalis_(5612179133).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Sid Mosdell from New Zealand"
+ },
+ "sable": {
+  "fichier": "sable.jpg",
+  "source": "File:Rippled wavy beach sand seamless ground texture.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Rippled_wavy_beach_sand_seamless_ground_texture.jpg",
+  "licence": "CC0",
+  "auteur": "Sisters.seamless"
+ },
+ "chat": {
+  "fichier": "chat.jpg",
+  "source": "File:Cat Iran.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cat_Iran.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "درفش کاویانی"
+ },
+ "serpent": {
+  "fichier": "serpent.jpg",
+  "source": "File:The Grass Snake - Natrix natrix.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Grass_Snake_-_Natrix_natrix.jpg",
+  "licence": "CC BY 3.0",
+  "auteur": "Darius Bauzys"
+ },
+ "voilier": {
+  "fichier": "voilier.jpg",
+  "source": "File:Golden Sail on the Sea.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Golden_Sail_on_the_Sea.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "RC Designer"
+ },
+ "fusee": {
+  "fichier": "fusee.jpg",
+  "source": "File:Soyuz TMA-5 launch.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Soyuz_TMA-5_launch.jpg",
+  "licence": "Public domain",
+  "auteur": "Bill Ingalls"
+ },
+ "crabe": {
+  "fichier": "crabe.jpg",
+  "source": "File:Cancer pagurus 119845536.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cancer_pagurus_119845536.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Michel Langeveld"
+ },
+ "coquillage": {
+  "fichier": "coquillage.jpg",
+  "source": "File:INaturalist observation-260574894 photo-467980185.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:INaturalist_observation-260574894_photo-467980185.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "User:Suntooooth"
+ },
+ "plante-jeune": {
+  "fichier": "plante-jeune.jpg",
+  "source": "File:People's Garden Celebrates 150th Annivarsary of USDA (20120515-OC-LSC-0533).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:People%27s_Garden_Celebrates_150th_Annivarsary_of_USDA_(20120515-OC-LSC-0533).jpg",
+  "licence": "Public domain",
+  "auteur": "USDAgov"
+ },
+ "baleine": {
+  "fichier": "baleine.jpg",
+  "source": "File:001 Humpback whale breaching in Ballena Marine National Park Photo by Giles Laurent.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:001_Humpback_whale_breaching_in_Ballena_Marine_National_Park_Photo_by_Giles_Laurent.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Giles Laurent"
+ },
+ "hibou": {
+  "fichier": "hibou.jpg",
+  "source": "File:Bubo bubo portrait.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bubo_bubo_portrait.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Flickr user indygnome"
+ },
+ "champignon": {
+  "fichier": "champignon.jpg",
+  "source": "File:Kaiserling (Amanita muscaria) 20191014-RM-153953.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kaiserling_(Amanita_muscaria)_20191014-RM-153953.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Ermell"
+ },
+ "television": {
+  "fichier": "television.jpg",
+  "source": "File:Bush TV62 television set, UK, 1956.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bush_TV62_television_set,_UK,_1956.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "electromechanic812291"
+ },
+ "filet-peche": {
+  "fichier": "filet-peche.jpg",
+  "source": "File:Fishing nets at Macduff Harbour - geograph.org.uk - 4046960.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Fishing_nets_at_Macduff_Harbour_-_geograph.org.uk_-_4046960.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Walter Baxter"
+ },
+ "calamar": {
+  "fichier": "calamar.jpg",
+  "source": "File:Loligo vulgaris.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Loligo_vulgaris.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Hans Hillewaert"
+ },
+ "chocolat": {
+  "fichier": "chocolat.jpg",
+  "source": "File:Chocolate02.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chocolate02.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": ""
  }
 }
