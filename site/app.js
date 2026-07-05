@@ -95,7 +95,7 @@
       '<h1>🐾 À la découverte de la faune et de la flore</h1>' +
       '<p>Bienvenue ! Vous trouverez ici tout le matériel de votre année de Grande Section : le projet annuel, ' +
       'la programmation, les progressions de chaque domaine, les fiches d’évaluation et les fiches élève de chaque période.</p>' +
-      '<p class="zone-hint">🅰️🅱️©️ Choisissez votre <strong>zone de vacances</strong> en haut de page : toutes les dates ' +
+      '<p class="zone-hint">Choisissez votre <strong>zone de vacances</strong> (A, B ou C) en haut de page : toutes les dates ' +
       's’adaptent automatiquement. Chaque document se télécharge en <strong>PDF prêt à imprimer</strong> avec le bouton bleu 📥.</p>' + bandeau +
       '</div>' +
       '<h2>Mon calendrier de l’année <span class="zone-badge">Zone ' + etat.zone + '</span></h2>' +
@@ -166,8 +166,13 @@
     document.querySelectorAll('.zone-btn').forEach(function (b) {
       b.addEventListener('click', function () { appliqueZone(b.dataset.zone, true); });
     });
-    document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.getElementById('menu-toggle').addEventListener('click', function (e) {
+      e.stopPropagation();
       document.getElementById('sidebar').classList.toggle('ouvert');
+    });
+    document.addEventListener('click', function (e) {
+      var sb = document.getElementById('sidebar');
+      if (sb.classList.contains('ouvert') && !sb.contains(e.target)) sb.classList.remove('ouvert');
     });
     window.addEventListener('hashchange', function () {
       etat.doc = (location.hash || '#/accueil').replace('#/', '') || 'accueil';

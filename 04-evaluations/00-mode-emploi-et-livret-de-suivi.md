@@ -21,7 +21,7 @@ Toute compétence codée EC/NE est **réévaluée à la période suivante** (les
 
 ## 3. Organisation d'une batterie de période
 
-Chaque batterie (`periode-X.md`) contient :
+Chaque batterie de période contient :
 1. **Fiches individuelles ou en petit groupe** (langage écrit, phonologie, mathématiques, temps/espace, monde) — supports thématisés par le milieu étudié.
 2. **Grilles d'observation en situation** (langage oral, EPS, arts, EVAR) — à renseigner au fil des séances de la période.
 3. Un **tableau récapitulatif de la période** à agrafer dans le dossier de l'élève.
@@ -115,8 +115,8 @@ Passation : jeu de l'imagier individuel (5 min) — 10 mots tirés des corpus du
 
 | Période | Semaines de passation | Batterie |
 |---|---|---|
-| P1 | semaines 6-7 (mi-octobre) | `periode-1-ville.md` |
-| P2 | semaines 6-7 (mi-décembre) | `periode-2-foret.md` |
-| P3 | 2 dernières semaines avant les vacances d'hiver | `periode-3-montagne.md` |
-| P4 | 2 dernières semaines avant les vacances de printemps | `periode-4-campagne.md` |
-| P5 | juin (avant la synthèse des acquis et la liaison CP) | `periode-5-mer.md` |
+| P1 | semaines 6-7 (mi-octobre) | Période 1 · La ville |
+| P2 | semaines 6-7 (mi-décembre) | Période 2 · La forêt |
+| P3 | 2 dernières semaines avant les vacances d'hiver | Période 3 · La montagne |
+| P4 | 2 dernières semaines avant les vacances de printemps | Période 4 · La campagne |
+| P5 | juin (avant la synthèse des acquis et la liaison CP) | Période 5 · La mer |

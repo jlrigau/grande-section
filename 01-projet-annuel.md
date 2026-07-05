@@ -13,7 +13,7 @@ Fils rouges sur l'année :
 
 ## 2. Calendrier 2026-2027 (à ajuster selon la zone)
 
-> 🅰️🅱️©️ Sur le [site en ligne](https://jlrigau.github.io/grande-section/), le sélecteur de zone (en haut de page) affiche les dates exactes de chaque période pour les zones A, B et C.
+> Le sélecteur de zone (A, B ou C), en haut de page, affiche les dates exactes de chaque période pour votre zone de vacances.
 
 | Période | Semaines | Thème | Événements et sorties envisagés |
 |---|---|---|---|

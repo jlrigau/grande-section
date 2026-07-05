@@ -115,10 +115,42 @@ body {
 
 /* — Écrans étroits — */
 @media (max-width: 900px) {
-  .menu-toggle { display: block; }
-  .sidebar { position: fixed; top: 62px; left: 0; bottom: 0; z-index: 15; transform: translateX(-105%); transition: transform .2s; overflow-y: auto; box-shadow: 4px 0 14px rgba(0,0,0,.15); }
+  .menu-toggle { display: block; flex-shrink: 0; }
+  .sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; height: 100dvh; z-index: 40;
+    transform: translateX(-105%); transition: transform .2s; overflow-y: auto;
+    box-shadow: 4px 0 18px rgba(0,0,0,.3); width: min(300px, 85vw); padding-top: 1rem;
+  }
   .sidebar.ouvert { transform: translateX(0); }
 }
+
+@media (max-width: 700px) {
+  .topbar { padding: .5rem .8rem; gap: .5rem .8rem; }
+  .brand { min-width: 0; gap: .5rem; }
+  .brand-emoji { font-size: 1.5rem; }
+  .brand-title { font-size: .98rem; line-height: 1.25; }
+  .brand-sub { display: none; }
+  .zone-label { display: none; }
+  .zone-btn { min-width: 2rem; padding: .2rem .5rem; font-size: .85rem; }
+
+  .page { padding: .8rem .7rem 2rem; }
+  .toolbar { flex-direction: column; align-items: stretch; gap: .5rem; }
+  .fil { order: 2; }
+  .boutons { order: 1; }
+  .btn-pdf { font-size: .78rem; padding: .35rem .7rem; }
+
+  .contenu { padding: 1rem .8rem; }
+  .contenu h1 { font-size: 1.3rem; }
+  .contenu h2 { font-size: 1.1rem; }
+  .zone-badge { display: block; width: fit-content; white-space: normal; margin: .35em 0 0; }
+  .accueil-hero h1 { font-size: 1.35rem; }
+}
+
+/* Garde-fous contre les débordements horizontaux */
+.layout, .page, .contenu { min-width: 0; }
+.contenu { overflow-wrap: break-word; }
+.contenu code { overflow-wrap: anywhere; }
+body { overflow-x: hidden; }
 
 /* — Impression / PDF — */
 @media print {

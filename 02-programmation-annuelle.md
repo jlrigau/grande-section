@@ -1,6 +1,6 @@
 # Programmation annuelle GS 2026-2027 — vue synthétique
 
-> Le détail des objectifs, des situations et des étapes se trouve dans les progressions par domaine (`03-progressions/`). Ce document donne la répartition des contenus sur les 5 périodes, en lien avec le thème de chacune.
+> Le détail des objectifs, des situations et des étapes se trouve dans les progressions par domaine (rubrique « Mes progressions »). Ce document donne la répartition des contenus sur les 5 périodes, en lien avec le thème de chacune.
 
 Légende des périodes : **P1** Ville (sept.-oct.) · **P2** Forêt (nov.-déc.) · **P3** Montagne (janv.-févr.) · **P4** Campagne (mars-avril) · **P5** Mer (mai-juin/juillet).
 
@@ -82,5 +82,5 @@ EPS **quotidienne** (30-45 min) ; chaque période contient 2 à 3 unités de 6-8
 ## 8. Évaluations
 
 - **En continu** : observation instrumentée (grilles dans chaque progression) + carnet de suivi des apprentissages.
-- **À chaque fin de période** : batterie de fiches d'évaluation thématisées (`04-evaluations/`), passation en petits groupes ou individuelle sur 1 à 2 semaines.
+- **À chaque fin de période** : batterie de fiches d'évaluation thématisées (rubrique « Mes évaluations »), passation en petits groupes ou individuelle sur 1 à 2 semaines.
 - **Fin d'année** : synthèse des acquis de fin de maternelle + liaison CP.

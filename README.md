@@ -18,7 +18,7 @@ L'année est organisée autour de cinq milieux, un par période :
 
 ## Calendrier selon votre zone de vacances
 
-> 🅰️🅱️©️ **Sur le [site en ligne](https://jlrigau.github.io/grande-section/)**, sélectionnez votre zone de vacances (A, B ou C) en haut de page : le calendrier ci-dessous et les dates de toutes les périodes, dans toutes les progressions et évaluations, s'adaptent automatiquement. Les dates proviennent du jeu de données officiel [fr-en-calendrier-scolaire](https://data.education.gouv.fr/explore/dataset/fr-en-calendrier-scolaire/) (open data du ministère).
+> **Sur le [site en ligne](https://jlrigau.github.io/grande-section/)**, sélectionnez votre zone de vacances (A, B ou C) en haut de page : le calendrier ci-dessous et les dates de toutes les périodes, dans toutes les progressions et évaluations, s'adaptent automatiquement. Les dates proviennent du jeu de données officiel [fr-en-calendrier-scolaire](https://data.education.gouv.fr/explore/dataset/fr-en-calendrier-scolaire/) (open data du ministère).
 
 <p id="zone-hint" class="zone-hint"></p>
 <div id="calendrier-zones">
