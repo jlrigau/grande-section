@@ -1,6 +1,6 @@
 # Grande Section — Année 2026-2027
 
-> 📖 **Consulter en ligne** : [jlrigau.github.io/grande-section](https://jlrigau.github.io/grande-section/) · 📦 **Dépôt** : [github.com/jlrigau/grande-section](https://github.com/jlrigau/grande-section)
+> 📖 **Consulter en ligne** : [jlrigau.github.io/grande-section](https://jlrigau.github.io/grande-section/)
 
 ## Projet annuel : « À la découverte de la faune et de la flore »
 
