@@ -16,19 +16,39 @@
       var params = new URLSearchParams(location.search);
       var id = params.get('doc') || 'projet-annuel';
       var zone = params.get('zone') || 'A';
+      var periode = parseInt(params.get('periode') || '0', 10);
       if (['A', 'B', 'C'].indexOf(zone) === -1) zone = 'A';
       var doc = GS.DOCS.find(function (x) { return x.id === id; });
       if (!doc || !doc.md) { document.getElementById('contenu').textContent = 'Document inconnu.'; return; }
 
-      document.title = 'GS 2026-2027 — ' + doc.titre + ' (zone ' + zone + ')';
+      var suffixe = periode ? ' · Période ' + periode : '';
+      document.title = 'GS 2026-2027 — ' + doc.titre + suffixe + ' (zone ' + zone + ')';
       document.getElementById('bandeau').innerHTML =
         '<span>Grande Section 2026-2027 · À la découverte de la faune et de la flore</span>' +
-        '<span>' + (doc.groupe ? doc.groupe + ' · ' : '') + doc.titre + ' — Zone ' + zone + '</span>';
+        '<span>' + (doc.groupe ? doc.groupe + ' · ' : '') + doc.titre + suffixe + ' — Zone ' + zone + '</span>';
 
       marked.use({ gfm: true, breaks: false });
       fetch(doc.md).then(function (r) { return r.text(); }).then(function (md) {
         var contenu = document.getElementById('contenu');
         contenu.innerHTML = marked.parse(GS.nettoieMarkdown(md));
+
+        if (periode) {
+          // Extrait pour l'affichage en classe : titre du document + la
+          // section « Période N » (du h2 correspondant jusqu'au h2 suivant).
+          var re = new RegExp('P[ée]riode\\s*' + periode + '\\b', 'i');
+          var garder = [];
+          var dansSection = false;
+          Array.prototype.forEach.call(contenu.children, function (el) {
+            if (el.tagName === 'H1') { garder.push(el); return; }
+            if (el.tagName === 'H2') { dansSection = re.test(el.textContent); }
+            if (dansSection) garder.push(el);
+          });
+          if (garder.length > 1) {
+            contenu.innerHTML = '';
+            garder.forEach(function (el) { contenu.appendChild(el); });
+          }
+        }
+
         GS.annoteTitres(contenu, zone);
         document.body.dataset.pret = '1';
       });

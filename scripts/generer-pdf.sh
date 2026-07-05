@@ -24,10 +24,17 @@ imprime() { # imprime <url> <fichier-pdf>
 }
 
 DOCS="projet-annuel programmation langage maths eps arts temps-espace monde evar eval-guide eval-p1 eval-p2 eval-p3 eval-p4 eval-p5"
+PROGRESSIONS="langage maths eps arts temps-espace monde"
 for Z in A B C; do
   mkdir -p "$OUT/zone-$Z"
   for D in $DOCS; do
     imprime "http://127.0.0.1:$PORT/imprimer.html?doc=$D&zone=$Z" "$OUT/zone-$Z/$D.pdf"
+  done
+  # Extraits par période des progressions, pour l'affichage en classe
+  for D in $PROGRESSIONS; do
+    for N in 1 2 3 4 5; do
+      imprime "http://127.0.0.1:$PORT/imprimer.html?doc=$D&zone=$Z&periode=$N" "$OUT/zone-$Z/$D-periode-$N.pdf"
+    done
   done
   echo "Zone $Z : $(ls "$OUT/zone-$Z" | wc -l) PDF"
 done

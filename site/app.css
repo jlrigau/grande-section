@@ -66,6 +66,17 @@ body {
 .btn-fiches { background: var(--vert); box-shadow: 0 2px 6px rgba(46,125,82,.35); }
 .btn-fiches:hover { box-shadow: 0 4px 10px rgba(46,125,82,.4); }
 
+/* — Impression par période — */
+.periodes-print {
+  background: var(--vert-pale); border: 1px solid #bcd8c6; border-radius: 8px;
+  padding: .5rem .9rem; margin-bottom: .8rem; font-size: .88rem; color: var(--vert-fonce);
+}
+.periodes-print a {
+  display: inline-block; background: #fff; border: 1px solid var(--vert); color: var(--vert-fonce);
+  border-radius: 999px; padding: .15rem .7rem; margin: .15rem .15rem; text-decoration: none; font-weight: 600;
+}
+.periodes-print a:hover { background: var(--vert); color: #fff; }
+
 /* — Contenu — */
 .contenu { background: var(--blanc); border: 1px solid var(--bord); border-radius: var(--rayon); padding: clamp(1.2rem, 3vw, 2.4rem); box-shadow: 0 1px 4px rgba(0,0,0,.05); }
 .contenu h1 { font-size: 1.65rem; color: var(--vert-fonce); margin-top: 0; line-height: 1.35; }

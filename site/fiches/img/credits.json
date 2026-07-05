@@ -1,25 +1,4 @@
 {
- "velo": {
-  "fichier": "velo.png",
-  "source": "File:Bike-next.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Bike-next.svg",
-  "licence": "CC0",
-  "auteur": "bianchessi  (original picture), modification: Mielon"
- },
- "pigeon": {
-  "fichier": "pigeon.jpg",
-  "source": "File:Bird life at the basin - geograph.org.uk - 1551006.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Bird_life_at_the_basin_-_geograph.org.uk_-_1551006.jpg",
-  "licence": "CC BY-SA 2.0",
-  "auteur": "E Gammie"
- },
- "helicoptere": {
-  "fichier": "helicoptere.png",
-  "source": "File:Mil Mi-17 (\"Hip\") helicopter - side view.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Mil_Mi-17_(%22Hip%22)_helicopter_-_side_view.svg",
-  "licence": "CC0",
-  "auteur": "Juhele"
- },
  "baleine": {
   "fichier": "baleine.png",
   "source": "File:Whale cute marine animal and mammal cartoon clipart vector.svg",
@@ -34,11 +13,410 @@
   "licence": "Public domain",
   "auteur": "NPS Graphics, converted by User:ZyMOS"
  },
- "loup": {
-  "fichier": "loup.png",
-  "source": "File:Wolf 2.svg",
-  "page": "https://commons.wikimedia.org/wiki/File:Wolf_2.svg",
+ "fourmi": {
+  "fichier": "fourmi.png",
+  "source": "File:Ant clipart.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ant_clipart.svg",
+  "licence": "CC0",
+  "auteur": "http://openclipart.org/"
+ },
+ "escargot": {
+  "fichier": "escargot.jpg",
+  "source": "File:Grapevinesnail 01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Grapevinesnail_01.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Jürgen Schoner"
+ },
+ "feu-tricolore": {
+  "fichier": "feu-tricolore.png",
+  "source": "File:Redtrafficlight.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Redtrafficlight.svg",
+  "licence": "CC0",
+  "auteur": "Unknown authorUnknown author"
+ },
+ "ecole": {
+  "fichier": "ecole.png",
+  "source": "File:School-colour.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:School-colour.svg",
+  "licence": "CC0",
+  "auteur": "j4p4n"
+ },
+ "hibou": {
+  "fichier": "hibou.png",
+  "source": "File:Owl bored.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Owl_bored.svg",
+  "licence": "CC0",
+  "auteur": "rones"
+ },
+ "herisson": {
+  "fichier": "herisson.jpg",
+  "source": "File:Erinaceus roumanicus 2020 G2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Erinaceus_roumanicus_2020_G2.jpg",
   "licence": "Public domain",
-  "auteur": "Virginia Frances Sterrett"
+  "auteur": "George Chernilevsky"
+ },
+ "champignon": {
+  "fichier": "champignon.png",
+  "source": "File:Lemmling-Mushroom-house.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lemmling-Mushroom-house.svg",
+  "licence": "CC0",
+  "auteur": "lemmling"
+ },
+ "ecureuil": {
+  "fichier": "ecureuil.jpg",
+  "source": "File:Squirrel posing.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Squirrel_posing.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Peter Trimming"
+ },
+ "feuille-morte": {
+  "fichier": "feuille-morte.jpg",
+  "source": "File:Autumn Leaf in Snow-1 (11354485245).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Autumn_Leaf_in_Snow-1_(11354485245).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "zeevveez from Jerusalem, Israel"
+ },
+ "pomme": {
+  "fichier": "pomme.jpg",
+  "source": "File:Red Apple.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Red_Apple.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Abhijit Tembhekar from Mumbai, India"
+ },
+ "terrier": {
+  "fichier": "terrier.jpg",
+  "source": "File:113 Cape ground squirrel standing from a hole in the Kalahari Desert of Namibia Photo by Giles Laurent.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:113_Cape_ground_squirrel_standing_from_a_hole_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Giles Laurent"
+ },
+ "arbre-creux": {
+  "fichier": "arbre-creux.jpg",
+  "source": "File:Hollow Tree Stanley Park Vancouver.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hollow_Tree_Stanley_Park_Vancouver.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "tree-species"
+ },
+ "cerf": {
+  "fichier": "cerf.jpg",
+  "source": "File:Woburn Park - Red Deer stag - geograph.org.uk - 7374135.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Woburn_Park_-_Red_Deer_stag_-_geograph.org.uk_-_7374135.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Rob Farrow"
+ },
+ "sanglier": {
+  "fichier": "sanglier.jpg",
+  "source": "File:A young wild boar in his environment.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:A_young_wild_boar_in_his_environment.jpg",
+  "licence": "CC BY 3.0",
+  "auteur": "Michael Gäbler"
+ },
+ "canard": {
+  "fichier": "canard.jpg",
+  "source": "File:Male mallard duck 2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Male_mallard_duck_2.jpg",
+  "licence": "CC BY 3.0",
+  "auteur": "Acarpentier"
+ },
+ "ourson": {
+  "fichier": "ourson.jpg",
+  "source": "File:The white background didn't work bc of his B&W fur (8264801927).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_white_background_didn%27t_work_bc_of_his_B%26W_fur_(8264801927).jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "thepeachpeddler from USA"
+ },
+ "ballon": {
+  "fichier": "ballon.png",
+  "source": "File:Red toy balloon.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Red_toy_balloon.svg",
+  "licence": "CC0",
+  "auteur": "AJ"
+ },
+ "moto": {
+  "fichier": "moto.png",
+  "source": "File:Clipart Motorcycle.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Clipart_Motorcycle.svg",
+  "licence": "Public domain",
+  "auteur": "User:Pil56 (original image) + user:Jazzmanian (svg)"
+ },
+ "aigle": {
+  "fichier": "aigle.jpg",
+  "source": "File:001 Wild Golden Eagle and Majinghorn Pfyn-Finges Photo by Giles Laurent.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:001_Wild_Golden_Eagle_and_Majinghorn_Pfyn-Finges_Photo_by_Giles_Laurent.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Giles Laurent"
+ },
+ "marmotte": {
+  "fichier": "marmotte.jpg",
+  "source": "File:071 Wild marmot at Grand Muveran Nature Reserve Photo by Giles Laurent.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:071_Wild_marmot_at_Grand_Muveran_Nature_Reserve_Photo_by_Giles_Laurent.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Photography captured by Giles Laurent"
+ },
+ "bouquetin": {
+  "fichier": "bouquetin.jpg",
+  "source": "File:021 Wild Baby Alpine Ibex Creux du Van Photo by Giles Laurent.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:021_Wild_Baby_Alpine_Ibex_Creux_du_Van_Photo_by_Giles_Laurent.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Giles Laurent"
+ },
+ "pluie": {
+  "fichier": "pluie.png",
+  "source": "File:Weather icon - heavy rain.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Weather_icon_-_heavy_rain.svg",
+  "licence": "CC0",
+  "auteur": "gnokii"
+ },
+ "robinet": {
+  "fichier": "robinet.jpg",
+  "source": "File:Robinet clipart.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Robinet_clipart.jpg",
+  "licence": "CC0",
+  "auteur": "Clker-Free-Vector-Images"
+ },
+ "glacier": {
+  "fichier": "glacier.jpg",
+  "source": "File:Sofia Massif and Sofia Glacier, Karachay-Cherkessia, Caucasus Mountains.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Sofia_Massif_and_Sofia_Glacier,_Karachay-Cherkessia,_Caucasus_Mountains.jpg",
+  "licence": "CC BY 4.0",
+  "auteur": "Vyacheslav Argenberg"
+ },
+ "tongs": {
+  "fichier": "tongs.png",
+  "source": "File:Havaianas06 flipflops.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Havaianas06_flipflops.svg",
+  "licence": "CC0",
+  "auteur": "SOlvera https://openclipart.org/user-detail/SOlvera"
+ },
+ "oies-migration": {
+  "fichier": "oies-migration.jpg",
+  "source": "File:20160911 geese birdMigration BirdsInFlight DSC08988 PtrQs.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:20160911_geese_birdMigration_BirdsInFlight_DSC08988_PtrQs.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "PtrQs"
+ },
+ "chenille": {
+  "fichier": "chenille.jpg",
+  "source": "File:Monarch Butterfly Danaus plexippus Vertical Caterpillar 2000px.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Danaus_plexippus_Vertical_Caterpillar_2000px.jpg",
+  "licence": "GFDL 1.2",
+  "auteur": "Photo (c)2007 Derek Ramsey (Ram-Man)"
+ },
+ "cheval": {
+  "fichier": "cheval.jpg",
+  "source": "File:Wild horses, Šar Mountains.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Wild_horses,_%C5%A0ar_Mountains.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Aljabakphoto"
+ },
+ "souris": {
+  "fichier": "souris.jpg",
+  "source": "File:Harvest mouse and blossom.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Harvest_mouse_and_blossom.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Charlie Marshall"
+ },
+ "oeuf": {
+  "fichier": "oeuf.jpg",
+  "source": "File:6-Pack-Chicken-Eggs.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:6-Pack-Chicken-Eggs.jpg",
+  "licence": "Public domain",
+  "auteur": "Evan-Amos"
+ },
+ "poule": {
+  "fichier": "poule.jpg",
+  "source": "File:Canadian chicken.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Canadian_chicken.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Chicken Farmers of Canada"
+ },
+ "tournesol": {
+  "fichier": "tournesol.jpg",
+  "source": "File:Yellow Sunflower (225620570).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Yellow_Sunflower_(225620570).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Audrey from Central Pennsylvania, USA"
+ },
+ "cerise": {
+  "fichier": "cerise.jpg",
+  "source": "File:Cherry fruit on white background.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cherry_fruit_on_white_background.jpg",
+  "licence": "Public domain",
+  "auteur": "Paolo Neo"
+ },
+ "fraise": {
+  "fichier": "fraise.jpg",
+  "source": "File:FraiseFruitPhoto.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:FraiseFruitPhoto.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "FoeNyx, France"
+ },
+ "pot-de-fleur": {
+  "fichier": "pot-de-fleur.png",
+  "source": "File:Wikipedia nowruz 1400.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Wikipedia_nowruz_1400.svg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Samuel T.Owen"
+ },
+ "sucre": {
+  "fichier": "sucre.jpg",
+  "source": "File:Würfelzucker -- 2018 -- 3564.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:W%C3%BCrfelzucker_--_2018_--_3564.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Dietmar Rabich"
+ },
+ "patate": {
+  "fichier": "patate.jpg",
+  "source": "File:Russet potato cultivar with sprouts.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Russet_potato_cultivar_with_sprouts.jpg",
+  "licence": "Public domain",
+  "auteur": "ZooFari"
+ },
+ "television": {
+  "fichier": "television.png",
+  "source": "File:Television-comic.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Television-comic.svg",
+  "licence": "CC0",
+  "auteur": "television comic style — rg1024 (Open Clip Art Library)"
+ },
+ "phare": {
+  "fichier": "phare.png",
+  "source": "File:Lighthouse.svg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lighthouse.svg",
+  "licence": "Public domain",
+  "auteur": "matthewg42"
+ },
+ "dauphin": {
+  "fichier": "dauphin.jpg",
+  "source": "File:010 Atlantic bottlenose dolphin jumping at Pelican point Photo by Giles Laurent.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:010_Atlantic_bottlenose_dolphin_jumping_at_Pelican_point_Photo_by_Giles_Laurent.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Giles Laurent"
+ },
+ "mouette": {
+  "fichier": "mouette.jpg",
+  "source": "File:Seagull July 2014-2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Seagull_July_2014-2.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Alvesgaspar"
+ },
+ "etoile-de-mer": {
+  "fichier": "etoile-de-mer.jpg",
+  "source": "File:Horned Starfish Macro.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Horned_Starfish_Macro.JPG",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "“Jon Zander (Digon3)\""
+ },
+ "collier-perles": {
+  "fichier": "collier-perles.jpg",
+  "source": "File:Pearl-2407275 1920.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pearl-2407275_1920.jpg",
+  "licence": "CC0",
+  "auteur": "TheAnnAnn"
+ },
+ "bus": {
+  "fichier": "bus.jpg",
+  "source": "File:London (UK), Bus -- 2010 -- 6.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:London_(UK),_Bus_--_2010_--_6.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Dietmar Rabich"
+ },
+ "magasin": {
+  "fichier": "magasin.jpg",
+  "source": "File:Uk local shop fronts bar and bakery.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Uk_local_shop_fronts_bar_and_bakery.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Claireneon"
+ },
+ "genou": {
+  "fichier": "genou.jpg",
+  "source": "File:Human knees.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Human_knees.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Genusfotografen (Tomas Gunnarsson) / Wikimedia Sverige"
+ },
+ "gland": {
+  "fichier": "gland.jpg",
+  "source": "File:Quercus robur acorns in Tuntorp 1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Quercus_robur_acorns_in_Tuntorp_1.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "W.carter"
+ },
+ "buche": {
+  "fichier": "buche.jpg",
+  "source": "File:Logs for firewood - geograph.org.uk - 2902812.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Logs_for_firewood_-_geograph.org.uk_-_2902812.jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Dave Croker"
+ },
+ "chocolat-chaud": {
+  "fichier": "chocolat-chaud.jpg",
+  "source": "File:Citizen Cafe Hot Chocolate (22556789633).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Citizen_Cafe_Hot_Chocolate_(22556789633).jpg",
+  "licence": "CC BY-SA 2.0",
+  "auteur": "daryl_mitchell from Saskatoon, Saskatchewan, Canada"
+ },
+ "moufle": {
+  "fichier": "moufle.jpg",
+  "source": "File:Swiss Military Wool Mittens (15695449197).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Swiss_Military_Wool_Mittens_(15695449197).jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Andrew Toskin"
+ },
+ "fleur": {
+  "fichier": "fleur.jpg",
+  "source": "File:Leucanthemum vulgare 'Filigran' Flower 2200px.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Leucanthemum_vulgare_%27Filigran%27_Flower_2200px.jpg",
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Photo by and (c)2008 Derek Ramsey (Ram-Man).  Co-attribution must be given to th"
+ },
+ "sel": {
+  "fichier": "sel.jpg",
+  "source": "File:Salt shaker on white background.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Salt_shaker_on_white_background.jpg",
+  "licence": "CC BY 2.0",
+  "auteur": "Dubravko Sorić SoraZG on Flickr"
+ },
+ "fer": {
+  "fichier": "fer.jpg",
+  "source": "File:Nails-for-nailer.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nails-for-nailer.jpg",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Grzegorz W. Tężycki"
+ },
+ "bouchon-liege": {
+  "fichier": "bouchon-liege.jpg",
+  "source": "File:Wine corks, Rostov-on-Don, Russia.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Wine_corks,_Rostov-on-Don,_Russia.jpg",
+  "licence": "CC BY 4.0",
+  "auteur": "Vyacheslav Argenberg"
+ },
+ "plage": {
+  "fichier": "plage.jpg",
+  "source": "File:Havelock Island, Sandy lagoon, Andaman Islands.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Havelock_Island,_Sandy_lagoon,_Andaman_Islands.jpg",
+  "licence": "CC BY 4.0",
+  "auteur": "Vyacheslav Argenberg"
+ },
+ "eclosion": {
+  "fichier": "eclosion.jpg",
+  "source": "File:A gull chick and a hatching egg.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:A_gull_chick_and_a_hatching_egg.jpg",
+  "licence": "Public domain",
+  "auteur": "Alaska Region U.S. Fish &amp; Wildlife Service"
+ },
+ "navet": {
+  "fichier": "navet.jpg",
+  "source": "File:CSA-Tokyo-Turnips.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:CSA-Tokyo-Turnips.jpg",
+  "licence": "Public domain",
+  "auteur": "Evan-Amos"
+ },
+ "ile": {
+  "fichier": "ile.jpg",
+  "source": "File:Malapascua (island), Reclining tropical palm trees, Philippines.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Malapascua_(island),_Reclining_tropical_palm_trees,_Philippines.jpg",
+  "licence": "CC BY 4.0",
+  "auteur": "Vyacheslav Argenberg"
  }
 }

@@ -140,6 +140,18 @@
       btnEntr.hidden = true;
     }
 
+    var pp = document.getElementById('periodes-print');
+    if (doc.parPeriode) {
+      pp.hidden = false;
+      pp.innerHTML = '<span>🖨️ À imprimer pour la classe, période par période :</span> ' +
+        [1, 2, 3, 4, 5].map(function (n) {
+          return '<a href="pdf/zone-' + etat.zone + '/' + doc.id + '-periode-' + n + '.pdf" ' +
+            'download="GS-' + doc.id + '-periode-' + n + '-zone-' + etat.zone + '.pdf">Période ' + n + '</a>';
+        }).join(' ');
+    } else {
+      pp.hidden = true;
+    }
+
     if (doc.md) rendDocument(doc); else rendAccueil();
     document.getElementById('sidebar').classList.remove('ouvert');
   }
