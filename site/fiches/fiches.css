@@ -103,6 +103,36 @@ td.coche { width: 22mm; height: 12mm; }
 .grand-espace { min-height: 30mm; border: 1pt solid #333; border-radius: 2mm; margin-top: 2mm; }
 .rond-a-dessiner { font-size: 15pt; letter-spacing: 2mm; }
 
+/* — Discrimination visuelle en ligne continue (entourer dans une bande) — */
+.bande-lettres {
+  border: 1pt solid #333; border-radius: 2mm; padding: 2.5mm 3mm;
+  font-size: 17pt; font-weight: 600; letter-spacing: .45em; line-height: 1.9;
+  word-break: break-all; margin-top: 2mm; font-family: Verdana, "DejaVu Sans", sans-serif;
+}
+.bande-lettres .cible { margin-right: 4mm; padding: .5mm 2mm; border: 1.2pt solid #1d5c3a; border-radius: 2mm; letter-spacing: .1em; }
+
+/* — Dominos des compléments — */
+.dominos { display: flex; flex-wrap: wrap; gap: 4mm 6mm; margin-top: 3mm; }
+.domino { display: flex; flex-direction: column; align-items: center; gap: 1mm; }
+.domino .total { font-size: 13pt; font-weight: 700; border: 1pt solid #333; border-radius: 1.5mm; padding: 0 2.5mm; }
+.domino .plaque { display: flex; }
+.domino .dcase { width: 17mm; height: 17mm; border: 1.3pt solid #333; display: flex; align-items: center; justify-content: center; }
+.domino .dcase + .dcase { border-left-width: 2.2pt; }
+.domino .dcase img { height: 14mm; width: 14mm; }
+
+/* — Alphabet à entourer / associer — */
+.alphabet { display: grid; grid-template-columns: repeat(13, 1fr); gap: 1.5mm; margin-top: 2mm; }
+.alphabet .al { border: 1pt solid #333; border-radius: 1.5mm; text-align: center; font-size: 14pt; font-weight: 700; padding: 1mm 0; }
+
+/* — Bandes de graphisme à continuer — */
+.graphisme { display: flex; align-items: center; border: 1pt solid #333; border-radius: 2mm; margin-top: 2.5mm; min-height: 15mm; overflow: hidden; }
+.graphisme .depart { flex-shrink: 0; padding: 1mm 2mm; border-right: 1pt dashed #999; }
+.graphisme .suite { flex: 1; }
+
+/* — Sériation (coller du plus petit au plus grand) — */
+.seriation { display: flex; gap: 3mm; margin-top: 2mm; align-items: stretch; }
+.seriation .sc { flex: 1; min-height: 26mm; border: 1pt solid #333; border-radius: 2mm; display: flex; align-items: flex-end; justify-content: center; padding: 1mm; }
+
 /* — Niveaux et défis — */
 .niveau { display: inline-block; font-size: 8pt; font-weight: 700; border-radius: 999px; padding: .4mm 3mm; margin-left: 2mm; vertical-align: middle; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .niveau.n1 { background: #e7f3ec; color: #1d5c3a; border: .8pt solid #7fae93; }
