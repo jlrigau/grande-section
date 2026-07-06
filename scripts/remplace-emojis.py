@@ -83,7 +83,7 @@ CONTEXTE = {
     ('<span class="img">🥕</span>NAVET', f'<span class="img">{IMG("navet")}</span>NAVET'),
 ],
 "entrainement-periode-5.html": [
-    ('<div class="case"><span class="img">🧜</span>marin… sirène ? matelot !</div>', f'<div class="case"><span class="img">{IMG("personne")}</span>matelot</div>'),
+    ('<div class="case"><span class="img">🧜</span>marin… sirène ? matelot !</div>', f'<div class="case"><span class="img">{IMG("matelot")}</span>matelot</div>'),
     ('<div class="case"><span class="img">🗼</span>phare… attention, piège de la maîtresse ! plage 🏖️</div>', f'<div class="case"><span class="img">{IMG("plage")}</span>plage</div>'),
     ('<td class="img">🦈 requin ? non : « riz » 🍚 (r-i)</td>', f'<td class="img">{IMG("riz")} riz (r-i)</td>'),
     ('<td class="img">🌊 mer (m-è-r)</td>', f'<td class="img">{IMG("vague")} mer (m-è-r)</td>'),
@@ -129,7 +129,7 @@ GLOBAL = {
     "🏍": ("img", "moto"), "🍫": ("img", "chocolat-chaud"), "🦙": ("img", "lama"),
     "🦅": ("img", "aigle"), "🐹": ("img", "marmotte"), "🧊": ("img", "glacon"),
     "⛷": ("img", "ski"), "🧤": ("img", "moufle"), "🏔": ("img", "montagne"),
-    "🌧": ("img", "pluie"), "⛄": ("img", "bonhomme-neige"), "🚰": ("img", "robinet"),
+    "🌧": ("img", "pluie"), "⛄": ("img", "neige"), "🚰": ("img", "robinet"),
     "💧": ("img", "goutte"), "☀": ("img", "soleil"), "🧣": ("img", "echarpe"),
     "🧥": ("img", "manteau"), "👒": ("img", "chapeau-soleil"), "🩴": ("img", "tongs"),
     "👙": ("img", "tee-shirt"), "🐑": ("img", "mouton"), "✈": ("img", "avion"),
@@ -155,7 +155,7 @@ GLOBAL = {
 }
 PAR_FICHIER = {
     "periode-4.html": {"🌰": ("img", "graine"), "🍫": ("img", "chocolat"), "🏖": ("img", "sable")},
-    "entrainement-periode-4.html": {"🌰": ("img", "graine"), "💨": ("img", "vent")},
+    "entrainement-periode-4.html": {"🌰": ("img", "graine"), "💨": ("img", "souffle")},
     "periode-5.html": {"⭐": ("img", "etoile-de-mer"), "🐦": ("img", "mouette")},
     "entrainement-periode-5.html": {"⭐": ("img", "etoile-de-mer"), "🐦": ("img", "mouette")},
     "entrainement-periode-3.html": {"⭐": ("img", "etoile-jaune.svg")},
