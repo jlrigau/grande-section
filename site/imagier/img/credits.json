@@ -11,6 +11,18 @@
   "px": "1100x753",
   "source": "File:(MHNT) Apis mellifera (female) - on viburnum tinus flowers.jpg"
  },
+ "anemone-des-bois": {
+  "article": "Anémone des bois",
+  "auteur": "Lilly M",
+  "fichier": "anemone-des-bois.jpg",
+  "groupe": "flore",
+  "licence": "CC BY-SA 3.0",
+  "nom": "l’anémone des bois",
+  "page": "https://commons.wikimedia.org/wiki/File:Anemone_nemorosa_001.JPG",
+  "periode": 2,
+  "px": "1100x753",
+  "source": "File:Anemone nemorosa 001.JPG"
+ },
  "begonia": {
   "article": "Begonia",
   "auteur": "Joseph Dalton Hooker",
@@ -95,6 +107,18 @@
   "px": "1100x753",
   "source": "File:Eichhörnchen Düsseldorf Hofgarten edit.jpg"
  },
+ "fourmi-rousse": {
+  "article": "Formica rufa",
+  "auteur": "Adam Opioła",
+  "fichier": "fourmi-rousse.jpg",
+  "groupe": "faune",
+  "licence": "CC BY-SA 3.0",
+  "nom": "la fourmi rousse",
+  "page": "https://commons.wikimedia.org/wiki/File:Formica_rufa_a1.jpg",
+  "periode": 2,
+  "px": "1100x753",
+  "source": "File:Formica rufa a1.jpg"
+ },
  "geranium-balcon": {
   "article": "Pelargonium",
   "auteur": "John Wright",
@@ -118,6 +142,18 @@
   "periode": 1,
   "px": "1100x753",
   "source": "File:Erinaceus europaeus LC0119.jpg"
+ },
+ "jacinthe-des-bois": {
+  "article": "Jacinthe des bois",
+  "auteur": "MichaelMaggs",
+  "fichier": "jacinthe-des-bois.jpg",
+  "groupe": "flore",
+  "licence": "CC BY-SA 3.0",
+  "nom": "la jacinthe des bois",
+  "page": "https://commons.wikimedia.org/wiki/File:Hyacinthoides_non-scripta_(Common_Bluebell).jpg",
+  "periode": 2,
+  "px": "1100x753",
+  "source": "File:Hyacinthoides non-scripta (Common Bluebell).jpg"
  },
  "lavande": {
   "article": "Lavande",
@@ -178,6 +214,18 @@
   "periode": 1,
   "px": "1100x753",
   "source": "File:House sparrow David Raju (2).jpg"
+ },
+ "muguet": {
+  "article": "Muguet de mai",
+  "auteur": "Ivar Leidus",
+  "fichier": "muguet.jpg",
+  "groupe": "flore",
+  "licence": "CC BY-SA 4.0",
+  "nom": "le muguet",
+  "page": "https://commons.wikimedia.org/wiki/File:Convallaria_majalis_inflorescence_-_Keila.jpg",
+  "periode": 2,
+  "px": "1100x753",
+  "source": "File:Convallaria majalis inflorescence - Keila.jpg"
  },
  "paquerette": {
   "article": "Pâquerette",
@@ -274,6 +322,18 @@
   "periode": 1,
   "px": "1100x753",
   "source": "File:Rosa rubiginosa 1.jpg"
+ },
+ "salamandre-tachetee": {
+  "article": "Salamandre tachetée",
+  "auteur": "Didier Descouens",
+  "fichier": "salamandre-tachetee.jpg",
+  "groupe": "faune",
+  "licence": "CC BY-SA 4.0",
+  "nom": "la salamandre",
+  "page": "https://commons.wikimedia.org/wiki/File:Salamandra_salamandra_MHNT_1.jpg",
+  "periode": 2,
+  "px": "1100x753",
+  "source": "File:Salamandra salamandra MHNT 1.jpg"
  },
  "sanglier": {
   "article": "Sanglier",
