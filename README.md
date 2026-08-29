@@ -51,9 +51,29 @@ L'année est organisée autour de cinq milieux, un par période :
 ### 3. Site en ligne, fiches élève et PDF
 - `site/` — l'application web (navigation, sélecteur de zone A/B/C, téléchargement des PDF).
 - `site/fiches/` — les **fiches élève** imprimables (une page A4 par fiche, consigne donnée à l'oral par l'enseignante), un cahier par période.
-- `scripts/generer-pdf.sh` — génération automatique, à chaque déploiement, de tous les PDF : chaque document dans chaque zone (`pdf/zone-A|B|C/…`) + les 5 cahiers de fiches élève (`pdf/fiches-eleve-periode-N.pdf`).
+- `site/imagier/` — l'**imagier Montessori faune et flore** (voir ci-dessous), un cahier de cartes par période.
+- `scripts/generer-pdf.sh` — génération automatique, à chaque déploiement, de tous les PDF : chaque document dans chaque zone (`pdf/zone-A|B|C/…`) + les 5 cahiers de fiches élève (`pdf/fiches-eleve-periode-N.pdf`) + les 5 imagiers (`pdf/imagier-periode-N.pdf`).
 
-### 4. Fiches d'évaluation (une batterie par période, adaptée au thème)
+### 4. Imagier Montessori « faune et flore » (cartes de nomenclature)
+
+Un cahier de cartes **par période**, en lien avec le milieu étudié : **9 espèces de faune et 9 espèces de fleurs** de ce milieu, illustrées par de **vraies photographies** en haute définition (1100 × 800 px, soit environ 300 dpi à la taille des cartes). Chaque cahier contient trois séries à découper et à plastifier :
+
+| Série | Contenu | Usage |
+|---|---|---|
+| **Cartes de contrôle** | photographie **+ nom en script** | modèle et **autocorrection** |
+| **Cartes-photos** | la même photographie, emplacement du nom vide | leçon en trois temps, tri, langage |
+| **Étiquettes-mots** | le nom seul, en script | **travail de lecture** : associer le mot à la photo |
+
+Les cartes sont jointives sur la page : un seul coup de massicot sépare deux cartes. Un filet de couleur et une mention discrète (« P2 · faune ») permettent de reclasser une carte égarée. Le mode d'emploi (première page de chaque cahier) détaille la préparation du matériel, la leçon en trois temps, le travail de lecture en autocorrection et les prolongements.
+
+Les photographies proviennent de **Wikimedia Commons**, sous licence libre, et sont créditées en dernière page de chaque cahier.
+
+- `scripts/imagier-manifest.py` — la liste des 90 espèces (slug, nom écrit sur l'étiquette, article Wikipédia source).
+- `scripts/chercher-images-imagier.py` — moisson des photographies (image d'illustration de l'article Wikipédia en français), recadrage au format des cartes, relevé de l'auteur et de la licence.
+- `scripts/taxons-imagier.py` — noms scientifiques (Wikidata), rappelés dans le mode d'emploi.
+- `scripts/generer-imagier.py` — génération des planches `site/imagier/periode-N.html`.
+
+### 5. Fiches d'évaluation (une batterie par période, adaptée au thème)
 - [`04-evaluations/00-mode-emploi-et-livret-de-suivi.md`](04-evaluations/00-mode-emploi-et-livret-de-suivi.md) — principes d'évaluation positive, codage, grille de suivi annuelle.
 - [`04-evaluations/periode-1-ville.md`](04-evaluations/periode-1-ville.md)
 - [`04-evaluations/periode-2-foret.md`](04-evaluations/periode-2-foret.md)

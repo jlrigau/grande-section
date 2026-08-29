@@ -89,6 +89,11 @@
         '<span class="t">Évaluation · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
         ' — les fiches élève de l’évaluation de fin de période.</div></a>';
     }).join('');
+    var imagiers = [1, 2, 3, 4, 5].map(function (n) {
+      return '<a class="carte" href="pdf/imagier-periode-' + n + '.pdf" download><span class="em">🖼️</span>' +
+        '<span class="t">Imagier · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
+        ' — 9 animaux et 9 fleurs du milieu : cartes de contrôle, cartes-photos et étiquettes-mots.</div></a>';
+    }).join('');
 
     document.getElementById('contenu').innerHTML =
       '<div class="accueil-hero">' +
@@ -108,6 +113,13 @@
       'Pour chaque période : un cahier d’<strong>entraînement</strong> (12 fiches en 2 séries, avec sous-objectifs et défis ⭐ — de quoi travailler 2 à 3 fiches par semaine) ' +
       'et un cahier d’<strong>évaluation</strong> de fin de période.</p>' +
       '<div class="cartes">' + fiches + '</div>' +
+      '<h2>🖼️ Mon imagier Montessori faune et flore</h2>' +
+      '<p>Un jeu de <strong>cartes de nomenclature</strong> par période, avec de vraies photographies : ' +
+      '<strong>9 espèces de faune et 9 espèces de fleurs</strong> du milieu étudié. Chaque imagier contient trois séries à ' +
+      'découper et à plastifier — les <strong>cartes de contrôle</strong> (photo + nom en script), les ' +
+      '<strong>cartes-photos</strong> et les <strong>étiquettes-mots</strong> — pour la leçon en trois temps, ' +
+      'puis pour un travail d’association et de <strong>lecture</strong> en autocorrection.</p>' +
+      '<div class="cartes">' + imagiers + '</div>' +
       '<h2>Mes documents</h2><div class="cartes">' + cartes + '</div>';
     window.scrollTo(0, 0);
   }
@@ -128,6 +140,7 @@
       btnPdf.hidden = true;
     }
     var btnEntr = document.getElementById('btn-entrainement');
+    var btnImagier = document.getElementById('btn-imagier');
     if (doc.fiches) {
       btnFiches.hidden = false;
       btnFiches.href = 'pdf/fiches-eleve-periode-' + doc.fiches + '.pdf';
@@ -135,9 +148,13 @@
       btnEntr.hidden = false;
       btnEntr.href = 'pdf/fiches-entrainement-periode-' + doc.fiches + '.pdf';
       btnEntr.setAttribute('download', 'GS-fiches-entrainement-periode-' + doc.fiches + '.pdf');
+      btnImagier.hidden = false;
+      btnImagier.href = 'pdf/imagier-periode-' + doc.fiches + '.pdf';
+      btnImagier.setAttribute('download', 'GS-imagier-faune-flore-periode-' + doc.fiches + '.pdf');
     } else {
       btnFiches.hidden = true;
       btnEntr.hidden = true;
+      btnImagier.hidden = true;
     }
 
     var pp = document.getElementById('periodes-print');

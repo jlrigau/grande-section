@@ -2,6 +2,7 @@
 # Génère tous les PDF du site dans <dossier-site>/pdf/ :
 #  - un PDF par document et par zone de vacances (A, B, C), via la vue imprimer.html
 #  - un PDF de fiches élève par période
+#  - un PDF d'imagier Montessori (faune et flore) par période
 # Usage : scripts/generer-pdf.sh <dossier-site-assemblé>
 # Variables : CHROME_BIN (défaut : google-chrome), PORT (défaut : 8931)
 set -euo pipefail
@@ -16,9 +17,9 @@ SRV=$!
 trap 'kill $SRV 2>/dev/null || true' EXIT
 sleep 1
 
-imprime() { # imprime <url> <fichier-pdf>
+imprime() { # imprime <url> <fichier-pdf> [budget-temps-ms]
   "$CHROME_BIN" --headless --disable-gpu --no-sandbox --hide-scrollbars \
-    --no-pdf-header-footer --virtual-time-budget=10000 \
+    --no-pdf-header-footer --virtual-time-budget="${3:-10000}" \
     --print-to-pdf="$2" "$1" 2>/dev/null
   [ -s "$2" ] || { echo "ÉCHEC : $2" >&2; exit 1; }
 }
@@ -44,4 +45,11 @@ for N in 1 2 3 4 5; do
   imprime "http://127.0.0.1:$PORT/fiches/entrainement-periode-$N.html" "$OUT/fiches-entrainement-periode-$N.pdf"
 done
 echo "Fiches élève : 5 PDF évaluation + 5 PDF entraînement"
+
+# Imagier Montessori : beaucoup de photographies par page, laisser le temps
+# au rendu avant l'impression.
+for N in 1 2 3 4 5; do
+  imprime "http://127.0.0.1:$PORT/imagier/periode-$N.html" "$OUT/imagier-periode-$N.pdf" 30000
+done
+echo "Imagier faune et flore : 5 PDF"
 echo "Total : $(find "$OUT" -name '*.pdf' | wc -l) PDF générés dans $OUT"

@@ -2,7 +2,7 @@
 :root {
   --vert: #2e7d52; --vert-fonce: #1d5c3a; --vert-pale: #e7f3ec;
   --bleu: #2b6cb0; --bleu-pale: #e8f1fa;
-  --jaune-pale: #fff8e1; --encre: #2c3540; --gris: #5b6570;
+  --jaune-pale: #fff8e1; --ocre: #9e6817; --encre: #2c3540; --gris: #5b6570;
   --bord: #dde5ec; --fond: #f6f9f7; --blanc: #ffffff;
   --rayon: 12px;
 }
@@ -65,6 +65,8 @@ body {
 .btn-pdf:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(43,108,176,.4); }
 .btn-fiches { background: var(--vert); box-shadow: 0 2px 6px rgba(46,125,82,.35); }
 .btn-fiches:hover { box-shadow: 0 4px 10px rgba(46,125,82,.4); }
+.btn-imagier { background: var(--ocre); box-shadow: 0 2px 6px rgba(158,104,23,.35); }
+.btn-imagier:hover { box-shadow: 0 4px 10px rgba(158,104,23,.4); }
 
 /* — Impression par période — */
 .periodes-print {
