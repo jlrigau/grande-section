@@ -83,6 +83,12 @@ Les règles de fabrication — d'où viennent les images, comment on les choisit
 - [`04-evaluations/periode-4-campagne.md`](04-evaluations/periode-4-campagne.md)
 - [`04-evaluations/periode-5-mer.md`](04-evaluations/periode-5-mer.md)
 
+### 6. Contrôle de couverture du programme
+
+- [`referentiel/`](referentiel/) — le programme du cycle 1 sous forme de **liste numérotée** : 159 attendus, un par ligne avec un identifiant stable, et les 286 accroches qui disent ce que chaque période de chaque progression traite. `scripts/couverture.py` fait la soustraction et dit ce qui manque.
+
+Ce contrôle a trouvé trois attendus que les documents annonçaient sans qu'aucune période ne les traite — les doubles consonnes, la prononciation exacte des 36 phonèmes, et agir de manière autonome pour le respect de l'environnement. Ils ont été comblés : l'année couvre désormais **159 attendus sur 159**.
+
 ## Rappels structurants du programme (GS)
 
 - **Vocabulaire** : enseignement explicite de **3 corpus de mots par période** ; mémorisation évaluée chaque mois et chaque période ; ≈ 2 500 mots maîtrisés en fin de GS.
