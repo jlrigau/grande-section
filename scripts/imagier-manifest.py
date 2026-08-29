@@ -184,7 +184,7 @@ OVERRIDES = {
     "gentiane-acaule": 22163700,
     "geranium-balcon": 241370288,
     "goeland-argente": 284617710,
-    "gypaete-barbu": 209953645,
+    "gypaete-barbu": 364202175,
     "herisson-europe": 79670738,
     "hermine": 489011064,
     "hetre": 274002483,
