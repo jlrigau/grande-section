@@ -56,7 +56,7 @@ L'année est organisée autour de cinq milieux, un par période :
 
 ### 4. Imagier Montessori « faune et flore » (cartes de nomenclature)
 
-Un cahier de cartes **par période**, en lien avec le milieu étudié : **9 espèces de faune et 9 espèces de fleurs** de ce milieu, illustrées par de **vraies photographies** en haute définition (1100 × 800 px, soit environ 300 dpi à la taille des cartes). Chaque cahier contient trois séries à découper et à plastifier :
+Un cahier de cartes **par période**, en lien avec le milieu étudié : **9 espèces de faune et 9 espèces de flore** de ce milieu — arbres, arbustes, fleurs, fougères, mousses, algues ou cultures selon le paysage —, illustrées par de **vraies photographies** en haute définition (1100 × 753 px, soit environ 300 dpi à la taille des cartes). Chaque cahier contient trois séries à découper et à plastifier :
 
 | Série | Contenu | Usage |
 |---|---|---|
@@ -66,11 +66,11 @@ Un cahier de cartes **par période**, en lien avec le milieu étudié : **9 esp�
 
 Les cartes sont jointives sur la page : un seul coup de massicot sépare deux cartes. Un filet de couleur et une mention discrète (« P2 · faune ») permettent de reclasser une carte égarée. Le mode d'emploi (première page de chaque cahier) détaille la préparation du matériel, la leçon en trois temps, le travail de lecture en autocorrection et les prolongements.
 
-Les photographies proviennent de **Wikimedia Commons**, sous licence libre, et sont créditées en dernière page de chaque cahier.
+Les photographies proviennent d'**iNaturalist** : ce sont des observations de **qualité recherche**, dont l'espèce a été confirmée par plusieurs naturalistes, sous licence libre (CC0, CC BY ou CC BY-SA). Chacune a été **choisie à la main** pour que la plante ou l'animal soit le sujet, entier et reconnaissable. Les auteurs sont crédités en dernière page de chaque cahier.
 
-- `scripts/imagier-manifest.py` — la liste des 90 espèces (slug, nom écrit sur l'étiquette, article Wikipédia source).
-- `scripts/chercher-images-imagier.py` — moisson des photographies (image d'illustration de l'article Wikipédia en français), recadrage au format des cartes, relevé de l'auteur et de la licence.
-- `scripts/taxons-imagier.py` — noms scientifiques (Wikidata), rappelés dans le mode d'emploi.
+- `scripts/imagier-manifest.py` — la liste des 90 espèces (slug, nom écrit sur l'étiquette, nom scientifique) et, pour chacune, la photographie retenue.
+- `scripts/chercher-images-imagier.py` — moisson des photographies sur **iNaturalist**, recadrage au format des cartes, relevé de l'auteur et de la licence.
+- `scripts/candidats-imagier.py` — planches de candidats, pour choisir soi-même la photographie de chaque espèce : le classement automatique met en avant de belles images, pas forcément illustratives.
 - `scripts/generer-imagier.py` — génération des planches `site/imagier/periode-N.html`.
 
 ### 5. Fiches d'évaluation (une batterie par période, adaptée au thème)

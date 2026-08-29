@@ -1,152 +1,127 @@
 # -*- coding: utf-8 -*-
-"""Propose des photographies de remplacement pour une espèce de l'imagier.
+"""Planches de candidats, pour choisir soi-même la photographie de chaque espèce.
 
-L'image d'illustration de l'article Wikipédia en français convient la plupart
-du temps pour les animaux, mais c'est souvent une **planche botanique
-ancienne** pour les fleurs. Ce script rassemble, pour chaque espèce demandée,
-des candidates : image d'illustration de l'article anglais, puis
-photographies de la catégorie Commons de l'espèce. Il en fabrique une planche
-contact numérotée, à regarder avant de renseigner OVERRIDES dans
-scripts/imagier-manifest.py.
+Le tri automatique d'iNaturalist met en avant les photographies les plus
+« aimées », qui sont souvent spectaculaires plutôt qu'illustratives (un ours
+en train de manger des pissenlits, un bourgeon en gros plan…). Pour un
+imagier, il faut au contraire une image où l'espèce est le sujet, entière et
+reconnaissable. Ce script rassemble plusieurs candidates par espèce et les
+assemble en une planche numérotée, à regarder avant de renseigner OVERRIDES
+dans scripts/imagier-manifest.py.
 
-Usage : python3 scripts/candidats-imagier.py <slug> [<slug> ...]
-Sortie : <DOSSIER>/candidats-<slug>.jpg  et  <DOSSIER>/candidats-<slug>.json
+Usage : python3 scripts/candidats-imagier.py [1-faune 1-flore 2-faune …]
+        (sans argument : les dix planches)
+Sortie : <DOSSIER>/candidats-p<N>-<groupe>.jpg  et  le JSON des identifiants
          (DOSSIER : variable d'environnement CANDIDATS_DIR, /tmp par défaut)
 """
-import io, json, math, os, re, ssl, sys, time, urllib.parse, urllib.request, urllib.error
+import io, json, os, ssl, sys, time, urllib.error, urllib.parse, urllib.request
 from PIL import Image, ImageDraw, ImageFont
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 ns = {}
 exec(compile(open(os.path.join(ICI, "imagier-manifest.py"), encoding="utf-8").read(),
              "imagier-manifest.py", "exec"), ns)
-PAR_SLUG = {s: (p, g, n, a) for p, g, s, n, a in ns["entrees"]()}
-DOSSIER = os.environ.get("CANDIDATS_DIR", "/tmp")
-NB = int(os.environ.get("NB_CANDIDATS", "8"))
+ENTREES = list(ns["entrees"]())
 
-# Une image dont le nom de fichier ressemble à ceci est presque toujours une
-# planche dessinée ou un schéma, inutilisable pour un imagier photographique.
-DESSIN = re.compile(
-    r"sturm|thom[ée]|koehler|lindman|illustration|plate\b|drawing|dessin|"
-    r"flora von|flore de|atlas des|\bicones?\b|masclef|bilder ur|"
-    r"british entomology|naturgeschichte|planche|gravure|diagram|schema|"
-    r"botanical|herbari|zeichnung|nordens flora|deutschlands flora", re.I)
+DOSSIER = os.environ.get("CANDIDATS_DIR", "/tmp")
+NB = int(os.environ.get("NB_CANDIDATS", "5"))
+CELL, LEG = 330, 34
+MIN_COTE = 1000
+LICENCES = "cc0,cc-by,cc-by-sa"
 
 cafile = "/root/.ccr/ca-bundle.crt"
 ctx = ssl.create_default_context(cafile=cafile) if os.path.exists(cafile) else ssl.create_default_context()
 opener = urllib.request.build_opener(urllib.request.ProxyHandler(), urllib.request.HTTPSHandler(context=ctx))
-opener.addheaders = [("User-Agent", "GS-imagier/1.0 (usage pedagogique)")]
+opener.addheaders = [("User-Agent", "GS-imagier/1.0 (https://jlrigau.github.io/grande-section/)")]
+F = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 20)
 
 
-def api(hote, params):
-    url = "https://%s/w/api.php?%s" % (hote, urllib.parse.urlencode(dict(params, format="json")))
-    for attente in (0, 15, 40, 80):
+def ouvre(url, timeout=45):
+    for attente in (0, 3, 8, 20):
         if attente:
             time.sleep(attente)
         try:
-            with opener.open(url, timeout=60) as r:
-                return json.load(r)
+            return opener.open(url, timeout=timeout)
         except urllib.error.HTTPError as e:
-            if e.code != 429:
+            if e.code != 429 and e.code < 500:
                 raise
-    raise RuntimeError("429 persistant")
+    raise RuntimeError("serveur indisponible")
 
 
-def article_anglais(article_fr):
-    d = api("fr.wikipedia.org", {"action": "query", "titles": article_fr, "redirects": "1",
-                                 "prop": "langlinks", "lllang": "en"})
-    for p in d.get("query", {}).get("pages", {}).values():
-        for ll in p.get("langlinks", []):
-            return ll["*"]
-    return None
+def candidates(taxon, recherche_seule=True):
+    """Plusieurs photographies libres et imprimables, les plus appréciées
+    d'abord. Le classement d'iNaturalist met en avant de belles images, pas
+    forcément illustratives : c'est bien pourquoi on les regarde avant de
+    choisir."""
+    params = {"taxon_name": taxon, "photo_license": LICENCES, "photos": "true",
+              "order_by": "votes", "per_page": "40"}
+    if recherche_seule:
+        params["quality_grade"] = "research"
+    with ouvre("https://api.inaturalist.org/v1/observations?" + urllib.parse.urlencode(params)) as r:
+        d = json.load(r)
+    out = []
+    for obs in d.get("results", []):
+        photo = (obs.get("photos") or [None])[0]   # la première photo est la mieux cadrée
+        if not photo:
+            continue
+        dim = photo.get("original_dimensions") or {}
+        l, h = dim.get("width", 0), dim.get("height", 0)
+        if min(l, h) < MIN_COTE:
+            continue
+        out.append({"id": photo["id"], "vignette": photo["url"].replace("square", "medium"),
+                    "accords": obs.get("num_identification_agreements", 0),
+                    "paysage": l >= h})
+    if not out and recherche_seule:
+        return candidates(taxon, recherche_seule=False)
+    # on garde l'ordre d'iNaturalist ; à qualité égale, une photo en
+    # largeur remplit mieux la carte
+    out.sort(key=lambda p: not p["paysage"])
+    return out[:NB]
 
 
-def image_article(hote, article):
-    d = api(hote, {"action": "query", "titles": article, "redirects": "1",
-                   "prop": "pageimages", "piprop": "name"})
-    for p in d.get("query", {}).get("pages", {}).values():
-        if p.get("pageimage"):
-            return "File:" + p["pageimage"]
-    return None
-
-
-def categorie_commons(article_fr):
-    """Catégorie Commons de l'espèce, via la propriété P373 de Wikidata."""
-    d = api("www.wikidata.org", {"action": "wbgetentities", "sites": "frwiki",
-                                 "titles": article_fr, "props": "claims"})
-    for ent in (d.get("entities") or {}).values():
-        for c in ent.get("claims", {}).get("P373", []):
-            val = ((c.get("mainsnak") or {}).get("datavalue") or {}).get("value")
-            if val:
-                return "Category:" + val
-    return None
-
-
-def fichiers_categorie(categorie, limite=40):
-    d = api("commons.wikimedia.org", {"action": "query", "list": "categorymembers",
-                                      "cmtitle": categorie, "cmtype": "file",
-                                      "cmlimit": str(limite)})
-    return [m["title"] for m in d.get("query", {}).get("categorymembers", [])]
-
-
-def vignettes(titres, largeur=420):
-    d = api("commons.wikimedia.org", {"action": "query", "titles": "|".join(titres),
-                                      "prop": "imageinfo", "iiprop": "url|mime|extmetadata",
-                                      "iiurlwidth": str(largeur)})
-    infos = {}
-    for p in d.get("query", {}).get("pages", {}).values():
-        ii = (p.get("imageinfo") or [None])[0]
-        if ii and ii.get("mime", "").startswith("image/"):
-            infos[p["title"]] = ii.get("thumburl") or ii.get("url")
-    return infos
-
-
-def planche(slug, candidats):
-    """Grille numérotée des candidates, à regarder avant de choisir."""
-    cell, leg, cols = 420, 46, 4
-    rows = max(1, math.ceil(len(candidats) / cols))
-    img = Image.new("RGB", (cols * cell, rows * (cell + leg)), "white")
+def planche(nom_fichier, especes):
+    """especes : liste de (nom, taxon, [candidates])."""
+    img = Image.new("RGB", (NB * CELL, len(especes) * (CELL + LEG)), "white")
     d = ImageDraw.Draw(img)
-    f = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
-    for i, (titre, url) in enumerate(candidats):
-        cx, cy = (i % cols) * cell, (i // cols) * (cell + leg)
-        try:
-            with opener.open(url, timeout=60) as r:
-                v = Image.open(io.BytesIO(r.read())).convert("RGB")
-            v.thumbnail((cell - 8, cell - 8), Image.LANCZOS)
-            img.paste(v, (cx + (cell - v.width) // 2, cy + (cell - v.height) // 2))
-        except Exception as e:
-            d.text((cx + 10, cy + 10), "échec : %s" % e, fill="red", font=f)
-        d.rectangle([cx, cy, cx + cell - 1, cy + cell + leg - 1], outline="#bbb")
-        d.text((cx + 8, cy + cell + 10), "%d. %s" % (i + 1, titre[5:45]), fill="black", font=f)
-    chemin = os.path.join(DOSSIER, "candidats-%s.jpg" % slug)
-    img.save(chemin, "JPEG", quality=85)
+    for r, (nom, taxon, cands) in enumerate(especes):
+        cy = r * (CELL + LEG)
+        d.text((6, cy + CELL + 8), "%s  (%s)" % (nom, taxon), fill="black", font=F)
+        for c, cand in enumerate(cands):
+            cx = c * CELL
+            try:
+                with ouvre(cand["vignette"]) as rep:
+                    v = Image.open(io.BytesIO(rep.read())).convert("RGB")
+                v.thumbnail((CELL - 6, CELL - 6), Image.LANCZOS)
+                img.paste(v, (cx + (CELL - v.width) // 2, cy + (CELL - v.height) // 2))
+            except Exception as e:
+                d.text((cx + 8, cy + 8), "échec", fill="red", font=F)
+            d.rectangle([cx, cy, cx + CELL - 1, cy + CELL - 1], outline="#bbb")
+            d.text((cx + 8, cy + 6), "%d" % (c + 1), fill="#c00", font=F)
+    chemin = os.path.join(DOSSIER, nom_fichier)
+    img.save(chemin, "JPEG", quality=86)
     return chemin
 
 
-for slug in sys.argv[1:]:
-    if slug not in PAR_SLUG:
-        print("slug inconnu : %s" % slug)
+cibles = set(a.lower() for a in sys.argv[1:])
+groupes = {}
+for p, groupe, slug, nom, taxon in ENTREES:
+    groupes.setdefault((p, groupe), []).append((slug, nom, taxon))
+
+index = {}
+for (p, groupe), especes in sorted(groupes.items()):
+    code = "%d-%s" % (p, groupe)
+    if cibles and code not in cibles:
         continue
-    periode, groupe, nom, article = PAR_SLUG[slug]
-    titres = []
-    en = article_anglais(article)
-    if en:
-        t = image_article("en.wikipedia.org", en)
-        if t:
-            titres.append(t)
-    cat = categorie_commons(article)
-    if cat:
-        for t in fichiers_categorie(cat):
-            if t not in titres and not DESSIN.search(t):
-                titres.append(t)
-    titres = titres[:NB]
-    if not titres:
-        print("✗ %s : aucune candidate (article « %s »)" % (slug, article))
-        continue
-    infos = vignettes(titres)
-    candidats = [(t, infos[t]) for t in titres if t in infos]
-    chemin = planche(slug, candidats)
-    json.dump([t for t, _ in candidats], open(os.path.join(DOSSIER, "candidats-%s.json" % slug),
-                                              "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print("✓ %-24s (%s) %d candidates → %s" % (slug, nom, len(candidats), chemin))
+    lignes, ids = [], {}
+    for slug, nom, taxon in especes:
+        cands = candidates(taxon)
+        ids[slug] = [c["id"] for c in cands]
+        lignes.append((nom, taxon, cands))
+        time.sleep(0.4)
+    chemin = planche("candidats-p%d-%s.jpg" % (p, groupe), lignes)
+    index.update(ids)
+    print("%s → %s" % (code, chemin))
+
+json.dump(index, open(os.path.join(DOSSIER, "candidats-index.json"), "w", encoding="utf-8"),
+          ensure_ascii=False, indent=1)
+print("identifiants : %s/candidats-index.json" % DOSSIER)

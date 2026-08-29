@@ -3,7 +3,7 @@
 
 Une page par période (milieu) : site/imagier/periode-N.html, imprimée en PDF
 par scripts/generer-pdf.sh. Chaque cahier contient, pour les 9 animaux et les
-9 fleurs du milieu :
+9 plantes du milieu :
   1. le mode d'emploi (leçon en trois temps, préparation du matériel) ;
   2. les cartes de contrôle    — photographie + nom en script ;
   3. les cartes-photos         — la même photographie, emplacement du nom vide ;
@@ -23,8 +23,8 @@ IMAGIER, MILIEUX = ns["IMAGIER"], ns["MILIEUX"]
 
 chemin_credits = os.path.join(BASE, "img", "credits.json")
 credits = json.load(open(chemin_credits, encoding="utf-8")) if os.path.exists(chemin_credits) else {}
-chemin_taxons = os.path.join(BASE, "img", "taxons.json")
-taxons = json.load(open(chemin_taxons, encoding="utf-8")) if os.path.exists(chemin_taxons) else {}
+# le nom scientifique de chaque espèce est porté par le manifeste
+taxons = {slug: taxon for _, _, slug, _, taxon in ns["entrees"]()}
 
 COULEURS = {1: ("#2f6ea8", "#b9d1e8", "#eef5fb"),
             2: ("#2c7a4b", "#b4dcc4", "#eff8f2"),
@@ -104,7 +104,7 @@ def garde(p, milieu, description, faune, flore):
   <p class="sous-titre">Cartes de nomenclature Montessori — période {p} · {description}</p>
 
   <h2>Ce que contient ce cahier</h2>
-  <p>{nf} animaux et {nl} fleurs du milieu, en trois séries de cartes à découper :</p>
+  <p>{nf} animaux et {nl} plantes du milieu — arbres, arbustes, fleurs, fougères, mousses, algues ou cultures selon le paysage — en trois séries de cartes à découper :</p>
   <ul>
     <li><strong>Les cartes de contrôle</strong> (photographie + nom) : elles servent de modèle et permettent à l’élève de <strong>vérifier seul</strong> son travail.</li>
     <li><strong>Les cartes-photos</strong> (photographie seule) : l’emplacement du nom, en pointillés, attend l’étiquette.</li>
@@ -139,10 +139,11 @@ def garde(p, milieu, description, faune, flore):
 
   <h2>Prolongements</h2>
   <ul>
-    <li><strong>Tri</strong> : « les animaux » / « les fleurs », puis justification orale (« comment le sais-tu ? »).</li>
+    <li><strong>Tri</strong> : « les animaux » / « les plantes », puis justification orale (« comment le sais-tu ? ») ; trier ensuite les plantes entre <strong>les arbres</strong> et <strong>les autres</strong>.</li>
     <li><strong>Langage</strong> : décrire une photographie pour que les autres devinent de quelle carte il s’agit (jeu du portrait).</li>
     <li><strong>Phonologie</strong> : chercher les mots qui commencent par le même son, compter les syllabes.</li>
     <li><strong>Écriture</strong> : copier le nom d’une carte sous son dessin d’observation.</li>
+    <li><strong>Sortie</strong> : emporter quelques cartes pour retrouver l’espèce sur le terrain (arbre du quartier, fleur du talus, algue de la plage).</li>
   </ul>
 
   <h2>Les {total} espèces de ce cahier</h2>
@@ -151,7 +152,7 @@ def garde(p, milieu, description, faune, flore):
     {liste_flore}
   </div>
 
-  <p class="pied-garde">Ma Grande Section 2026-2027 — « À la découverte de la faune et de la flore ». Photographies : Wikimedia Commons (crédits en dernière page). Noms écrits en script (police Andika, SIL Open Font License).</p>
+  <p class="pied-garde">Ma Grande Section 2026-2027 — « À la découverte de la faune et de la flore ». Photographies : iNaturalist, sous licence libre (crédits en dernière page). Noms écrits en script (police Andika, SIL Open Font License).</p>
 </section>""".format(
         p=p, milieu_min=milieu[0].lower() + milieu[1:],
         description=description, nf=len(faune), nl=len(flore), total=len(faune) + len(flore),
@@ -161,19 +162,21 @@ def garde(p, milieu, description, faune, flore):
 
 def page_credits(p, entrees):
     lignes = []
-    for g, s, n in entrees:
-        c = credits.get(s)
+    for g, s_, n in entrees:
+        c = credits.get(s_)
         if not c:
             continue
-        auteur = c["auteur"] or "auteur non précisé"
-        lignes.append("<li><strong>%s</strong> — %s, %s (licence %s), via Wikimedia Commons.</li>"
-                      % (echappe(n), echappe(c["source"].replace("File:", "")), echappe(auteur),
-                         echappe(c["licence"] or "voir la page du fichier")))
+        lignes.append("<li><strong>%s</strong> (<em>%s</em>) — %s, licence %s.</li>"
+                      % (echappe(n), echappe(c.get("taxon", "")), echappe(c["auteur"]),
+                         echappe(c["licence"] or "voir la page de l’observation")))
     return ('<section class="planche credits">\n'
             '  <h2>Crédits des photographies</h2>\n'
-            '  <p>Les photographies de cet imagier proviennent de <strong>Wikimedia Commons</strong> et sont '
-            'reproduites sous licence libre. Merci à leurs auteurs et autrices. Les images ont été recadrées '
-            'au format des cartes ; aucune autre modification n’a été apportée.</p>\n'
+            '  <p>Les photographies de cet imagier proviennent d’<strong>iNaturalist</strong> '
+            '(inaturalist.org). Ce sont des observations de <strong>qualité recherche</strong> — '
+            'l’espèce a été confirmée par plusieurs naturalistes — dont les photographies sont '
+            'placées sous licence libre (CC0, CC BY ou CC BY-SA). Elles ont été recadrées au format '
+            'des cartes ; aucune autre modification n’a été apportée. Merci à leurs auteurs et '
+            'autrices.</p>\n'
             '  <ul>\n    %s\n  </ul>\n'
             '</section>' % "\n    ".join(lignes))
 
