@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 """Télécharge depuis Wikimedia Commons une image par concept du manifeste,
 avec ses métadonnées (auteur, licence) pour la page de crédits.
+
+ATTENTION — upload.wikimedia.org limite très sévèrement l'adresse de sortie
+mutualisée depuis laquelle tourne l'agent : environ cinq fichiers par tranche
+de dix minutes, puis 429 avec Retry-After: 600. Les images des fiches sont
+déjà téléchargées et versionnées ; ce script n'a pas à être relancé en
+entier. Pour une nouvelle moisson, chercher une autre source — voir la
+section « Images » de CLAUDE.md.
+
 Usage : python3 scripts/chercher-images.py [slug ...]   (sans argument : tout)
 Sortie : site/fiches/img/<slug>.(png|jpg) + site/fiches/img/credits.json
 """

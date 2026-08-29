@@ -73,6 +73,8 @@ Les photographies proviennent d'**iNaturalist** : ce sont des observations de **
 - `scripts/candidats-imagier.py` — planches de candidats, pour choisir soi-même la photographie de chaque espèce : le classement automatique met en avant de belles images, pas forcément illustratives.
 - `scripts/generer-imagier.py` — génération des planches `site/imagier/periode-N.html`.
 
+Les règles de fabrication — d'où viennent les images, comment on les choisit, et pourquoi Wikimedia Commons n'est pas utilisable ici — sont consignées dans [`CLAUDE.md`](CLAUDE.md).
+
 ### 5. Fiches d'évaluation (une batterie par période, adaptée au thème)
 - [`04-evaluations/00-mode-emploi-et-livret-de-suivi.md`](04-evaluations/00-mode-emploi-et-livret-de-suivi.md) — principes d'évaluation positive, codage, grille de suivi annuelle.
 - [`04-evaluations/periode-1-ville.md`](04-evaluations/periode-1-ville.md)

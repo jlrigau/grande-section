@@ -6,6 +6,16 @@ recherche » — l'espèce a été confirmée par plusieurs naturalistes — et 
 photographies sous licence libre (CC0, CC BY, CC BY-SA), ce qui autorise la
 publication sur le site de la classe avec mention de l'auteur.
 
+Ne pas revenir à Wikimedia Commons : son serveur de fichiers limite l'adresse
+de sortie de l'agent à quelques images par tranche de dix minutes, ce qui met
+des heures pour les quatre-vingt-dix cartes. iNaturalist les fabrique en
+quelques minutes. Les espèces sont cherchées par leur nom scientifique, porté
+par le manifeste, une recherche par nom vernaculaire étant peu fiable.
+
+Le classement d'iNaturalist met en avant de belles photographies, pas
+forcément illustratives : la photographie de chaque espèce est choisie à la
+main et inscrite dans OVERRIDES (voir scripts/candidats-imagier.py).
+
 Chaque photographie est recadrée au format de la zone photo des cartes et
 enregistrée en 1100 px de large, soit environ 300 dpi à l'impression.
 
