@@ -71,12 +71,16 @@ FORCE=1 python3 scripts/chercher-images-imagier.py taupe-europe cochon
 python3 scripts/verifier-imagier.py
 ```
 
-Puis regarder le résultat tel qu'il s'imprimera, ce que le contrôle
-automatique ne sait pas faire :
+Puis regarder les cartes telles qu'elles s'imprimeront, ce que le contrôle
+automatique ne sait pas juger :
 
 ```sh
 REVUE_DIR=/tmp python3 scripts/revoir-imagier.py 4
 ```
+
+Cette planche a rattrapé, sur des vignettes que le contrôle déclarait
+conformes, deux chats sur un perron, deux ânes lointains, un mètre de
+couturière dans la vigne et un bouleau nu en hiver.
 
 Enfin, si le manifeste a changé, régénérer les pages :
 
@@ -86,6 +90,51 @@ python3 scripts/generer-imagier.py
 
 Les PDF ne sont pas versionnés : `scripts/generer-pdf.sh` les refabrique au
 déploiement.
+
+## Toujours finir par le PDF, jamais par le HTML
+
+Les deux pires défauts de ce matériel n'existaient pas à l'écran : la page
+d'un navigateur s'allonge, une feuille A4 non. Après toute modification du
+manifeste ou du gabarit, fabriquer le PDF et le regarder page à page :
+
+```sh
+(cd site && python3 -m http.server 8901 &) ; sleep 2
+CH=$(ls -d /opt/pw-browsers/chromium*/chrome-linux/chrome | head -1)
+"$CH" --headless --no-sandbox --no-pdf-header-footer \
+      --print-to-pdf=/tmp/p4.pdf http://127.0.0.1:8901/imagier/periode-4.html
+python3 -c "
+import pypdfium2 as p
+d = p.PdfDocument('/tmp/p4.pdf')
+for i in range(len(d)):
+    t = d[i].get_textpage().get_text_range().strip()
+    print('page %2d : %4d caractères' % (i + 1, len(t)))"
+```
+
+**Une page presque vide trahit un débordement.** Le compte de caractères
+suffit à la repérer sans tout regarder : une planche de cartes-photos en
+fait environ 250, une page à 200 qui n'est pas la dernière est un accident.
+
+Deux pièges, tous deux apparus en doublant le nombre d'espèces :
+
+**Toute série doit se paginer.** Les planches de cartes le faisaient depuis
+toujours — six par page —, les étiquettes-mots non : les trente-six tenaient
+dans une seule planche, qui dépassait la page et s'imprimait par-dessus les
+crédits. Le défaut dormait tant qu'une période comptait dix-huit espèces.
+Si une série nouvelle apparaît, la paginer d'emblée
+(`ETIQUETTES_PAR_PLANCHE`, `PAR_PLANCHE` dans `generer-imagier.py`).
+
+**Les pages de texte ne prennent pas la hauteur d'une page.** Les planches
+de cartes sont une grille de découpe et valent `height: 277mm`. La garde et
+les crédits sont du texte : leur imposer cette hauteur exacte ne laisse
+aucune tolérance d'arrondi — le pied de la garde de la période 5 partait
+seul sur une deuxième page — et un contenu plus long déborde alors sur la
+planche voisine au lieu de passer à la page suivante. Elles valent
+`height: auto`. Garder une vraie marge plutôt qu'un ajustement au
+millimètre : la garde la plus chargée fait 255 mm pour 277 disponibles.
+
+Pour mesurer un débordement plutôt que de rogner au jugé, injecter un script
+dans une copie de la page qui écrit la hauteur du contenu dans le titre, puis
+lire le titre avec `--dump-dom`.
 
 ## Les pièges d'iNaturalist
 
@@ -101,13 +150,27 @@ autre continent : `Meles meles` ramenait le blaireau d'Amérique
 fausses sont passées ainsi. Les scripts résolvent désormais le nom en
 identifiant de taxon ; il reste que le vivier contient des espèces voisines,
 que les planches encadrent en rouge — **ne pas choisir une vignette
-encadrée de rouge**.
+encadrée de rouge**. Une sous-espèce ou un renommage accepté ne sont pas
+encadrés : le loup d'Italie est un loup, *Anemonoides nemorosa* est le nom
+actuel de l'anémone des bois.
 
 **Les animaux de la ferme se cherchent avec `captive=true`.** Sans ce
 filtre, iNaturalist ne remonte que des populations retournées à l'état
 féral : des cochons impossibles à distinguer d'un sanglier, des poules de
 rue. Les espèces concernées sont listées dans `DOMESTIQUES`
 (`scripts/imagier-manifest.py`).
+
+**Les plantes cultivées aussi.** Un champ est « captive » au sens
+d'iNaturalist. Sans ce filtre, `Beta vulgaris` ne rend que la betterave
+maritime sauvage, la vigne aucune grappe et le noyer aucune noix — que des
+pieds échappés en bord de route. Les planches acceptent `CAPTIVE=1` pour
+cela.
+
+**Le nom scientifique doit se résoudre.** Le résolveur ajoute un filtre de
+rang : sans lui, `Glis glis` — le loir — ne se résolvait pas du tout, la
+recherche floue rendant des fougères et des graminées avant l'espèce
+demandée. Si un ajout d'espèce échoue sur « taxon introuvable », c'est là
+qu'il faut regarder.
 
 **Le classement par popularité met en avant le spectaculaire, pas
 l'illustratif** : un ours mangeant des pissenlits pour « le pissenlit », un
@@ -139,6 +202,26 @@ l'API `commons.wikimedia.org` finit par répondre `429` elle aussi. Une
 moisson de l'imagier entier y prendrait des jours. Ni le parallélisme,
 ni le regroupement des appels n'y changent rien : la limite porte sur
 l'adresse. Le moindre `curl` de vérification relance le compteur.
+
+## Ce que le contrôle vérifie, et ce qu'il ne voit pas
+
+`scripts/verifier-imagier.py` couvre cinq choses : l'espèce de chaque
+photographie, la présence de l'auteur et de la licence, le cadrage qui doit
+remplir la carte, le **minimum de neuf espèces par groupe** — une convention
+de ce dépôt, pas une règle du programme —, et les **chiffres annoncés** dans
+le site et les documents.
+
+Ce dernier contrôle vient d'une mésaventure : en doublant l'imagier, seules
+les pages générées ont suivi, parce qu'elles comptent le manifeste. Le site
+a continué d'annoncer « 9 espèces de faune et 9 de flore » devant un cahier
+qui en contenait dix-huit de chaque. Le contrôle compare donc `site/app.js`,
+le README, le projet annuel, la programmation et `CLAUDE.md` au manifeste.
+**Changer le nombre d'espèces oblige à relire ces cinq fichiers** — le
+contrôle dira lesquels.
+
+Ce qu'il ne voit pas, et qui demande l'œil : la qualité de l'image (les cinq
+critères ci-dessus) et la mise en page imprimée. D'où les deux étapes qui
+suivent la moisson, `revoir-imagier.py` et le PDF.
 
 ## Licences
 

@@ -32,9 +32,15 @@ python3 scripts/generer-credits.py     # page des crédits des fiches
 Après avoir touché aux photographies de l'imagier, les contrôler :
 
 ```sh
-python3 scripts/verifier-imagier.py    # espèce, crédits, cadrage ; code 1 s'il reste une anomalie
+python3 scripts/verifier-imagier.py    # espèce, crédits, cadrage, nombres annoncés ; code 1 s'il reste une anomalie
 REVUE_DIR=/tmp python3 scripts/revoir-imagier.py   # les cartes telles qu'elles s'imprimeront
 ```
+
+Et **finir par le PDF, jamais par le HTML** : la page d'un navigateur
+s'allonge, une feuille A4 non. Les deux pires défauts de ce matériel — les
+étiquettes non paginées qui s'imprimaient par-dessus les crédits, le pied de
+la garde seul sur une page — n'existaient pas à l'écran. La marche à suivre
+est dans le skill [`imagier-photos`](.claude/skills/imagier-photos/SKILL.md).
 
 Après avoir touché à une progression, vérifier que l'année couvre toujours
 le programme :

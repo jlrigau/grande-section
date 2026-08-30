@@ -7,9 +7,16 @@ dans `SKILL.md` ; ici, le détail.
 ## Résoudre un nom scientifique en identifiant de taxon
 
 `GET https://api.inaturalist.org/v1/taxa?q=<nom>&per_page=20&is_active=true`
+`&rank=species,subspecies,variety,hybrid`
 
-Ne **jamais** se contenter du premier résultat : `q=Salamandra salamandra`
-renvoie *Plethodon cinereus* en tête. La règle appliquée par les scripts :
+**Le filtre de rang n'est pas facultatif.** Sans lui, la recherche floue peut
+ne rendre que du bruit : `q=Glis glis` — le loir — remontait une famille de
+fougères, deux genres de graminées et la chélidoine, sans jamais l'espèce
+demandée, qui n'apparaissait donc dans aucun des vingt résultats.
+
+Ne **jamais** se contenter du premier résultat non plus : `q=Salamandra
+salamandra` renvoie *Plethodon cinereus* en tête. La règle appliquée par les
+scripts :
 
 1. retenir le résultat dont le champ `name` est **exactement** le nom demandé ;
 2. à défaut, celui dont `matched_term` est exactement le nom demandé — ce qui
@@ -31,6 +38,7 @@ passage.
 | `photo_license` | `cc0,cc-by,cc-by-sa` | les seules licences publiables ; une clause NC est disqualifiante |
 | `quality_grade` | `research` | l'espèce a été confirmée par plusieurs naturalistes |
 | `captive` | `true` | pour les animaux de la ferme, qui n'ont pas d'observation « sauvage » ; remplace `quality_grade` |
+| `captive` | `true` | **et pour les plantes cultivées** : sans lui, `Beta vulgaris` ne rend que la betterave maritime sauvage, la vigne aucune grappe et le noyer aucune noix — un champ cultivé est « captive » au sens d'iNaturalist |
 | `place_id` | `97391` (Europe) | écarte les espèces voisines d'Amérique du Nord |
 | `order_by` | `votes` | le moins mauvais des tris, mais il faut regarder ce qu'il remonte |
 | `month` | `5,6,7` | pour une plante : sans cela le tri remonte des rosettes hivernales et des pieds défleuris |
@@ -50,6 +58,13 @@ personne : `candidats-imagier.py` ne retient donc qu'une photographie par
 main se trouve parfois à la quatrième page du vivier : `credits_photo()`
 pagine jusqu'à épuisement (`PAGES_MAX`), et non plus jusqu'à la page 3 — un
 arrêt court faisait rejeter la photographie faute d'auteur.
+
+**Une sous-espèce et un renommage restent la bonne espèce.** *Canis lupus
+italicus* est un loup, *Anemonoides nemorosa* est le nom actuel de l'anémone
+des bois : les planches ne les encadrent pas en rouge, et le contrôle les
+accepte, y compris une sous-espèce d'un nom renommé (*Mesotriton alpestris
+alpestris* pour *Ichthyosaura alpestris*). Seule une espèce **voisine** est
+signalée.
 
 **Le taxon rendu n'est pas garanti.** Même avec `taxon_id`, la recherche
 remonte des observations d'espèces voisines : un `Quercus orocantabrica`

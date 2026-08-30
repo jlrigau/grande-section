@@ -14,6 +14,7 @@ Usage : python3 scripts/candidats-imagier.py [1-faune | pigeon-biset …]
                       d'un autre continent) ;
         MOIS=5,6,7    restreint aux mois de floraison, pour une plante ;
         PAGES=4       explore plus loin quand le vivier est pauvre ;
+        CAPTIVE=1     pour une plante cultivée (betterave, vigne, noyer…) ;
         NB_CANDIDATS  vignettes par espèce (défaut 8).
         (sans argument : les dix planches ; sinon des planches entières
         « N-faune » / « N-flore » et/ou des espèces isolées, par leur slug)
@@ -44,6 +45,10 @@ NB = int(os.environ.get("NB_CANDIDATS", "8"))
 PLACE = os.environ.get("PLACE")      # place_id : 97391 = l'Europe
 MOIS = os.environ.get("MOIS")        # « 5,6,7 » : les mois de floraison
 PAGES = int(os.environ.get("PAGES", "1"))
+# Un champ cultivé est « captive » au sens d'iNaturalist, comme un animal de
+# ferme : sans ce filtre, Beta vulgaris ne rend que la betterave maritime
+# sauvage, la vigne aucune grappe et le noyer aucune noix.
+CAPTIVE = os.environ.get("CAPTIVE") == "1"
 os.makedirs(DOSSIER, exist_ok=True)
 CELL, LEG = 330, 34
 MIN_COTE = 1000
@@ -103,8 +108,8 @@ def candidates(taxon, recherche_seule=True):
     choisir."""
     params = {"taxon_id": taxon_id(taxon), "photo_license": LICENCES, "photos": "true",
               "order_by": "votes", "per_page": "60"}
-    if taxon in DOMESTIQUES:
-        params["captive"] = "true"        # la ferme, pas les populations férales
+    if taxon in DOMESTIQUES or CAPTIVE:
+        params["captive"] = "true"        # la ferme et les cultures, pas le féral
     elif recherche_seule:
         params["quality_grade"] = "research"
     if PLACE:
