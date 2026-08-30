@@ -103,10 +103,20 @@ for n in range(0, len(lots), 30):
                           % (slug, nom, taxon, (o.get("place_guess") or "")[:30]))
     time.sleep(0.3)
 
+# — chaque milieu a-t-il de quoi faire un cahier ? —
+# Neuf espèces par groupe est la convention de ce dépôt, pas une règle du
+# programme : l'imagier est un matériel que la classe se donne. Le seuil vit
+# donc ici, et non dans le référentiel du programme.
+MINIMUM_PAR_GROUPE = 9
+
 # — les textes annoncent-ils le bon nombre d'espèces ? —
 par_groupe = {}
 for p_, groupe, slug, _, _ in ns["entrees"]():
     par_groupe.setdefault((p_, groupe), []).append(slug)
+for (p_, groupe), slugs in sorted(par_groupe.items()):
+    if len(slugs) < MINIMUM_PAR_GROUPE:
+        ennuis.append("%-24s période %d, %s : %d espèces, il en faut au moins %d"
+                      % ("trop peu d'espèces", p_, groupe, len(slugs), MINIMUM_PAR_GROUPE))
 tailles = {len(v) for v in par_groupe.values()}
 if len(tailles) == 1:
     n = tailles.pop()
@@ -128,5 +138,6 @@ else:
 
 for e in ennuis:
     print("✗ " + e)
-print("%d photographies contrôlées, %d anomalie(s)" % (len(ATTENDUES), len(ennuis)))
+print("%d photographies contrôlées dans %d cahiers, %d anomalie(s)"
+      % (len(ATTENDUES), len(par_groupe) // 2, len(ennuis)))
 sys.exit(1 if ennuis else 0)

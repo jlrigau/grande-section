@@ -85,39 +85,16 @@ def oeuvres_patrimoniales(regle):
     return n >= regle["minimum"], f"{n} œuvres marquées"
 
 
-MINIMUM_IMAGIER = 9   # l'engagement de l'année ; l'imagier peut en compter plus
-
-
-def imagier_especes(regle):
-    texte = lire("scripts/imagier-manifest.py")
-    manques, comptes = [], []
-    for periode in range(1, 6):
-        bloc = re.search(rf"^ {periode}: \{{(.*?)^ \}},", texte, re.M | re.S)
-        if not bloc:
-            manques.append(f"P{periode} absente")
-            continue
-        for regne in ("faune", "flore"):
-            m = re.search(rf'"{regne}": \[(.*?)\]', bloc.group(1), re.S)
-            n = len(re.findall(r'^\s*\("', m.group(1), re.M)) if m else 0
-            comptes.append(n)
-            if n < MINIMUM_IMAGIER:
-                manques.append(f"P{periode} {regne} : {n}")
-    if manques:
-        return False, ", ".join(manques)
-    # rendre compte du réel plutôt que du minimum : l'imagier a doublé une fois
-    # sans que ce message le dise, et le site est resté sur les anciens chiffres
-    if len(set(comptes)) == 1:
-        return True, f"5 × ({comptes[0]} + {comptes[0]}), soit {sum(comptes)} espèces"
-    return True, f"{sum(comptes)} espèces, de {min(comptes)} à {max(comptes)} par groupe"
-
-
 def non_verifiable(regle):
     return None, regle.get("raison", "").strip()
 
 
+# Ne sont contrôlées ici que les exigences du programme. Le nombre d'espèces
+# de l'imagier est une convention de ce dépôt, pas une règle du BO : il a
+# longtemps figuré parmi ces règles, ce qui laissait croire que le programme
+# le prescrivait. Il est vérifié par scripts/verifier-imagier.py.
 CONTROLES = {f.__name__: f for f in (evar_seances, eps_unites, corpus_par_periode,
-                                     oeuvres_patrimoniales, imagier_especes,
-                                     non_verifiable)}
+                                     oeuvres_patrimoniales, non_verifiable)}
 
 
 # ——— Rapport ——————————————————————————————————————————————————————————

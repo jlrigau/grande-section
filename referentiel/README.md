@@ -4,7 +4,7 @@ Ce dossier contient deux fichiers et fait tourner un contrôle :
 
 | Fichier | Ce qu'il est |
 |---|---|
-| [`cycle1-gs.yml`](cycle1-gs.yml) | **159 attendus** du programme, un par ligne, chacun avec un identifiant stable — plus 6 règles de cadre |
+| [`cycle1-gs.yml`](cycle1-gs.yml) | **159 attendus** du programme, un par ligne, chacun avec un identifiant stable — plus 5 règles de cadre |
 | [`annotations-2026-2027.yml`](annotations-2026-2027.yml) | **286 accroches** : ce que chaque période de chaque progression traite |
 | `scripts/couverture.py` | la soustraction des deux, et le rapport |
 
@@ -85,9 +85,15 @@ comblés (§4), et l'année est désormais complète :
     ██████████████████  5/5   EVAR
 ```
 
-Les cinq règles de cadre vérifiables passent également : 3 séances d'EVAR,
+Les quatre règles de cadre vérifiables passent également : 3 séances d'EVAR,
 13 unités d'EPS toutes chiffrées entre 6 et 8 séances, 15 corpus de
-vocabulaire, 3 œuvres patrimoniales, 90 espèces d'imagier.
+vocabulaire, 3 œuvres patrimoniales.
+
+Le nombre d'espèces de l'imagier a un temps figuré ici. Il n'y avait pas sa
+place : c'est une convention que la classe s'est donnée pour son matériel,
+et rien dans le programme ne prescrit un nombre d'espèces. Mêlée aux règles
+du BO, elle laissait croire le contraire. Elle est vérifiée par
+`scripts/verifier-imagier.py`.
 
 ## 4. Les trois trous — trouvés, puis comblés
 

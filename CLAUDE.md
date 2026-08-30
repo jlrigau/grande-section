@@ -47,6 +47,12 @@ python3 scripts/couverture.py          # 159 attendus, sort en code 1 s'il en ma
 identifiant ; `referentiel/annotations-2026-2027.yml` dit ce que chaque
 période traite. Une séance ajoutée sans accroche ne sera pas comptée.
 
+**Ce fichier ne contient que des exigences du programme**, relues contre le
+BO. Une règle que la classe se donne — le nombre d'espèces de l'imagier, par
+exemple — n'y a pas sa place : logée parmi les autres, elle laisse croire que
+le programme la prescrit, ce qui a déjà été affirmé à tort. Ces conventions
+vivent dans le script du matériel concerné (ici `verifier-imagier.py`).
+
 ## Les skills du dépôt
 
 | Skill | Quand |
