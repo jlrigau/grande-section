@@ -29,6 +29,10 @@ body {
 
 /* — Une planche = une page A4 — */
 .planche { page-break-after: always; break-after: page; height: 277mm; }
+/* La page de garde porte la liste des espèces : à trente-six par période
+   elle déborde de sa hauteur fixe, et le débordement s'imprimait par-dessus
+   la planche suivante. On la laisse prendre la hauteur qu'il lui faut. */
+.planche.garde { height: auto; min-height: 277mm; }
 .planche:last-child { page-break-after: auto; break-after: auto; }
 
 /* — Filet d'identification en haut de planche (hors zone de découpe) — */
@@ -128,6 +132,11 @@ body {
   display: inline-block; min-width: 25mm; font-weight: 700; color: var(--couleur);
 }
 .listes { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 8mm; margin-top: 1.5mm; }
+/* trente-six noms tiennent en deux colonnes par groupe, sans rétrécir le texte
+   au point de le rendre pénible à lire pour l'enseignante */
+.listes ol { columns: 2; column-gap: 5mm; }
+.listes li { break-inside: avoid; font-size: 8pt; margin-bottom: .15mm; line-height: 1.25; }
+.listes li em { font-size: 7pt; }
 .listes h3 { font-size: 9.5pt; margin: 0 0 .5mm; color: #2c3640; }
 .listes ol { margin: 0; padding-left: 6mm; font-size: 9pt; }
 .listes li { margin-bottom: .2mm; }
