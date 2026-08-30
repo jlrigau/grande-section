@@ -103,7 +103,7 @@ libre, est un système d'écriture symbolique, inutilisable comme illustration.
 
 `scripts/chercher-images-imagier.py` interroge
 `https://api.inaturalist.org/v1/observations`. Aucune limitation gênante :
-les quatre-vingt-dix photographies de l'imagier sont fabriquées en quelques
+les cent quatre-vingts photographies de l'imagier sont fabriquées en quelques
 minutes. Les paramètres qui comptent :
 
 - `taxon_name` — **toujours le nom scientifique** (`Quercus robur`, et non
@@ -157,6 +157,7 @@ passer une carte mal identifiée.
 
 La flore ne se réduit pas aux fleurs : elle comprend les arbres, les
 arbustes, les fougères, les mousses, les graminées, les algues et les
-cultures. Chaque période compte neuf espèces de faune et neuf de flore, et
+cultures. Chaque période compte dix-huit espèces de faune et dix-huit de
+flore, et
 cette dernière liste doit rester variée — un milieu représenté par neuf
 fleurs serait faux.

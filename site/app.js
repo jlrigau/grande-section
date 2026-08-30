@@ -92,7 +92,7 @@
     var imagiers = [1, 2, 3, 4, 5].map(function (n) {
       return '<a class="carte" href="pdf/imagier-periode-' + n + '.pdf" download><span class="em">🖼️</span>' +
         '<span class="t">Imagier · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
-        ' — 9 animaux et 9 plantes du milieu : cartes de contrôle, cartes-photos et étiquettes-mots.</div></a>';
+        ' — 18 animaux et 18 plantes du milieu : cartes de contrôle, cartes-photos et étiquettes-mots.</div></a>';
     }).join('');
 
     document.getElementById('contenu').innerHTML =
@@ -115,7 +115,7 @@
       '<div class="cartes">' + fiches + '</div>' +
       '<h2>🖼️ Mon imagier Montessori faune et flore</h2>' +
       '<p>Un jeu de <strong>cartes de nomenclature</strong> par période, avec de vraies photographies : ' +
-      '<strong>9 espèces de faune et 9 espèces de flore</strong> du milieu étudié — arbres, arbustes, fleurs, fougères, mousses, algues ou cultures selon le paysage. Chaque imagier contient trois séries à ' +
+      '<strong>18 espèces de faune et 18 espèces de flore</strong> du milieu étudié — arbres, arbustes, fleurs, fougères, mousses, algues ou cultures selon le paysage. Chaque imagier contient trois séries à ' +
       'découper et à plastifier — les <strong>cartes de contrôle</strong> (photo + nom en script), les ' +
       '<strong>cartes-photos</strong> et les <strong>étiquettes-mots</strong> — pour la leçon en trois temps, ' +
       'puis pour un travail d’association et de <strong>lecture</strong> en autocorrection.</p>' +

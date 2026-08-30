@@ -2,8 +2,8 @@
 """Génère les planches de l'imagier Montessori « faune et flore ».
 
 Une page par période (milieu) : site/imagier/periode-N.html, imprimée en PDF
-par scripts/generer-pdf.sh. Chaque cahier contient, pour les 9 animaux et les
-9 plantes du milieu :
+par scripts/generer-pdf.sh. Chaque cahier contient, pour les animaux et les
+plantes du milieu (dix-huit de chaque) :
   1. le mode d'emploi (leçon en trois temps, préparation du matériel) ;
   2. les cartes de contrôle    — photographie + nom en script ;
   3. les cartes-photos         — la même photographie, emplacement du nom vide ;

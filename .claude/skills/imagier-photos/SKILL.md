@@ -6,8 +6,8 @@ description: Choisir, fabriquer et vérifier les photographies des cartes de nom
 # Les photographies de l'imagier
 
 L'imagier est un jeu de cartes de nomenclature Montessori : cinq cahiers A4,
-un par période et par milieu, dix-huit espèces chacun — neuf de faune, neuf
-de flore. Chaque espèce donne trois cartes : photo + nom, photo seule,
+un par période et par milieu, trente-six espèces chacun — dix-huit de faune,
+dix-huit de flore. Chaque espèce donne trois cartes : photo + nom, photo seule,
 nom seul. Les enfants ont cinq ans et **ne savent pas encore lire** : la
 photographie porte seule le sens. Une image ambiguë ne fait pas une carte
 médiocre, elle fait une carte fausse.
@@ -90,7 +90,7 @@ déploiement.
 ## Les pièges d'iNaturalist
 
 La source est `https://api.inaturalist.org/v1/observations`, sans limitation
-gênante — les quatre-vingt-dix photographies se fabriquent en quelques
+gênante — les cent quatre-vingts photographies se fabriquent en quelques
 minutes. Trois pièges, tous vérifiés à leurs dépens :
 
 **Chercher par `taxon_id`, jamais par `taxon_name`.** Le paramètre
@@ -136,7 +136,7 @@ photographiés en plein jour. Le détail des paramètres est dans
 `upload.wikimedia.org` limite l'adresse de sortie mutualisée à environ cinq
 fichiers par tranche de dix minutes (`429` avec `Retry-After: 600`), et
 l'API `commons.wikimedia.org` finit par répondre `429` elle aussi. Une
-moisson de quatre-vingt-dix images y prend des heures. Ni le parallélisme,
+moisson de l'imagier entier y prendrait des jours. Ni le parallélisme,
 ni le regroupement des appels n'y changent rien : la limite porte sur
 l'adresse. Le moindre `curl` de vérification relance le compteur.
 

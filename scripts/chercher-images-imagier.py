@@ -8,7 +8,7 @@ publication sur le site de la classe avec mention de l'auteur.
 
 Ne pas revenir à Wikimedia Commons : son serveur de fichiers limite l'adresse
 de sortie de l'agent à quelques images par tranche de dix minutes, ce qui met
-des heures pour les quatre-vingt-dix cartes. iNaturalist les fabrique en
+des heures pour les cartes de l'imagier. iNaturalist les fabrique en
 quelques minutes. Les espèces sont cherchées par leur nom scientifique, porté
 par le manifeste, une recherche par nom vernaculaire étant peu fiable.
 

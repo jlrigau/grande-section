@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Manifeste de l'imagier Montessori « faune et flore ».
 
-Pour chaque période (milieu) : 9 espèces de faune et 9 espèces de flore.
+Pour chaque période (milieu) : 18 espèces de faune et 18 espèces de flore.
 La flore, ce n'est pas seulement les fleurs : on y trouve les arbres, les
 arbustes, les fougères, les mousses, les graminées, les algues et les
 plantes cultivées, choisis pour être caractéristiques du milieu et

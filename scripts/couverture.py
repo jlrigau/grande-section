@@ -85,9 +85,12 @@ def oeuvres_patrimoniales(regle):
     return n >= regle["minimum"], f"{n} œuvres marquées"
 
 
+MINIMUM_IMAGIER = 9   # l'engagement de l'année ; l'imagier peut en compter plus
+
+
 def imagier_especes(regle):
     texte = lire("scripts/imagier-manifest.py")
-    manques = []
+    manques, comptes = [], []
     for periode in range(1, 6):
         bloc = re.search(rf"^ {periode}: \{{(.*?)^ \}},", texte, re.M | re.S)
         if not bloc:
@@ -96,9 +99,16 @@ def imagier_especes(regle):
         for regne in ("faune", "flore"):
             m = re.search(rf'"{regne}": \[(.*?)\]', bloc.group(1), re.S)
             n = len(re.findall(r'^\s*\("', m.group(1), re.M)) if m else 0
-            if n != 9:
+            comptes.append(n)
+            if n < MINIMUM_IMAGIER:
                 manques.append(f"P{periode} {regne} : {n}")
-    return not manques, "5 × (9 + 9)" if not manques else ", ".join(manques)
+    if manques:
+        return False, ", ".join(manques)
+    # rendre compte du réel plutôt que du minimum : l'imagier a doublé une fois
+    # sans que ce message le dise, et le site est resté sur les anciens chiffres
+    if len(set(comptes)) == 1:
+        return True, f"5 × ({comptes[0]} + {comptes[0]}), soit {sum(comptes)} espèces"
+    return True, f"{sum(comptes)} espèces, de {min(comptes)} à {max(comptes)} par groupe"
 
 
 def non_verifiable(regle):

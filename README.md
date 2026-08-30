@@ -56,7 +56,7 @@ L'année est organisée autour de cinq milieux, un par période :
 
 ### 4. Imagier Montessori « faune et flore » (cartes de nomenclature)
 
-Un cahier de cartes **par période**, en lien avec le milieu étudié : **9 espèces de faune et 9 espèces de flore** de ce milieu — arbres, arbustes, fleurs, fougères, mousses, algues ou cultures selon le paysage —, illustrées par de **vraies photographies** en haute définition (1100 × 753 px, soit environ 300 dpi à la taille des cartes). Chaque cahier contient trois séries à découper et à plastifier :
+Un cahier de cartes **par période**, en lien avec le milieu étudié : **18 espèces de faune et 18 espèces de flore** de ce milieu — arbres, arbustes, fleurs, fougères, mousses, algues ou cultures selon le paysage —, illustrées par de **vraies photographies** en haute définition (1100 × 753 px, soit environ 300 dpi à la taille des cartes). Chaque cahier contient trois séries à découper et à plastifier :
 
 | Série | Contenu | Usage |
 |---|---|---|
@@ -68,7 +68,7 @@ Les cartes sont jointives sur la page : un seul coup de massicot sépare deux ca
 
 Les photographies proviennent d'**iNaturalist** : ce sont des observations de **qualité recherche**, dont l'espèce a été confirmée par plusieurs naturalistes, sous licence libre (CC0, CC BY ou CC BY-SA). Chacune a été **choisie à la main** selon cinq règles : un seul individu, une image convenant à des enfants de cinq ans, l'animal entier vu de face ou de profil, une image qui remplit la carte sans bande blanche, et rien d'autre autour du sujet. Les auteurs sont crédités en dernière page de chaque cahier.
 
-- `scripts/imagier-manifest.py` — la liste des 90 espèces (slug, nom écrit sur l'étiquette, nom scientifique) et, pour chacune, la photographie retenue.
+- `scripts/imagier-manifest.py` — la liste des 180 espèces (slug, nom écrit sur l'étiquette, nom scientifique) et, pour chacune, la photographie retenue.
 - `scripts/chercher-images-imagier.py` — moisson des photographies sur **iNaturalist**, recadrage au format des cartes, relevé de l'auteur et de la licence.
 - `scripts/generer-imagier.py` — génération des planches `site/imagier/periode-N.html`.
 - `scripts/candidats-imagier.py` — planches de candidats, pour choisir soi-même la photographie de chaque espèce ; `scripts/zoom-imagier.py` les rappelle en grand pour départager deux clichés proches, `scripts/revoir-imagier.py` assemble les cartes d'une période telles qu'elles s'imprimeront.

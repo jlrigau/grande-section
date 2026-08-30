@@ -197,7 +197,7 @@ regles:
   - {id: eps.unites.duree,   libelle: "Unités d'apprentissage de 6 à 8 séances", controle: eps_unites}
   - {id: voc.corpus,         libelle: "3 corpus de vocabulaire par période, soit 15 sur l'année", controle: corpus_par_periode, minimum: 15}
   - {id: arts.oeuvres,       libelle: "Au moins 3 œuvres musicales patrimoniales", controle: oeuvres_patrimoniales, minimum: 3}
-  - {id: imagier.especes,    libelle: "9 espèces de faune et 9 de flore par période", controle: imagier_especes}
+  - {id: imagier.especes,    libelle: "au moins 9 espèces de faune et 9 de flore par période", controle: imagier_especes}
   - id: lang.textes.hebdo
     libelle: "Un texte mémorisé par semaine, au moins 10 comptines ou chants"
     controle: non_verifiable

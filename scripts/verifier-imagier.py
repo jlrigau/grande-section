@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Contrôle les 90 photographies de l'imagier avant publication.
+"""Contrôle les photographies de l'imagier avant publication.
 
 Trois vérifications, chacune née d'une erreur passée inaperçue :
 
@@ -10,12 +10,17 @@ Trois vérifications, chacune née d'une erreur passée inaperçue :
 - **les crédits** : une photographie sans auteur ni licence ne peut pas être
   publiée ;
 - **le cadrage** : une image qui ne remplit pas la carte laisse une bande
-  blanche, visible de loin sur le matériel imprimé.
+  blanche, visible de loin sur le matériel imprimé ;
+- **les chiffres annoncés** : le site et les documents disent combien
+  d'espèces contient chaque cahier. Quand l'imagier a doublé, les pages
+  générées ont suivi — elles comptent le manifeste — mais le site est resté
+  sur les anciens chiffres, et l'enseignante a lu « 9 espèces » devant un
+  cahier qui en contenait trente-six.
 
 Usage : python3 scripts/verifier-imagier.py
 Sortie : code 1 s'il reste quelque chose à corriger.
 """
-import json, os, ssl, sys, time, urllib.parse, urllib.request
+import json, os, re, ssl, sys, time, urllib.parse, urllib.request
 from PIL import Image
 
 ICI = os.path.dirname(os.path.abspath(__file__))
@@ -97,6 +102,29 @@ for n in range(0, len(lots), 30):
             ennuis.append("%-24s espèce %s, attendu %s (%s)"
                           % (slug, nom, taxon, (o.get("place_guess") or "")[:30]))
     time.sleep(0.3)
+
+# — les textes annoncent-ils le bon nombre d'espèces ? —
+par_groupe = {}
+for p_, groupe, slug, _, _ in ns["entrees"]():
+    par_groupe.setdefault((p_, groupe), []).append(slug)
+tailles = {len(v) for v in par_groupe.values()}
+if len(tailles) == 1:
+    n = tailles.pop()
+    TEXTES = ("site/app.js", "README.md", "01-projet-annuel.md",
+              "02-programmation-annuelle.md", "CLAUDE.md")
+    motif = re.compile(r"(\d+)\s+(?:espèces de faune|animaux et)")
+    for nom in TEXTES:
+        chemin = os.path.join(ICI, "..", nom)
+        if not os.path.exists(chemin):
+            continue
+        for ligne, texte in enumerate(open(chemin, encoding="utf-8"), 1):
+            for trouve in motif.finditer(texte):
+                if int(trouve.group(1)) != n:
+                    ennuis.append("%-24s %s:%d annonce %s espèces, le manifeste en a %d"
+                                  % ("chiffres annoncés", nom, ligne, trouve.group(1), n))
+else:
+    ennuis.append("%-24s les groupes n'ont pas tous la même taille : %s"
+                  % ("manifeste", sorted(tailles)))
 
 for e in ennuis:
     print("✗ " + e)
