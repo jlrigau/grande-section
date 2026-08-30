@@ -33,12 +33,18 @@ passage.
 | `captive` | `true` | pour les animaux de la ferme, qui n'ont pas d'observation « sauvage » ; remplace `quality_grade` |
 | `place_id` | `97391` (Europe) | écarte les espèces voisines d'Amérique du Nord |
 | `order_by` | `votes` | le moins mauvais des tris, mais il faut regarder ce qu'il remonte |
+| `month` | `5,6,7` | pour une plante : sans cela le tri remonte des rosettes hivernales et des pieds défleuris |
 | `per_page`, `page` | jusqu'à 60, plusieurs pages | pour élargir le vivier quand une espèce résiste |
 
 Filtrer ensuite côté script sur `original_dimensions` : en deçà de 1000 px de
 côté, la photographie ne s'imprime pas proprement sur une carte. Et préférer
 les photographies en largeur (`width >= height`), qui perdent moins au
 recadrage.
+
+**Un seul observateur peut tenir tout le vivier.** Quarante candidates sont
+parfois quarante clichés du même pied, pris le même jour par la même
+personne : ne garder qu'une photographie par `user.login` avant d'assembler
+la planche, sinon le choix n'est qu'apparent.
 
 **Le taxon rendu n'est pas garanti.** Même avec `taxon_id`, la recherche
 remonte des observations d'espèces voisines : un `Quercus orocantabrica`

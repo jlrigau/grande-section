@@ -7,6 +7,8 @@ voit ni qu'un second animal traîne au fond, ni que le grillage d'un enclos
 barre l'image. Ce script rappelle les candidates retenues en grand.
 
 Usage : python3 scripts/zoom-imagier.py <sortie.jpg> <id> [<id> ...]
+        CADRE=1 applique le recadrage des cartes, pour voir ce que la carte
+        montrera vraiment et non ce que le photographe a cadré
         (les identifiants sont ceux affichés sur les planches, relevés dans
         <CANDIDATS_DIR>/candidats-index.json)
 """
@@ -14,6 +16,10 @@ import io, os, ssl, sys, urllib.error, urllib.request
 from PIL import Image, ImageDraw, ImageFont
 
 CELL = int(os.environ.get("ZOOM_CELL", "520"))
+# CADRE=1 montre les candidates telles que la carte les rognera : une photo
+# séduisante en entier peut perdre son sujet à la coupe.
+CADRE = os.environ.get("CADRE") == "1"
+RATIO = 1.46            # proportion de la zone photo des cartes
 HOTES = ("https://inaturalist-open-data.s3.amazonaws.com/photos",
          "https://static.inaturalist.org/photos")
 
@@ -37,6 +43,19 @@ def telecharge(photo_id, taille="medium"):
     return None
 
 
+def rogne(im):
+    """Le même recadrage que les cartes : le plus grand rectangle au format,
+    décalé vers le haut quand il faut couper haut et bas (le sujet y est le
+    plus souvent). Voir cadre() dans scripts/chercher-images-imagier.py."""
+    l, h = im.size
+    if l / float(h) > RATIO:
+        nl = int(round(h * RATIO))
+        return im.crop(((l - nl) // 2, 0, (l - nl) // 2 + nl, h))
+    nh = int(round(l / RATIO))
+    y = int(round((h - nh) * 0.35))
+    return im.crop((0, y, l, y + nh))
+
+
 if len(sys.argv) < 3:
     sys.exit(__doc__)
 sortie, ids = sys.argv[1], sys.argv[2:]
@@ -49,6 +68,8 @@ for i, pid in enumerate(ids):
     flux = telecharge(pid)
     if flux:
         im = Image.open(flux).convert("RGB")
+        if CADRE:
+            im = rogne(im)
         im.thumbnail((CELL - 10, CELL - 10), Image.LANCZOS)
         img.paste(im, (x + (CELL - im.width) // 2, y + (CELL - im.height) // 2))
     else:

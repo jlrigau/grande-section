@@ -55,8 +55,9 @@ CANDIDATS_DIR=/tmp/cand python3 scripts/candidats-imagier.py taupe-europe cochon
 #    (aussi : « 3-faune », « 5-flore » pour une planche entière ; sans
 #     argument, les dix planches)
 
-# 2 — départager deux clichés proches, en grand
-python3 scripts/zoom-imagier.py /tmp/zoom.jpg 291736892 114935359
+# 2 — départager deux clichés proches, en grand ; CADRE=1 les montre tels
+#     que la carte les rognera, ce qui départage souvent à soi seul
+CADRE=1 python3 scripts/zoom-imagier.py /tmp/zoom.jpg 291736892 114935359
 
 # 3 — inscrire le choix dans OVERRIDES de scripts/imagier-manifest.py,
 #     puis fabriquer l'image
@@ -108,6 +109,18 @@ rue. Les espèces concernées sont listées dans `DOMESTIQUES`
 l'illustratif** : un ours mangeant des pissenlits pour « le pissenlit », un
 renard argenté pour « le renard roux », un bourgeon en gros plan pour « le
 marronnier ». C'est la raison d'être des planches de candidats.
+
+**Pour une plante, penser à la saison.** Le tri par votes remonte volontiers
+des rosettes de feuilles hivernales ou des pieds défleuris : la digitale
+n'était qu'une touffe verte sur les quarante premières candidates. Ajouter
+`month=5,6,7` (les mois de floraison de l'espèce) fait apparaître un vrai
+éventail. Même remarque pour les arbres : la feuille, la fleur ou le fruit
+ne se photographient pas au même moment.
+
+**Se méfier d'un vivier tenu par un seul observateur.** Quarante candidates
+peuvent être quarante clichés du même pied par la même personne, le même
+jour. Ne garder qu'une photographie par observateur avant de regarder la
+planche.
 
 Quand une espèce résiste, deux filtres sauvent souvent la mise :
 `place_id=97391` (l'Europe), qui écarte les espèces voisines d'autres

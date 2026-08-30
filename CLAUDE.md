@@ -53,6 +53,14 @@ période traite. Une séance ajoutée sans accroche ne sera pas comptée.
 |---|---|
 | [`imagier-photos`](.claude/skills/imagier-photos/SKILL.md) | ajouter, remplacer ou vérifier une photographie de l'imagier — y compris quand la demande dit seulement « on ne voit pas bien l'animal » ou « change cette image » |
 
+Un skill se mesure : `scripts/mesurer-declenchement.py` rejoue une liste de
+demandes réalistes et regarde si le skill s'ouvre au bon moment (les cas de
+l'imagier sont dans `tests/`). **Ne pas se fier au banc d'essai du
+skill-creator** pour cela : il passe par un faux fichier de commande que
+cette version de Claude Code n'expose pas comme un skill, si bien qu'aucune
+demande ne déclenche jamais rien — il annonçait 10/20 là où la mesure
+directe donne 20/20.
+
 ## Images : quelles sources, et laquelle éviter
 
 ### Wikimedia Commons — à éviter pour toute nouvelle moisson
