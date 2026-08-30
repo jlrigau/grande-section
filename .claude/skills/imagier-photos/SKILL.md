@@ -50,10 +50,14 @@ candidats : **aucun tri automatique ne convient à un imagier** (voir plus
 bas), et une image choisie sans être regardée est une image à refaire.
 
 ```sh
-# 1 — regarder ce qui existe : cinq à huit candidates par espèce, numérotées
+# 1 — regarder ce qui existe : huit candidates par espèce, numérotées
 CANDIDATS_DIR=/tmp/cand python3 scripts/candidats-imagier.py taupe-europe cochon
 #    (aussi : « 3-faune », « 5-flore » pour une planche entière ; sans
 #     argument, les dix planches)
+#    Vivier pauvre — troupeaux et zébus pour « la vache », rosettes
+#    hivernales pour « la digitale » ? L'élargir plutôt que se rabattre :
+PLACE=97391 MOIS=5,6,7 PAGES=4 NB_CANDIDATS=12 \
+  CANDIDATS_DIR=/tmp/cand python3 scripts/candidats-imagier.py digitale
 
 # 2 — départager deux clichés proches, en grand ; CADRE=1 les montre tels
 #     que la carte les rognera, ce qui départage souvent à soi seul
@@ -112,15 +116,14 @@ marronnier ». C'est la raison d'être des planches de candidats.
 
 **Pour une plante, penser à la saison.** Le tri par votes remonte volontiers
 des rosettes de feuilles hivernales ou des pieds défleuris : la digitale
-n'était qu'une touffe verte sur les quarante premières candidates. Ajouter
-`month=5,6,7` (les mois de floraison de l'espèce) fait apparaître un vrai
-éventail. Même remarque pour les arbres : la feuille, la fleur ou le fruit
-ne se photographient pas au même moment.
+n'était qu'une touffe verte sur les quarante premières candidates. `MOIS=5,6,7`
+(les mois de floraison de l'espèce) fait apparaître un vrai éventail. Même
+remarque pour les arbres : la feuille, la fleur et le fruit ne se
+photographient pas au même moment.
 
-**Se méfier d'un vivier tenu par un seul observateur.** Quarante candidates
-peuvent être quarante clichés du même pied par la même personne, le même
-jour. Ne garder qu'une photographie par observateur avant de regarder la
-planche.
+Le script ne garde déjà qu'**un cliché par observateur** — sans quoi
+quarante candidates sont parfois quarante photos du même pied, prises le
+même jour par la même personne.
 
 Quand une espèce résiste, deux filtres sauvent souvent la mise :
 `place_id=97391` (l'Europe), qui écarte les espèces voisines d'autres

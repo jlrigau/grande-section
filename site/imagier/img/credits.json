@@ -1157,16 +1157,16 @@
   "taxon": "Trifolium pratense"
  },
  "vache": {
-  "auteur": "Paulius Rupšas",
+  "auteur": "Julien Lepage",
   "fichier": "vache.jpg",
   "groupe": "faune",
   "licence": "CC BY",
   "nom": "la vache",
-  "observation": "https://www.inaturalist.org/observations/18981595",
+  "observation": "https://www.inaturalist.org/observations/32582558",
   "periode": 4,
-  "photo_id": 29102489,
+  "photo_id": 51117584,
   "px": "1100x753",
-  "source_px": "2048x1365",
+  "source_px": "2048x1250",
   "taxon": "Bos taurus"
  }
 }

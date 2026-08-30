@@ -43,8 +43,13 @@ recadrage.
 
 **Un seul observateur peut tenir tout le vivier.** Quarante candidates sont
 parfois quarante clichés du même pied, pris le même jour par la même
-personne : ne garder qu'une photographie par `user.login` avant d'assembler
-la planche, sinon le choix n'est qu'apparent.
+personne : `candidats-imagier.py` ne retient donc qu'une photographie par
+`user.login`, sinon le choix n'est qu'apparent.
+
+**Retrouver les crédits demande d'aller loin.** La photographie choisie à la
+main se trouve parfois à la quatrième page du vivier : `credits_photo()`
+pagine jusqu'à épuisement (`PAGES_MAX`), et non plus jusqu'à la page 3 — un
+arrêt court faisait rejeter la photographie faute d'auteur.
 
 **Le taxon rendu n'est pas garanti.** Même avec `taxon_id`, la recherche
 remonte des observations d'espèces voisines : un `Quercus orocantabrica`
@@ -92,6 +97,10 @@ option.
 | `IMAGIER_CACHE` | `chercher-images-imagier.py` | dossier du cache (défaut `/tmp/imagier-source`) |
 | `CANDIDATS_DIR` | `candidats-imagier.py` | où écrire les planches |
 | `NB_CANDIDATS` | `candidats-imagier.py` | candidates par espèce (défaut 8) |
+| `PLACE` | `candidats-imagier.py` | `place_id`, par exemple 97391 pour l'Europe |
+| `MOIS` | `candidats-imagier.py` | `month`, par exemple `5,6,7` pour une plante en fleur |
+| `PAGES` | `candidats-imagier.py` | pages de 60 explorées quand le vivier est pauvre (défaut 1) |
+| `CADRE` | `zoom-imagier.py` | applique le recadrage des cartes aux candidates |
 | `ZOOM_CELL` | `zoom-imagier.py` | côté d'une vignette agrandie (défaut 520 px) |
 | `REVUE_DIR` | `revoir-imagier.py` | où écrire les planches de revue |
 

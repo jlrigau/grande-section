@@ -10,6 +10,11 @@ assemble en une planche numérotée, à regarder avant de renseigner OVERRIDES
 dans scripts/imagier-manifest.py.
 
 Usage : python3 scripts/candidats-imagier.py [1-faune | pigeon-biset …]
+        PLACE=97391   restreint à l'Europe (écarte les espèces voisines
+                      d'un autre continent) ;
+        MOIS=5,6,7    restreint aux mois de floraison, pour une plante ;
+        PAGES=4       explore plus loin quand le vivier est pauvre ;
+        NB_CANDIDATS  vignettes par espèce (défaut 8).
         (sans argument : les dix planches ; sinon des planches entières
         « N-faune » / « N-flore » et/ou des espèces isolées, par leur slug)
 Sortie : <DOSSIER>/candidats-p<N>-<groupe>.jpg  et  le JSON des identifiants
@@ -27,6 +32,14 @@ DOMESTIQUES = ns["DOMESTIQUES"]
 
 DOSSIER = os.environ.get("CANDIDATS_DIR", "/tmp")
 NB = int(os.environ.get("NB_CANDIDATS", "8"))
+# Quand le vivier d'une espèce est pauvre — des troupeaux et des zébus pour
+# « la vache », des rosettes de feuilles hivernales pour « la digitale » —,
+# il faut l'élargir plutôt que se rabattre sur une mauvaise vignette. Ces
+# trois réglages évitent d'écrire un moissonneur jetable à côté.
+PLACE = os.environ.get("PLACE")      # place_id : 97391 = l'Europe
+MOIS = os.environ.get("MOIS")        # « 5,6,7 » : les mois de floraison
+PAGES = int(os.environ.get("PAGES", "1"))
+os.makedirs(DOSSIER, exist_ok=True)
 CELL, LEG = 330, 34
 MIN_COTE = 1000
 LICENCES = "cc0,cc-by,cc-by-sa"
@@ -86,21 +99,35 @@ def candidates(taxon, recherche_seule=True):
         params["captive"] = "true"        # la ferme, pas les populations férales
     elif recherche_seule:
         params["quality_grade"] = "research"
-    with ouvre("https://api.inaturalist.org/v1/observations?" + urllib.parse.urlencode(params)) as r:
-        d = json.load(r)
-    out = []
-    for obs in d.get("results", []):
-        photo = (obs.get("photos") or [None])[0]   # la première photo est la mieux cadrée
-        if not photo:
-            continue
-        dim = photo.get("original_dimensions") or {}
-        l, h = dim.get("width", 0), dim.get("height", 0)
-        if min(l, h) < MIN_COTE:
-            continue
-        out.append({"id": photo["id"], "vignette": photo["url"].replace("square", "medium"),
-                    "accords": obs.get("num_identification_agreements", 0),
-                    "espece": (obs.get("taxon") or {}).get("name", "?"),
-                    "paysage": l >= h})
+    if PLACE:
+        params["place_id"] = PLACE
+    if MOIS:
+        params["month"] = MOIS
+    out, vus = [], set()
+    for page in range(1, PAGES + 1):
+        params["page"] = str(page)
+        with ouvre("https://api.inaturalist.org/v1/observations?" + urllib.parse.urlencode(params)) as r:
+            d = json.load(r)
+        for obs in d.get("results", []):
+            photo = (obs.get("photos") or [None])[0]   # la première photo est la mieux cadrée
+            if not photo:
+                continue
+            dim = photo.get("original_dimensions") or {}
+            l, h = dim.get("width", 0), dim.get("height", 0)
+            if min(l, h) < MIN_COTE:
+                continue
+            # un seul cliché par observateur : quarante candidates sont parfois
+            # quarante photos du même pied, prises le même jour
+            qui = ((obs.get("user") or {}).get("login")) or obs["id"]
+            if qui in vus:
+                continue
+            vus.add(qui)
+            out.append({"id": photo["id"], "vignette": photo["url"].replace("square", "medium"),
+                        "accords": obs.get("num_identification_agreements", 0),
+                        "espece": (obs.get("taxon") or {}).get("name", "?"),
+                        "paysage": l >= h})
+        if not d.get("results") or page * 60 >= d.get("total_results", 0):
+            break
     if not out and recherche_seule and taxon not in DOMESTIQUES:
         return candidates(taxon, recherche_seule=False)
     # on garde l'ordre d'iNaturalist ; à qualité égale, une photo en

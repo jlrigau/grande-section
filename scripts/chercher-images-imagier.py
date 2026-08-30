@@ -49,6 +49,8 @@ RATIO = 1.46            # proportion de la zone photo des cartes (90,6 x 62 mm)
 QUALITE = 84
 MIN_COTE = 1000         # px : en deçà, la photo est trop petite pour imprimer
 LICENCES = "cc0,cc-by,cc-by-sa"
+PAGES_MAX = 20          # pages de 60 explorées pour retrouver les crédits
+                        # d'une photographie imposée (voir credits_photo)
 
 API = "https://api.inaturalist.org/v1/observations"
 cafile = "/root/.ccr/ca-bundle.crt"
@@ -167,18 +169,25 @@ def credits_photo(taxon, photo_id):
 
     La photographie retenue à la main vient souvent d'une recherche plus
     fine que celle du script (restreinte à l'Europe, ou aux animaux
-    d'élevage) : on rejoue donc les mêmes variantes, sur plusieurs pages,
+    d'élevage) : on rejoue donc les mêmes variantes, page après page,
     jusqu'à retrouver l'observation. Sans cela la carte serait publiée sans
-    mention d'auteur, ce que les licences n'autorisent pas."""
+    mention d'auteur, ce que les licences n'autorisent pas.
+
+    Le balayage va jusqu'au bout du vivier (PAGES_MAX pages de soixante),
+    et non plus jusqu'à la troisième page : la vache choisie à la main se
+    trouvait à la quatrième page des bovins d'élevage d'Europe, et le
+    script refusait de la publier faute de crédits."""
     tid = taxon_id(taxon)
     variantes = [{"quality_grade": "research"}, {}, {"captive": "true"},
                  {"quality_grade": "research", "place_id": "97391"},
+                 {"captive": "true", "place_id": "97391"},
                  {"quality_grade": "needs_id"}]
     for extra in variantes:
         for tri in ("votes", "created_at"):
-            for page in ("1", "2", "3"):
+            page = 1
+            while page <= PAGES_MAX:
                 params = {"taxon_id": tid, "photo_license": LICENCES, "photos": "true",
-                          "order_by": tri, "per_page": "60", "page": page}
+                          "order_by": tri, "per_page": "60", "page": str(page)}
                 params.update(extra)
                 with ouvre(API + "?" + urllib.parse.urlencode(params)) as r:
                     d = json.load(r)
@@ -192,8 +201,9 @@ def credits_photo(taxon, photo_id):
                                 "auteur": nettoie_attribution(ph.get("attribution", "")),
                                 "observation": "https://www.inaturalist.org/observations/%s" % obs["id"],
                                 "px": "%dx%d" % (dim.get("width", 0), dim.get("height", 0))}
-                if not d.get("results"):
-                    break
+                if not d.get("results") or page * 60 >= d.get("total_results", 0):
+                    break                      # vivier épuisé, variante suivante
+                page += 1
     return None
 
 

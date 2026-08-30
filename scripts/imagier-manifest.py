@@ -249,7 +249,7 @@ OVERRIDES = {
     "tilleul": 70594428,
     "tournesol": 155296308,
     "trefle-des-pres": 134044,
-    "vache": 29102489,
+    "vache": 51117584,
 }
 
 
