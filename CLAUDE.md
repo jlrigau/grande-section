@@ -64,6 +64,7 @@ vivent dans le script du matériel concerné (ici `verifier-imagier.py`).
 | Skill | Quand |
 |---|---|
 | [`imagier-photos`](.claude/skills/imagier-photos/SKILL.md) | ajouter, remplacer ou vérifier une photographie de l'imagier — y compris quand la demande dit seulement « on ne voit pas bien l'animal » ou « change cette image » |
+| [`fiches-illustrations`](.claude/skills/fiches-illustrations/SKILL.md) | ajouter, remplacer ou vérifier un pictogramme des fiches élève (`site/fiches/img/`) — y compris « le dessin de la poule est bizarre » ou « il me faut une image de tracteur » |
 
 Un skill se mesure : `scripts/mesurer-declenchement.py` rejoue une liste de
 demandes réalistes et regarde si le skill s'ouvre au bon moment (les cas de
@@ -87,12 +88,15 @@ regroupement des appels d'API, ni le passage par les fichiers d'origine
 plutôt que les vignettes n'y changent quoi que ce soit : la limite porte sur
 l'adresse, pas sur la manière de demander.
 
-`scripts/chercher-images.py` et `scripts/images-manifest.py` s'en servent
-encore pour les **dessins** des fiches élève. Ces images-là sont déjà
-téléchargées et versionnées dans `site/fiches/img/` : le script n'a pas à
-être relancé. S'il faut de nouveaux dessins, ne pas compter sur Commons —
-chercher d'abord ailleurs (Openclipart, Pixabay, ou un dessin fabriqué en
-SVG), et n'y revenir qu'en dernier recours, pour une poignée de fichiers.
+Les illustrations des fiches élève n'en dépendent plus : ce sont des
+**pictogrammes** (Mulberry Symbols via jsDelivr, ARASAAC via son API — deux
+sources sans bridage), versionnés dans `site/fiches/img/` avec leurs crédits.
+La procédure complète — sources dans l'ordre, pièges des noms trompeurs,
+planche de candidats obligatoire, installation, contrôles — est dans le
+skill [`fiches-illustrations`](.claude/skills/fiches-illustrations/SKILL.md),
+outillée par `scripts/chercher-pictos.py` (chercher / installer / verifier).
+`scripts/chercher-images.py` et `scripts/images-manifest.py` sont l'ancienne
+moisson Commons : ne pas les relancer.
 
 ### Vérifier la licence avant de retenir une image
 
