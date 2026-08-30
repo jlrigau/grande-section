@@ -333,7 +333,7 @@ OVERRIDES = {
     "rose-tremiere": 272214329,
     "salamandre-tachetee": 186013159,
     "salicorne": 158336699,
-    "sanglier": 189716210,
+    "sanglier": 605143851,
     "sapin-blanc": 661649587,
     "tamaris": 404514988,
     "taupe-europe": 291736892,

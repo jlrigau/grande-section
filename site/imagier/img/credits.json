@@ -2067,16 +2067,16 @@
   "taxon": "Salicornia europaea"
  },
  "sanglier": {
-  "auteur": "Kai Löhr",
+  "auteur": "Donald Davesne",
   "fichier": "sanglier.jpg",
   "groupe": "faune",
   "licence": "CC BY",
   "nom": "le sanglier",
-  "observation": "https://www.inaturalist.org/observations/112320347",
+  "observation": "https://www.inaturalist.org/observations/333334542",
   "periode": 2,
-  "photo_id": 189716210,
+  "photo_id": 605143851,
   "px": "1100x753",
-  "source_px": "1500x1500",
+  "source_px": "2048x1536",
   "taxon": "Sus scrofa"
  },
  "sapin-blanc": {
