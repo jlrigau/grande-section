@@ -33,6 +33,10 @@ COULEURS = {1: ("#2f6ea8", "#b9d1e8", "#eef5fb"),
             5: ("#12809c", "#a9d9e4", "#eef8fa")}
 GROUPES = {"faune": "faune", "flore": "flore"}
 PAR_PLANCHE = 6
+# Les étiquettes tiennent en deux colonnes de neuf : au-delà, la planche
+# déborde de la page et vient s'imprimer par-dessus les crédits. Le défaut
+# est resté invisible tant qu'une période comptait dix-huit espèces.
+ETIQUETTES_PAR_PLANCHE = 18
 
 
 def echappe(t):
@@ -78,15 +82,22 @@ def planches(p, milieu, entrees, avec_nom, intitule):
 
 
 def planche_etiquettes(p, milieu, entrees):
-    ets = "\n    ".join(
-        '<div class="etiquette"><div class="mot%s">%s</div>%s</div>'
-        % (classe_mot(n), echappe(n), repere(p, milieu, GROUPES[g])) for g, s, n in entrees)
-    return ('<section class="planche">\n'
-            '  <div class="entete-planche"><span class="milieu">Période %d · %s</span>'
-            '<span>Étiquettes-mots (à découper)</span>'
-            '<span>Imagier faune et flore · GS</span></div>\n'
-            '  <div class="etiquettes">\n    %s\n  </div>\n'
-            '</section>' % (p, milieu, ets))
+    """Découpe la série d'étiquettes en pages, comme les cartes."""
+    out = []
+    total = (len(entrees) + ETIQUETTES_PAR_PLANCHE - 1) // ETIQUETTES_PAR_PLANCHE
+    for i in range(total):
+        lot = entrees[i * ETIQUETTES_PAR_PLANCHE:(i + 1) * ETIQUETTES_PAR_PLANCHE]
+        ets = "\n    ".join(
+            '<div class="etiquette"><div class="mot%s">%s</div>%s</div>'
+            % (classe_mot(n), echappe(n), repere(p, milieu, GROUPES[g])) for g, s, n in lot)
+        rang = " — planche %d/%d" % (i + 1, total) if total > 1 else ""
+        out.append('<section class="planche">\n'
+                   '  <div class="entete-planche"><span class="milieu">Période %d · %s</span>'
+                   '<span>Étiquettes-mots (à découper)%s</span>'
+                   '<span>Imagier faune et flore · GS</span></div>\n'
+                   '  <div class="etiquettes">\n    %s\n  </div>\n'
+                   '</section>' % (p, milieu, rang, ets))
+    return "\n".join(out)
 
 
 def liste(titre, entrees):

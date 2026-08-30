@@ -32,7 +32,12 @@ body {
 /* La page de garde porte la liste des espèces : à trente-six par période
    elle déborde de sa hauteur fixe, et le débordement s'imprimait par-dessus
    la planche suivante. On la laisse prendre la hauteur qu'il lui faut. */
-.planche.garde { height: auto; min-height: 277mm; }
+/* La garde et les crédits sont du texte, pas une grille de découpe : ils
+   prennent la hauteur qu'il leur faut. Leur imposer la hauteur exacte de la
+   page ne laissait aucune tolérance d'arrondi — le pied de la garde de la
+   période 5 passait seul sur une deuxième page —, et un contenu plus long
+   que la page s'imprimait par-dessus la planche suivante. */
+.planche.garde, .planche.credits { height: auto; }
 .planche:last-child { page-break-after: auto; break-after: auto; }
 
 /* — Filet d'identification en haut de planche (hors zone de découpe) — */
@@ -115,15 +120,15 @@ body {
 }
 .garde .sous-titre { font-size: 10.5pt; color: #55606a; margin: 0 0 3mm; }
 .garde h2 {
-  font-size: 11pt; color: var(--couleur); margin: 3.5mm 0 1mm;
+  font-size: 11pt; color: var(--couleur); margin: 2.8mm 0 .8mm;
   border-bottom: .8pt solid var(--couleur-clair); padding-bottom: .6mm;
 }
-.garde p, .garde li { font-size: 9.5pt; margin: .8mm 0; }
+.garde p, .garde li { font-size: 9.2pt; margin: .6mm 0; }
 .garde ol, .garde ul { margin: 1mm 0; padding-left: 5mm; }
 .garde li { margin-bottom: .4mm; }
 .encadre {
   border: .8pt solid var(--couleur-clair); background: var(--couleur-fond);
-  border-radius: 2mm; padding: 2mm 3.5mm; margin: 2mm 0;
+  border-radius: 2mm; padding: 1.6mm 3.2mm; margin: 1.6mm 0;
 }
 .encadre .titre-encadre { font-weight: 700; color: var(--couleur); font-size: 9.5pt; }
 .trois-temps { list-style: none; padding-left: 0; }
@@ -135,7 +140,7 @@ body {
 /* trente-six noms tiennent en deux colonnes par groupe, sans rétrécir le texte
    au point de le rendre pénible à lire pour l'enseignante */
 .listes ol { columns: 2; column-gap: 5mm; }
-.listes li { break-inside: avoid; font-size: 8pt; margin-bottom: .15mm; line-height: 1.25; }
+.listes li { break-inside: avoid; font-size: 8pt; margin-bottom: .1mm; line-height: 1.18; }
 .listes li em { font-size: 7pt; }
 .listes h3 { font-size: 9.5pt; margin: 0 0 .5mm; color: #2c3640; }
 .listes ol { margin: 0; padding-left: 6mm; font-size: 9pt; }
