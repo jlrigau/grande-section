@@ -507,16 +507,16 @@
   "taxon": "Coccinella septempunctata"
  },
  "cochon": {
-  "auteur": "Daniel Dias",
+  "auteur": "Dan Riley",
   "fichier": "cochon.jpg",
   "groupe": "faune",
-  "licence": "CC BY-SA",
+  "licence": "CC BY",
   "nom": "le cochon",
-  "observation": "https://www.inaturalist.org/observations/129670901",
+  "observation": "https://www.inaturalist.org/observations/182510578",
   "periode": 4,
-  "photo_id": 220398797,
+  "photo_id": 318230138,
   "px": "1100x753",
-  "source_px": "2048x1602",
+  "source_px": "2048x1177",
   "taxon": "Sus scrofa domesticus"
  },
  "colza": {
@@ -2067,16 +2067,16 @@
   "taxon": "Salicornia europaea"
  },
  "sanglier": {
-  "auteur": "Cullen Hanks",
+  "auteur": "Kai Löhr",
   "fichier": "sanglier.jpg",
   "groupe": "faune",
   "licence": "CC BY",
   "nom": "le sanglier",
-  "observation": "https://www.inaturalist.org/observations/22481962",
+  "observation": "https://www.inaturalist.org/observations/112320347",
   "periode": 2,
-  "photo_id": 34825790,
+  "photo_id": 189716210,
   "px": "1100x753",
-  "source_px": "2048x1677",
+  "source_px": "1500x1500",
   "taxon": "Sus scrofa"
  },
  "sapin-blanc": {

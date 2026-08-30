@@ -79,6 +79,14 @@ for slug in sorted(ATTENDUES & set(credits)):
         ennuis.append("%-24s bandes blanches : l'image ne remplit pas la carte" % slug)
 
 # — l'espèce est-elle la bonne ? —
+# les taxons des autres cartes, pour repérer une carte qui prend la place
+# d'une autre (le cochon sous « le sanglier »)
+AUTRES_TAXONS = {}
+for _, _, slug_, nom_, taxon_ in ns["entrees"]():
+    AUTRES_TAXONS[normalise(taxon_)] = nom_
+    if taxon_ in SYNONYMES:
+        AUTRES_TAXONS[normalise(SYNONYMES[taxon_])] = nom_
+
 lots = [(s, credits[s]["taxon"], credits[s].get("observation", "").rstrip("/").split("/")[-1])
         for s in sorted(ATTENDUES & set(credits))]
 lots = [t for t in lots if t[2].isdigit()]
@@ -98,6 +106,14 @@ for n in range(0, len(lots), 30):
         # triton alpestre du manifeste
         attendus = {a for a in (normalise(taxon), normalise(SYNONYMES.get(taxon, ""))) if a}
         vu = normalise(nom)
+        # ... sauf quand cette sous-espèce est elle-même une autre carte :
+        # le cochon est une sous-espèce du sanglier, et une recherche
+        # « captive » sur Sus scrofa rend neuf cochons de ferme sur douze.
+        # Les publier sous « le sanglier » passerait sans cette exception.
+        if vu in AUTRES_TAXONS and vu not in attendus:
+            ennuis.append("%-24s espèce %s, qui est la carte « %s », attendu %s"
+                          % (slug, nom, AUTRES_TAXONS[vu], taxon))
+            continue
         if vu not in attendus and not any(vu.startswith(a + " ") for a in attendus):
             ennuis.append("%-24s espèce %s, attendu %s (%s)"
                           % (slug, nom, taxon, (o.get("place_guess") or "")[:30]))

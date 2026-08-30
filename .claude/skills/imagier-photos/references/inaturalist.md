@@ -66,6 +66,12 @@ accepte, y compris une sous-espèce d'un nom renommé (*Mesotriton alpestris
 alpestris* pour *Ichthyosaura alpestris*). Seule une espèce **voisine** est
 signalée.
 
+**Sauf quand la sous-espèce est une autre carte de l'imagier.** *Sus scrofa
+domesticus* est une sous-espèce de *Sus scrofa* : avec `captive=true`, le
+vivier du sanglier est aux trois quarts fait de cochons de ferme. Le
+contrôle refuse qu'une carte porte l'espèce d'une autre, mais la planche ne
+le signale pas — vérifier la colonne « espèce » de `candidats-index.json`.
+
 **Le taxon rendu n'est pas garanti.** Même avec `taxon_id`, la recherche
 remonte des observations d'espèces voisines : un `Quercus orocantabrica`
 parmi les `Quercus robur`. Toujours comparer `observation.taxon.name` au nom

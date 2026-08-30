@@ -160,6 +160,15 @@ féral : des cochons impossibles à distinguer d'un sanglier, des poules de
 rue. Les espèces concernées sont listées dans `DOMESTIQUES`
 (`scripts/imagier-manifest.py`).
 
+**Attention quand une carte est la sous-espèce d'une autre.** Le cochon
+(*Sus scrofa domesticus*) est une sous-espèce du sanglier (*Sus scrofa*) :
+une recherche `captive=true` sur le sanglier rend neuf cochons de ferme sur
+douze candidats. Les planches ne les encadrent pas — une sous-espèce est
+normalement la bonne espèce —, et le contrôle les laissait passer pour la
+même raison. Il refuse désormais qu'une carte prenne l'espèce d'une autre,
+mais **regarder l'animal reste le seul vrai garde-fou** : lire la colonne
+« espèce » de l'index des candidats avant de choisir.
+
 **Les plantes cultivées aussi.** Un champ est « captive » au sens
 d'iNaturalist. Sans ce filtre, `Beta vulgaris` ne rend que la betterave
 maritime sauvage, la vigne aucune grappe et le noyer aucune noix — que des
