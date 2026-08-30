@@ -29,6 +29,11 @@ exec(compile(open(os.path.join(ICI, "imagier-manifest.py"), encoding="utf-8").re
              "imagier-manifest.py", "exec"), ns)
 ENTREES = list(ns["entrees"]())
 DOMESTIQUES = ns["DOMESTIQUES"]
+# mêmes renommages acceptés que scripts/verifier-imagier.py
+SYNONYMES = {"Ammophila arenaria": "Calamagrostis arenaria",
+             "Anemone nemorosa": "Anemonoides nemorosa",
+             "Ichthyosaura alpestris": "Mesotriton alpestris",
+             "Halimione portulacoides": "Atriplex portulacoides"}
 
 DOSSIER = os.environ.get("CANDIDATS_DIR", "/tmp")
 NB = int(os.environ.get("NB_CANDIDATS", "8"))
@@ -158,10 +163,17 @@ def planche(nom_fichier, especes):
             d.rectangle([cx, cy, cx + CELL - 1, cy + CELL - 1], outline="#bbb")
             d.text((cx + 8, cy + 6), "%d" % (c + 1), fill="#c00", font=F)
             # le vivier contient des espèces voisines : on les signale plutôt
-            # que de laisser choisir un chêne du Cantabrique pour « le chêne »
-            if cand.get("espece") not in (taxon, "?"):
+            # que de laisser choisir un chêne du Cantabrique pour « le chêne ».
+            # Un renommage accepté n'est pas une espèce voisine : sans cette
+            # exception, toutes les anémones des bois seraient barrées de rouge.
+            espece = cand.get("espece") or "?"
+            # une sous-espèce de l'espèce demandée en est bien une : le loup
+            # d'Italie est un loup. Seules les espèces voisines sont barrées.
+            attendus = (taxon, SYNONYMES.get(taxon), "?")
+            if espece not in attendus and not any(
+                    a and espece.startswith(a + " ") for a in attendus):
                 d.rectangle([cx, cy, cx + CELL - 1, cy + CELL - 1], outline="#c00", width=4)
-                d.text((cx + 8, cy + CELL - 26), cand["espece"][:26], fill="#c00", font=F)
+                d.text((cx + 8, cy + CELL - 26), espece[:26], fill="#c00", font=F)
     chemin = os.path.join(DOSSIER, nom_fichier)
     img.save(chemin, "JPEG", quality=86)
     return chemin

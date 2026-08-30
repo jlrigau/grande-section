@@ -88,8 +88,12 @@ for n in range(0, len(lots), 30):
             ennuis.append("%-24s observation %s introuvable" % (slug, obs))
             continue
         nom = (o.get("taxon") or {}).get("name", "?")
-        attendus = {normalise(taxon), normalise(SYNONYMES.get(taxon, ""))}
-        if normalise(nom) not in attendus and not normalise(nom).startswith(normalise(taxon) + " "):
+        # le nom attendu, son renommage accepté, et les sous-espèces de l'un
+        # comme de l'autre : « Mesotriton alpestris alpestris » reste le
+        # triton alpestre du manifeste
+        attendus = {a for a in (normalise(taxon), normalise(SYNONYMES.get(taxon, ""))) if a}
+        vu = normalise(nom)
+        if vu not in attendus and not any(vu.startswith(a + " ") for a in attendus):
             ennuis.append("%-24s espèce %s, attendu %s (%s)"
                           % (slug, nom, taxon, (o.get("place_guess") or "")[:30]))
     time.sleep(0.3)
