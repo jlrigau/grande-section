@@ -15,6 +15,7 @@ commentaires et les messages de commit.
 | `site/` | l'application web (JS sans cadriciel), publiée sur GitHub Pages |
 | `site/fiches/` | les fiches élève imprimables, une page A4 par fiche |
 | `site/imagier/` | l'imagier Montessori, un cahier de cartes par période |
+| `site/cartes-corpus/` | les cartes-corpus de vocabulaire, un cahier par période |
 | `scripts/` | fabrication des pages et des images |
 | `.claude/skills/` | les procédures outillées du dépôt (voir ci-dessous) |
 | `referentiel/` | le programme sous forme de liste numérotée, et le contrôle de couverture |
@@ -25,6 +26,7 @@ chaque déploiement avec Chromium en mode `--print-to-pdf`.
 Après avoir touché à un manifeste ou à un gabarit, régénérer les pages :
 
 ```sh
+python3 scripts/generer-cartes-corpus.py # site/cartes-corpus/periode-N.html
 python3 scripts/generer-imagier.py     # site/imagier/periode-N.html
 python3 scripts/generer-credits.py     # page des crédits des fiches
 ```

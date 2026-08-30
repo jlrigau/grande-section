@@ -922,5 +922,33 @@
   "page": "https://arasaac.org/pictograms/fr/6180",
   "licence": "CC BY-NC-SA",
   "auteur": "Sergio Palao — propriété du Gouvernement d’Aragon (Espagne)"
+ },
+ "tracteur": {
+  "fichier": "tracteur.svg",
+  "source": "Mulberry Symbols",
+  "page": "https://mulberrysymbols.org/",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Paxtoncrafts Charitable Trust"
+ },
+ "coq": {
+  "fichier": "coq.svg",
+  "source": "Mulberry Symbols",
+  "page": "https://mulberrysymbols.org/",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Paxtoncrafts Charitable Trust"
+ },
+ "ruche": {
+  "fichier": "ruche.svg",
+  "source": "Mulberry Symbols",
+  "page": "https://mulberrysymbols.org/",
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Paxtoncrafts Charitable Trust"
+ },
+ "mairie": {
+  "fichier": "mairie.png",
+  "source": "ARASAAC",
+  "page": "https://arasaac.org/pictograms/fr/3060",
+  "licence": "CC BY-NC-SA",
+  "auteur": "Sergio Palao — propriété du Gouvernement d’Aragon (Espagne)"
  }
 }

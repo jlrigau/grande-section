@@ -26,7 +26,37 @@ Chaque batterie de période contient :
 2. **Grilles d'observation en situation** (langage oral, EPS, arts, EVAR) — à renseigner au fil des séances de la période.
 3. Un **tableau récapitulatif de la période** à agrafer dans le dossier de l'élève.
 
-## 4. Livret de suivi annuel — compétences repères GS
+## 4. D'où vient le matériel de chaque fiche
+
+Chaque fiche porte, sous la ligne **Matériel**, une ligne **Où le trouver**. Elle
+renvoie toujours à l'une de ces trois provenances — et à aucune autre : rien n'est
+mentionné sans qu'on puisse dire où le prendre.
+
+| Provenance | Ce que c'est | Où |
+|---|---|---|
+| **Fourni, à télécharger** | la **fiche élève** de la période, les **cartes-corpus** du milieu, l'**imagier** faune et flore | sur le site, un PDF par période, prêt à imprimer |
+| **Matériel de classe** | ce qu'une classe de GS possède déjà : blocs logiques, perles, gommettes, dé, jetons, lettres mobiles, balance, solides, globe, tangram | l'armoire de la classe |
+| **À fabriquer en classe** | ce qui se construit **avec les élèves** et perdrait son sens tout fait : photographies des sorties et des expériences, maquette du quartier, marottes de l'album, élevage, écrits réels de la classe, frise des souvenirs de l'année | la classe, pendant la période |
+
+La troisième colonne n'est pas un manque : une maquette du quartier achetée toute
+faite n'évaluerait plus rien, puisque c'est **sa construction** qui fait
+l'apprentissage. De même, les photographies d'une sortie ne valent que si ce sont
+celles de la sortie que les élèves ont vécue.
+
+### Les cartes-corpus
+
+Les fiches **X.1** (vocabulaire) et **X.3** (phonologie) demandent des
+« cartes-images des corpus ». Ces cartes sont désormais fournies : un cahier par
+période, `cartes-corpus-periode-N.pdf`, qui reprend **tous les noms des trois
+corpus** de la période — le milieu, la faune, la flore — sous forme de cartes de
+nomenclature à découper et à plastifier, sur le modèle de l'imagier. Chaque cahier
+se termine par les **étiquettes de tri** (les catégories à coller sur les boîtes).
+
+Les verbes et les adjectifs des corpus (*traverser*, *bruyant*, *hiberner*,
+*rugueux*…) n'y figurent pas : ils ne s'illustrent pas par une image sans
+l'ambiguïser, et s'évaluent en situation, dans le réemploi.
+
+## 5. Livret de suivi annuel — compétences repères GS
 
 À renseigner à chaque période (P1 → P5), code A/EC/NE.
 
@@ -103,7 +133,7 @@ Chaque batterie de période contient :
 | Coopère, développe des relations positives ; identifie les adultes de confiance | | | | | |
 | Respecte les différences ; agit dans l'égalité filles-garçons | | | | | |
 
-## 5. Grille mensuelle « corpus de vocabulaire » (à dupliquer chaque mois)
+## 6. Grille mensuelle « corpus de vocabulaire » (à dupliquer chaque mois)
 
 Passation : jeu de l'imagier individuel (5 min) — 10 mots tirés des corpus du mois.
 
@@ -111,7 +141,7 @@ Passation : jeu de l'imagier individuel (5 min) — 10 mots tirés des corpus du
 |---|---|---|---|---|
 | … | | | | |
 
-## 6. Calendrier de passation
+## 7. Calendrier de passation
 
 | Période | Semaines de passation | Batterie |
 |---|---|---|
