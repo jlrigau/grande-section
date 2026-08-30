@@ -70,11 +70,11 @@ Les photographies proviennent d'**iNaturalist** : ce sont des observations de **
 
 - `scripts/imagier-manifest.py` — la liste des 90 espèces (slug, nom écrit sur l'étiquette, nom scientifique) et, pour chacune, la photographie retenue.
 - `scripts/chercher-images-imagier.py` — moisson des photographies sur **iNaturalist**, recadrage au format des cartes, relevé de l'auteur et de la licence.
-- `scripts/candidats-imagier.py` — planches de candidats, pour choisir soi-même la photographie de chaque espèce : le classement automatique met en avant de belles images, pas forcément illustratives.
 - `scripts/generer-imagier.py` — génération des planches `site/imagier/periode-N.html`.
+- `scripts/candidats-imagier.py` — planches de candidats, pour choisir soi-même la photographie de chaque espèce ; `scripts/zoom-imagier.py` les rappelle en grand pour départager deux clichés proches, `scripts/revoir-imagier.py` assemble les cartes d'une période telles qu'elles s'imprimeront.
 - `scripts/verifier-imagier.py` — contrôle avant publication : l'espèce de chaque photographie (la recherche par nom vernaculaire avait fait entrer un blaireau d'Amérique pour « le blaireau »), la présence de l'auteur et de la licence, et le cadrage qui doit remplir la carte.
 
-Les règles de fabrication — d'où viennent les images, comment on les choisit, et pourquoi Wikimedia Commons n'est pas utilisable ici — sont consignées dans [`CLAUDE.md`](CLAUDE.md).
+Les règles de fabrication — d'où viennent les images, comment on les choisit, et pourquoi Wikimedia Commons n'est pas utilisable ici — sont consignées dans [`CLAUDE.md`](CLAUDE.md), et la procédure complète de sélection dans le skill [`imagier-photos`](.claude/skills/imagier-photos/SKILL.md).
 
 ### 5. Fiches d'évaluation (une batterie par période, adaptée au thème)
 - [`04-evaluations/00-mode-emploi-et-livret-de-suivi.md`](04-evaluations/00-mode-emploi-et-livret-de-suivi.md) — principes d'évaluation positive, codage, grille de suivi annuelle.
