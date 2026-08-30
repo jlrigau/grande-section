@@ -26,7 +26,12 @@ exec(compile(open(os.path.join(ICI, "imagier-manifest.py"), encoding="utf-8").re
 ATTENDUES = {slug for _, _, slug, _, _ in ns["entrees"]()}
 
 # renommages acceptés : iNaturalist a raison, le manifeste garde le nom d'usage
-SYNONYMES = {"Ammophila arenaria": "Calamagrostis arenaria"}
+SYNONYMES = {
+    "Ammophila arenaria": "Calamagrostis arenaria",
+    "Anemone nemorosa": "Anemonoides nemorosa",
+    "Ichthyosaura alpestris": "Mesotriton alpestris",
+    "Halimione portulacoides": "Atriplex portulacoides",
+}
 
 
 def normalise(nom):

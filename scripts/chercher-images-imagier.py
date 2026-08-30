@@ -87,8 +87,11 @@ def taxon_id(nom):
     renommages (Ammophila arenaria est devenu Calamagrostis arenaria)."""
     if nom in _taxons:
         return _taxons[nom]
+    # sans le filtre de rang, la recherche floue peut ne rendre que du bruit :
+    # « Glis glis » (le loir) remontait des fougères et des graminées
     with ouvre("https://api.inaturalist.org/v1/taxa?"
-               + urllib.parse.urlencode({"q": nom, "per_page": "20", "is_active": "true"})) as r:
+               + urllib.parse.urlencode({"q": nom, "per_page": "20", "is_active": "true",
+                                         "rank": "species,subspecies,variety,hybrid"})) as r:
         res = json.load(r).get("results", [])
     trouve = next((t for t in res if t.get("name", "").lower() == nom.lower()), None) \
         or next((t for t in res if (t.get("matched_term") or "").lower() == nom.lower()), None)
