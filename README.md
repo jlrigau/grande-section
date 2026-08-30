@@ -66,12 +66,13 @@ Un cahier de cartes **par période**, en lien avec le milieu étudié : **9 esp�
 
 Les cartes sont jointives sur la page : un seul coup de massicot sépare deux cartes. Un filet de couleur et une mention discrète (« P2 · faune ») permettent de reclasser une carte égarée. Le mode d'emploi (première page de chaque cahier) détaille la préparation du matériel, la leçon en trois temps, le travail de lecture en autocorrection et les prolongements.
 
-Les photographies proviennent d'**iNaturalist** : ce sont des observations de **qualité recherche**, dont l'espèce a été confirmée par plusieurs naturalistes, sous licence libre (CC0, CC BY ou CC BY-SA). Chacune a été **choisie à la main** pour que la plante ou l'animal soit le sujet, entier et reconnaissable. Les auteurs sont crédités en dernière page de chaque cahier.
+Les photographies proviennent d'**iNaturalist** : ce sont des observations de **qualité recherche**, dont l'espèce a été confirmée par plusieurs naturalistes, sous licence libre (CC0, CC BY ou CC BY-SA). Chacune a été **choisie à la main** selon cinq règles : un seul individu, une image convenant à des enfants de cinq ans, l'animal entier vu de face ou de profil, une image qui remplit la carte sans bande blanche, et rien d'autre autour du sujet. Les auteurs sont crédités en dernière page de chaque cahier.
 
 - `scripts/imagier-manifest.py` — la liste des 90 espèces (slug, nom écrit sur l'étiquette, nom scientifique) et, pour chacune, la photographie retenue.
 - `scripts/chercher-images-imagier.py` — moisson des photographies sur **iNaturalist**, recadrage au format des cartes, relevé de l'auteur et de la licence.
 - `scripts/candidats-imagier.py` — planches de candidats, pour choisir soi-même la photographie de chaque espèce : le classement automatique met en avant de belles images, pas forcément illustratives.
 - `scripts/generer-imagier.py` — génération des planches `site/imagier/periode-N.html`.
+- `scripts/verifier-imagier.py` — contrôle avant publication : l'espèce de chaque photographie (la recherche par nom vernaculaire avait fait entrer un blaireau d'Amérique pour « le blaireau »), la présence de l'auteur et de la licence, et le cadrage qui doit remplir la carte.
 
 Les règles de fabrication — d'où viennent les images, comment on les choisit, et pourquoi Wikimedia Commons n'est pas utilisable ici — sont consignées dans [`CLAUDE.md`](CLAUDE.md).
 

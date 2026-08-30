@@ -34,6 +34,7 @@ ns = {}
 exec(compile(open(os.path.join(ICI, "imagier-manifest.py"), encoding="utf-8").read(),
              "imagier-manifest.py", "exec"), ns)
 ENTREES = list(ns["entrees"]())
+DOMESTIQUES = ns["DOMESTIQUES"]
 OVERRIDES = ns["OVERRIDES"]
 
 OUT = os.path.join(ICI, "..", "site", "imagier", "img")
@@ -45,7 +46,6 @@ credits = json.load(open(CREDITS, encoding="utf-8")) if os.path.exists(CREDITS) 
 
 LARGEUR = 1100          # px : ~300 dpi sur la zone photo d'une carte (90,6 mm)
 RATIO = 1.46            # proportion de la zone photo des cartes (90,6 x 62 mm)
-ROGNAGE_MAX = 0.45      # au-delà, on préfère des bandes blanches à une coupe
 QUALITE = 84
 MIN_COTE = 1000         # px : en deçà, la photo est trop petite pour imprimer
 LICENCES = "cc0,cc-by,cc-by-sa"
@@ -71,14 +71,41 @@ def ouvre(url, timeout=45):
     raise RuntimeError("serveur indisponible après plusieurs tentatives")
 
 
+_taxons = {}
+
+
+def taxon_id(nom):
+    """Identifiant iNaturalist du nom scientifique.
+
+    Indispensable : le paramètre taxon_name accroche aussi les noms
+    vernaculaires et rend des espèces d'un autre continent — « Meles meles »
+    ramenait le blaireau d'Amérique, « Capreolus capreolus » un rhebok
+    d'Afrique du Sud. On accepte donc le nom scientifique exact, ou à défaut
+    le terme sur lequel iNaturalist a accroché, ce qui rattrape les
+    renommages (Ammophila arenaria est devenu Calamagrostis arenaria)."""
+    if nom in _taxons:
+        return _taxons[nom]
+    with ouvre("https://api.inaturalist.org/v1/taxa?"
+               + urllib.parse.urlencode({"q": nom, "per_page": "20", "is_active": "true"})) as r:
+        res = json.load(r).get("results", [])
+    trouve = next((t for t in res if t.get("name", "").lower() == nom.lower()), None) \
+        or next((t for t in res if (t.get("matched_term") or "").lower() == nom.lower()), None)
+    if trouve is None:
+        raise RuntimeError("taxon « %s » introuvable sur iNaturalist" % nom)
+    _taxons[nom] = trouve["id"]
+    return trouve["id"]
+
+
 def candidates(taxon, recherche_seule=True):
     """Photographies libres et assez grandes pour l'impression, les mieux
-    notées d'abord. Les animaux domestiques n'ont pas d'observation de
-    « qualité recherche » (ils ne sont pas sauvages) : on relâche alors ce
-    critère."""
-    params = {"taxon_name": taxon, "photo_license": LICENCES, "photos": "true",
+    notées d'abord. Les animaux de la ferme se cherchent avec captive=true :
+    sans ce filtre, iNaturalist ne remonte que des populations férales, et le
+    cochon d'élevage devient un sanglier."""
+    params = {"taxon_id": taxon_id(taxon), "photo_license": LICENCES, "photos": "true",
               "order_by": "votes", "per_page": "24", "locale": "fr"}
-    if recherche_seule:
+    if taxon in DOMESTIQUES:
+        params["captive"] = "true"
+    elif recherche_seule:
         params["quality_grade"] = "research"
     with ouvre(API + "?" + urllib.parse.urlencode(params)) as r:
         d = json.load(r)
@@ -98,7 +125,7 @@ def candidates(taxon, recherche_seule=True):
                 "px": "%dx%d" % (l, h),
                 "paysage": l >= h,
             })
-    if not trouve and recherche_seule:
+    if not trouve and recherche_seule and taxon not in DOMESTIQUES:
         return candidates(taxon, recherche_seule=False)
     # à qualité égale, une photo en largeur remplit mieux la carte
     trouve.sort(key=lambda p: not p["paysage"])
@@ -113,60 +140,60 @@ def nettoie_attribution(a):
 
 
 def cadre(im):
-    """Ramène l'image au format des cartes : recadrage centré tant qu'il
-    reste raisonnable, sinon bandes blanches, pour ne jamais couper la
-    plante ou l'animal au point de le rendre méconnaissable."""
+    """Ramène l'image au format des cartes en la remplissant entièrement :
+    jamais de bande blanche, une carte à moitié vide se voit de loin. Le
+    plus grand rectangle au bon format est découpé dans l'image ; quand
+    c'est le haut et le bas qu'il faut rogner, la coupe est décalée vers le
+    haut, où se trouve le plus souvent le sujet.
+
+    Un cliché très en hauteur perd donc beaucoup de sa surface : c'est une
+    raison de plus de préférer une photographie en largeur au moment du
+    choix (voir scripts/candidats-imagier.py)."""
     l, h = im.size
     r = l / float(h)
     if abs(r - RATIO) < 0.01:
         return im
     if r > RATIO:                          # trop panoramique : on rogne les côtés
         nl = int(round(h * RATIO))
-        if 1 - nl / float(l) <= ROGNAGE_MAX:
-            x = (l - nl) // 2
-            return im.crop((x, 0, x + nl, h))
-    else:                                  # trop en hauteur : on rogne haut et bas
-        nh = int(round(l / RATIO))
-        if 1 - nh / float(h) <= ROGNAGE_MAX:
-            # le sujet est le plus souvent dans la moitié haute
-            y = int(round((h - nh) * 0.35))
-            return im.crop((0, y, l, y + nh))
-    return marges(im)
-
-
-def marges(im):
-    """Image entière centrée sur un fond blanc au format des cartes."""
-    l, h = im.size
-    if l / float(h) > RATIO:
-        cible = (l, int(round(l / RATIO)))
-    else:
-        cible = (int(round(h * RATIO)), h)
-    fond = Image.new("RGB", cible, "white")
-    fond.paste(im, ((cible[0] - l) // 2, (cible[1] - h) // 2))
-    return fond
+        x = (l - nl) // 2
+        return im.crop((x, 0, x + nl, h))
+    nh = int(round(l / RATIO))             # trop en hauteur : on rogne haut et bas
+    y = int(round((h - nh) * 0.35))
+    return im.crop((0, y, l, y + nh))
 
 
 def credits_photo(taxon, photo_id):
-    """Retrouve l'auteur et la licence d'une photographie imposée, en
-    parcourant plus largement les observations de l'espèce."""
-    for tri in ("votes", "created_at"):
-        for grade in (None, "research"):
-            params = {"taxon_name": taxon, "photo_license": LICENCES, "photos": "true",
-                      "order_by": tri, "per_page": "60"}
-            if grade:
-                params["quality_grade"] = grade
-            with ouvre(API + "?" + urllib.parse.urlencode(params)) as r:
-                d = json.load(r)
-            for obs in d.get("results", []):
-                for ph in obs.get("photos", []):
-                    if ph["id"] != photo_id:
-                        continue
-                    dim = ph.get("original_dimensions") or {}
-                    return {"id": ph["id"], "url": ph["url"].replace("square", "original"),
-                            "licence": (ph.get("license_code") or "").upper().replace("CC-", "CC "),
-                            "auteur": nettoie_attribution(ph.get("attribution", "")),
-                            "observation": "https://www.inaturalist.org/observations/%s" % obs["id"],
-                            "px": "%dx%d" % (dim.get("width", 0), dim.get("height", 0))}
+    """Retrouve l'auteur et la licence d'une photographie imposée.
+
+    La photographie retenue à la main vient souvent d'une recherche plus
+    fine que celle du script (restreinte à l'Europe, ou aux animaux
+    d'élevage) : on rejoue donc les mêmes variantes, sur plusieurs pages,
+    jusqu'à retrouver l'observation. Sans cela la carte serait publiée sans
+    mention d'auteur, ce que les licences n'autorisent pas."""
+    tid = taxon_id(taxon)
+    variantes = [{"quality_grade": "research"}, {}, {"captive": "true"},
+                 {"quality_grade": "research", "place_id": "97391"},
+                 {"quality_grade": "needs_id"}]
+    for extra in variantes:
+        for tri in ("votes", "created_at"):
+            for page in ("1", "2", "3"):
+                params = {"taxon_id": tid, "photo_license": LICENCES, "photos": "true",
+                          "order_by": tri, "per_page": "60", "page": page}
+                params.update(extra)
+                with ouvre(API + "?" + urllib.parse.urlencode(params)) as r:
+                    d = json.load(r)
+                for obs in d.get("results", []):
+                    for ph in obs.get("photos", []):
+                        if ph["id"] != photo_id:
+                            continue
+                        dim = ph.get("original_dimensions") or {}
+                        return {"id": ph["id"], "url": ph["url"].replace("square", "original"),
+                                "licence": (ph.get("license_code") or "").upper().replace("CC-", "CC "),
+                                "auteur": nettoie_attribution(ph.get("attribution", "")),
+                                "observation": "https://www.inaturalist.org/observations/%s" % obs["id"],
+                                "px": "%dx%d" % (dim.get("width", 0), dim.get("height", 0))}
+                if not d.get("results"):
+                    break
     return None
 
 
@@ -241,9 +268,10 @@ for periode, groupe, slug, nom, taxon in a_faire:
         if impose:
             photo = next((p for p in photos if p["id"] == impose), None)
             if photo is None:                    # photo imposée hors du premier lot
-                photo = credits_photo(taxon, impose) or {
-                    "id": impose, "url": url_photo(impose),
-                    "licence": "", "auteur": "", "observation": "", "px": ""}
+                photo = credits_photo(taxon, impose)
+                if photo is None:
+                    raise RuntimeError("crédits introuvables pour la photographie %s "
+                                       "— licence et auteur obligatoires" % impose)
         elif photos:
             photo = photos[0]
         if photo is None:
