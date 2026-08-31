@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Contrôle les cartes-corpus avant publication.
 
-Quatre vérifications :
+Cinq vérifications :
 
 - **la couverture** : chaque nom des trois corpus de `01-projet-annuel.md`
   doit avoir une carte, ou être déclaré dans NON_ILLUSTRES (les verbes et les
@@ -10,14 +10,16 @@ Quatre vérifications :
   le programme ;
 - **les fichiers** : l'image de chaque carte doit exister là où le manifeste
   la désigne ;
-- **les crédits de la banque** : source, licence et auteur renseignés. Les
-  règles de licence sont celles du skill `fiches-illustrations` — Mulberry
-  d'abord, ARASAAC accepté à défaut ;
+- **les crédits de la banque** : source, licence et auteur renseignés. C'est
+  `chercher-pictos.py verifier` qui juge si la licence est *admissible* — ne
+  pas dédoubler cette règle ici, elle finirait par diverger ;
 - **les doublons** : deux cartes ne peuvent pas porter les mêmes octets. Deux
   mots voisins finissent par recevoir le même pictogramme sans qu'on le voie —
   « la châtaigne » avait ainsi hérité de l'image du marron, avec des crédits
   parfaitement corrects. Le seul signe visible était que les deux fichiers
-  pesaient exactement pareil.
+  pesaient exactement pareil ;
+- **la fraîcheur des pages** : le nombre de cartes du HTML correspond au
+  manifeste, donc la génération a bien été relancée après modification.
 
 Usage : python3 scripts/verifier-cartes-corpus.py
 Sortie : code 1 s'il reste quelque chose à corriger.
