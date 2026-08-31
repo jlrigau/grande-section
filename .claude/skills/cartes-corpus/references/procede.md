@@ -120,3 +120,19 @@ là où la mesure directe donnait 20/20.
 Les cas négatifs les plus utiles sont les **voisins** : une demande qui parle
 des cartes-corpus mais relève du CSS, de la génération des PDF ou des
 photographies de l'imagier ne doit pas ouvrir ce skill-ci.
+
+**La mesure est bruitée : deux tirages par cas, et l'écart entre deux
+exécutions d'une même description atteint un point.** Trois variantes de la
+description ont donné 16, 16 et 15 sur 20 ; en conclure qu'une variante est
+meilleure qu'une autre à un point près serait se mentir. Ne retoucher la
+description que pour une raison qui se dit en français — « ces demandes
+partaient vers le seul choix d'image, sans personne pour régénérer les
+cahiers » en est une, « ça fait gagner un point » n'en est pas une.
+
+Deux cas restent en échec, et ce sont les **cas de test** qui sont en cause :
+« le dessin du trottoir, on ne comprend pas ce qu'on regarde » et « le
+pictogramme de la ferme montre une porte fermée » ne nomment ni les cartes,
+ni le corpus, ni un fichier. Rien ne les distingue d'une demande sur une
+fiche élève, et y répondre en ouvrant `fiches-illustrations` n'est pas une
+erreur. Les laisser rouges plutôt que d'élargir la description jusqu'à
+avaler les demandes de CSS — c'est ce qui est arrivé en essayant.
