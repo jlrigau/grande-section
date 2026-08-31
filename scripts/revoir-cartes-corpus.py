@@ -59,8 +59,7 @@ def pages_attendues(p):
 
     Les constantes viennent de generer-cartes-corpus.py : 6 cartes par planche,
     20 étiquettes par planche."""
-    n = sum(1 for _, _, _, _, s in entrees(p)
-                 if s[0] != "sans-image")
+    n = sum(1 for _ in entrees(p))
     return 1 + 2 * math.ceil(n / 6) + math.ceil(n / 20) + 1 + 1
 
 

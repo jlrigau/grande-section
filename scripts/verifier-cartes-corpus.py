@@ -13,13 +13,11 @@ Quatre vérifications :
 - **les crédits de la banque** : source, licence et auteur renseignés. Les
   règles de licence sont celles du skill `fiches-illustrations` — Mulberry
   d'abord, ARASAAC accepté à défaut ;
-- **les crédits** : une image moissonnée sans jeu ni licence ne peut pas être
-  publiée ;
-- **les doublons** : deux cartes ne peuvent pas porter les mêmes octets.
-  Openclipart rend silencieusement son propre logo — des ciseaux blancs sur
-  fond vert — pour une partie des identifiants, avec des crédits parfaitement
-  corrects : deux cartes s'étaient retrouvées avec cette image-là. Le seul
-  signe visible était que les deux fichiers pesaient exactement pareil.
+- **les doublons** : deux cartes ne peuvent pas porter les mêmes octets. Deux
+  mots voisins finissent par recevoir le même pictogramme sans qu'on le voie —
+  « la châtaigne » avait ainsi hérité de l'image du marron, avec des crédits
+  parfaitement corrects. Le seul signe visible était que les deux fichiers
+  pesaient exactement pareil.
 
 Usage : python3 scripts/verifier-cartes-corpus.py
 Sortie : code 1 s'il reste quelque chose à corriger.

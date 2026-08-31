@@ -14,7 +14,7 @@ Ce fichier décrit l'enchaînement, ce qui doit être repris tel quel et pourquo
 |---|---|---|---|
 | **Manifeste** | `imagier-manifest.py` | `corpus-manifest.py` | la liste des cartes, et pour chacune **le choix fait** (identifiant de photo, identifiant de pictogramme, fichier de dessin) |
 | **Planche de candidats** | `candidats-imagier.py` | `chercher-pictos.py chercher` | plusieurs propositions par carte, à regarder |
-| **Moisson** | `chercher-images-imagier.py` | `chercher-pictos-corpus.py` et `chercher-cliparts-corpus.py` | télécharge ce qui a été choisi, et **relève les crédits** |
+| **Moisson** | `chercher-images-imagier.py` | `chercher-pictos.py installer` | télécharge ce qui a été choisi, et **relève les crédits** |
 | **Génération** | `generer-imagier.py` | `generer-cartes-corpus.py` | les planches HTML, imprimées en PDF au déploiement |
 | **Contrôle** | `verifier-imagier.py` | `verifier-cartes-corpus.py` | ce qui se vérifie sans regarder ; code 1 s'il reste une anomalie |
 | **Revue** | `revoir-imagier.py` | `revoir-cartes-corpus.py` | les pages telles qu'elles s'imprimeront, à regarder |
@@ -31,8 +31,9 @@ défait le choix.
 
 **2. La moisson ne choisit jamais.** Un script de téléchargement qui « prend
 le premier résultat » quand le manifeste ne dit rien finira par publier une
-mauvaise carte. `chercher-pictos-corpus.py` signale les slugs sans identifiant
-et sort en code 1 ; il ne devine pas.
+mauvaise carte. `chercher-pictos.py installer` exige l'identifiant retenu —
+`mulberry:<nom>`, `arasaac:<id>` ou `openverse:<id>` — et ne devine rien ;
+`verifier-cartes-corpus.py` nomme les mots encore sans image.
 
 **3. Les crédits sont relevés au téléchargement, pas après.** Auteur, licence,
 source, identifiant d'origine. Retrouver la provenance d'une image six mois
@@ -48,6 +49,12 @@ leurs pièges et l'outil qui les moissonne sont dans le skill
 d'abord, ARASAAC ensuite, Openverse en troisième recours, aucun dessin à main
 levée, et jamais Wikimedia Commons. Un jeu de cartes qui se donnerait ses
 propres sources finirait par diverger.
+
+**5 bis. Une banque partagée se contrôle sur tout le site.** Les cartes-corpus
+puisent dans `site/fiches/img/` sans rien y ajouter qui leur soit propre. Un
+contrôle qui ne regarderait que `site/fiches/*.html` déclarerait « jamais
+référencées » — donc supprimables — les images qui ne servent qu'aux cartes.
+`chercher-pictos.py verifier` parcourt `site/` en entier pour cette raison.
 
 **6. Le contrôle dit ce qui manque, la revue montre ce qui est faux.** Les
 deux sont nécessaires et ne se remplacent pas. Le contrôle est automatique et

@@ -24,10 +24,11 @@ Chaque entrée décrit :
                         seule provenance en dehors de l'imagier : les cartes
                         n'ont pas de banque à elles.
 
-Utilisé par scripts/candidats-corpus.py (planches de candidats),
-scripts/chercher-pictos-corpus.py (moisson + crédits),
-scripts/generer-cartes-corpus.py (planches HTML) et
-scripts/verifier-cartes-corpus.py (contrôle avant publication).
+Utilisé par scripts/generer-cartes-corpus.py (planches HTML),
+scripts/verifier-cartes-corpus.py (contrôle avant publication) et
+scripts/revoir-cartes-corpus.py (le PDF, à regarder). Les images se
+cherchent et s'installent avec scripts/chercher-pictos.py, l'outil du skill
+fiches-illustrations, qui alimente la banque partagée site/fiches/img/.
 """
 
 # Les trois corpus de chaque période, tels que les nomme 01-projet-annuel.md.

@@ -94,6 +94,11 @@
         '<span class="t">Imagier · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
         ' — 18 animaux et 18 plantes du milieu : cartes de contrôle, cartes-photos et étiquettes-mots.</div></a>';
     }).join('');
+    var corpus = [1, 2, 3, 4, 5].map(function (n) {
+      return '<a class="carte" href="pdf/cartes-corpus-periode-' + n + '.pdf" download><span class="em">🗂️</span>' +
+        '<span class="t">Cartes-corpus · Période ' + n + '</span><div class="d">' + GS.THEMES[n - 1] +
+        ' — tous les mots des trois corpus en cartes, plus les étiquettes de tri des fiches X.1.</div></a>';
+    }).join('');
 
     document.getElementById('contenu').innerHTML =
       '<div class="accueil-hero">' +
@@ -120,6 +125,13 @@
       '<strong>cartes-photos</strong> et les <strong>étiquettes-mots</strong> — pour la leçon en trois temps, ' +
       'puis pour un travail d’association et de <strong>lecture</strong> en autocorrection.</p>' +
       '<div class="cartes">' + imagiers + '</div>' +
+      '<h2>🗂️ Mes cartes-corpus de vocabulaire</h2>' +
+      '<p>Le pendant lexical de l’imagier : <strong>tous les noms des trois corpus</strong> de la période ' +
+      '(le milieu, la faune, la flore) en cartes de nomenclature — <strong>cartes de contrôle</strong> (image + mot), ' +
+      '<strong>cartes-images</strong> et <strong>étiquettes-mots</strong>. Le cahier se termine par les ' +
+      '<strong>étiquettes de tri</strong>, c’est-à-dire les boîtes-catégories que demande la fiche d’évaluation X.1. ' +
+      'Les verbes et les adjectifs des corpus n’ont volontairement pas de carte : ils s’évaluent dans le réemploi.</p>' +
+      '<div class="cartes">' + corpus + '</div>' +
       '<h2>Mes documents</h2><div class="cartes">' + cartes + '</div>';
     window.scrollTo(0, 0);
   }
@@ -141,6 +153,7 @@
     }
     var btnEntr = document.getElementById('btn-entrainement');
     var btnImagier = document.getElementById('btn-imagier');
+    var btnCorpus = document.getElementById('btn-corpus');
     if (doc.fiches) {
       btnFiches.hidden = false;
       btnFiches.href = 'pdf/fiches-eleve-periode-' + doc.fiches + '.pdf';
@@ -151,10 +164,14 @@
       btnImagier.hidden = false;
       btnImagier.href = 'pdf/imagier-periode-' + doc.fiches + '.pdf';
       btnImagier.setAttribute('download', 'GS-imagier-faune-flore-periode-' + doc.fiches + '.pdf');
+      btnCorpus.hidden = false;
+      btnCorpus.href = 'pdf/cartes-corpus-periode-' + doc.fiches + '.pdf';
+      btnCorpus.setAttribute('download', 'GS-cartes-corpus-periode-' + doc.fiches + '.pdf');
     } else {
       btnFiches.hidden = true;
       btnEntr.hidden = true;
       btnImagier.hidden = true;
+      btnCorpus.hidden = true;
     }
 
     var pp = document.getElementById('periodes-print');

@@ -52,7 +52,8 @@ L'année est organisée autour de cinq milieux, un par période :
 - `site/` — l'application web (navigation, sélecteur de zone A/B/C, téléchargement des PDF).
 - `site/fiches/` — les **fiches élève** imprimables (une page A4 par fiche, consigne donnée à l'oral par l'enseignante), un cahier par période.
 - `site/imagier/` — l'**imagier Montessori faune et flore** (voir ci-dessous), un cahier de cartes par période.
-- `scripts/generer-pdf.sh` — génération automatique, à chaque déploiement, de tous les PDF : chaque document dans chaque zone (`pdf/zone-A|B|C/…`) + les 5 cahiers de fiches élève (`pdf/fiches-eleve-periode-N.pdf`) + les 5 imagiers (`pdf/imagier-periode-N.pdf`).
+- `site/cartes-corpus/` — les **cartes-corpus de vocabulaire** (voir ci-dessous), un cahier par période.
+- `scripts/generer-pdf.sh` — génération automatique, à chaque déploiement, de tous les PDF : chaque document dans chaque zone (`pdf/zone-A|B|C/…`) + les 5 cahiers de fiches élève (`pdf/fiches-eleve-periode-N.pdf`) + les 5 imagiers (`pdf/imagier-periode-N.pdf`) + les 5 cahiers de cartes-corpus (`pdf/cartes-corpus-periode-N.pdf`).
 
 ### 4. Imagier Montessori « faune et flore » (cartes de nomenclature)
 
@@ -76,7 +77,24 @@ Les photographies proviennent d'**iNaturalist** : ce sont des observations de **
 
 Les règles de fabrication — d'où viennent les images, comment on les choisit, et pourquoi Wikimedia Commons n'est pas utilisable ici — sont consignées dans [`CLAUDE.md`](CLAUDE.md), et la procédure complète de sélection dans le skill [`imagier-photos`](.claude/skills/imagier-photos/SKILL.md).
 
-### 5. Fiches d'évaluation (une batterie par période, adaptée au thème)
+### 5. Cartes-corpus de vocabulaire
+
+L'imagier photographie des **espèces** ; les cartes-corpus portent les **mots**. Un cahier par période reprend tous les noms des trois corpus de vocabulaire de [`01-projet-annuel.md`](01-projet-annuel.md) — le milieu, la faune, la flore — dans les mêmes trois séries que l'imagier : cartes de contrôle (image + mot), cartes-images, étiquettes-mots. Chaque cahier se termine par les **étiquettes de tri**, c'est-à-dire les « boîtes-catégories » que la fiche d'évaluation X.1 demande de préparer.
+
+Ils existent parce que les fiches X.1 (vocabulaire) et X.3 (phonologie) réclamaient « 12 cartes-images des corpus » que rien ne fabriquait.
+
+Les **verbes et les adjectifs** des corpus (*traverser*, *hiberner*, *rugueux*…) n'ont volontairement pas de carte : une image les ambiguïse plus qu'elle ne les enseigne, et ils s'évaluent dans le réemploi, comme le demandent les critères des fiches X.1.
+
+Les images ont deux provenances, et **aucune n'est dessinée ici** : quand le mot est une espèce déjà photographiée, la carte pointe vers la photographie de l'imagier sans la recopier ; sinon elle prend un **pictogramme de la banque partagée** `site/fiches/img/`, celle des fiches élève — Mulberry Symbols d'abord, ARASAAC ensuite, et une photographie Openverse pour les six notions qu'aucune banque de pictogrammes ne rend (la clairière, le sous-bois, le pelage, le givre, la marée, la dune).
+
+- `scripts/corpus-manifest.py` — la liste des cartes, période par période et corpus par corpus, avec la provenance de chaque image.
+- `scripts/generer-cartes-corpus.py` — génération des planches `site/cartes-corpus/periode-N.html`.
+- `scripts/verifier-cartes-corpus.py` — contrôle avant publication : chaque nom des corpus a sa carte, les images existent, les crédits sont complets, deux cartes ne portent pas les mêmes octets, les pages sont à jour.
+- `scripts/revoir-cartes-corpus.py` — le cahier tel qu'il s'imprimera, avec le contrôle de pagination.
+
+Le choix des images ne se fait pas dans ces scripts : il relève du skill [`fiches-illustrations`](.claude/skills/fiches-illustrations/SKILL.md), outillé par `scripts/chercher-pictos.py`. La procédure propre aux cahiers est dans le skill [`cartes-corpus`](.claude/skills/cartes-corpus/SKILL.md).
+
+### 6. Fiches d'évaluation (une batterie par période, adaptée au thème)
 - [`04-evaluations/00-mode-emploi-et-livret-de-suivi.md`](04-evaluations/00-mode-emploi-et-livret-de-suivi.md) — principes d'évaluation positive, codage, grille de suivi annuelle.
 - [`04-evaluations/periode-1-ville.md`](04-evaluations/periode-1-ville.md)
 - [`04-evaluations/periode-2-foret.md`](04-evaluations/periode-2-foret.md)
@@ -84,7 +102,7 @@ Les règles de fabrication — d'où viennent les images, comment on les choisit
 - [`04-evaluations/periode-4-campagne.md`](04-evaluations/periode-4-campagne.md)
 - [`04-evaluations/periode-5-mer.md`](04-evaluations/periode-5-mer.md)
 
-### 6. Contrôle de couverture du programme
+### 7. Contrôle de couverture du programme
 
 - [`referentiel/`](referentiel/) — le programme du cycle 1 sous forme de **liste numérotée** : 159 attendus, un par ligne avec un identifiant stable, et les 286 accroches qui disent ce que chaque période de chaque progression traite. `scripts/couverture.py` fait la soustraction et dit ce qui manque.
 

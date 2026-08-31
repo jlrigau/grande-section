@@ -67,6 +67,7 @@ vivent dans le script du matériel concerné (ici `verifier-imagier.py`).
 |---|---|
 | [`imagier-photos`](.claude/skills/imagier-photos/SKILL.md) | ajouter, remplacer ou vérifier une photographie de l'imagier — y compris quand la demande dit seulement « on ne voit pas bien l'animal » ou « change cette image » |
 | [`fiches-illustrations`](.claude/skills/fiches-illustrations/SKILL.md) | ajouter, remplacer ou vérifier un pictogramme des fiches élève (`site/fiches/img/`) — y compris « le dessin de la poule est bizarre » ou « il me faut une image de tracteur » |
+| [`cartes-corpus`](.claude/skills/cartes-corpus/SKILL.md) | les cahiers de cartes de vocabulaire (`site/cartes-corpus/`) — ajouter un mot à un corpus, refaire un cahier, produire les étiquettes de tri des fiches X.1 |
 
 Un skill se mesure : `scripts/mesurer-declenchement.py` rejoue une liste de
 demandes réalistes et regarde si le skill s'ouvre au bon moment (les cas de

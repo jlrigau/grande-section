@@ -63,11 +63,33 @@ pictogrammes ARASAAC seraient à remplacer. Crédit obligatoire : « Sergio
 Palao — propriété du Gouvernement d'Aragon (Espagne) ».
 
 **3. Openverse en troisième recours** (un clipart introuvable en
-pictogramme — le flocon de neige comptable vient de là).
+pictogramme — le flocon de neige comptable vient de là ; puis la clairière,
+le sous-bois, le pelage, le givre, la marée et la dune des cartes-corpus).
 `https://api.openverse.org/v1/images/?q=…&license_type=commercial`, sans
-clé. Deux pièges : les fichiers arrivent parfois en **WebP ou SVG sous une
-extension .jpg** (contrôler avec `file` et convertir), et couper les
-téléchargements au-delà de 8 Mo.
+clé. `chercher-pictos.py` s'en charge, mais **sur demande explicite** — la
+requête est en anglais et va dans `OPENVERSE`, jamais dans le slug :
+
+```sh
+OPENVERSE="forest clearing glade" python3 scripts/chercher-pictos.py chercher clairiere ""
+python3 scripts/chercher-pictos.py installer clairiere openverse:f801f396
+```
+
+Le second argument accepte les 8 premiers caractères de l'UUID, ceux que
+porte le nom du fichier candidat ; la table qui les rend complets ne garde
+que **la dernière recherche du slug**, donc un identifiant relevé sur une
+planche plus ancienne demande de relancer `chercher`.
+
+Trois pièges, tous outillés : les fichiers arrivent parfois en **WebP ou SVG
+sous une extension .jpg** (le type est lu dans les octets, pas dans le nom),
+les téléchargements sont coupés au-delà de 8 Mo, et Openverse **sert aussi
+Wikimedia Commons** — ces résultats-là sont écartés d'office, sans quoi la
+planche s'arrête en `429`.
+
+Et un piège qui ne s'outille pas : **la requête décide de tout**. « sand
+dune beach » rend des dunes ; « coastal sand dunes » rend six gros plans de
+fleurs de dune, et « sand dune beach marram » six plages sans dune. Quand
+une planche ne donne rien, changer les mots avant de conclure que la notion
+est introuvable.
 
 **4. Une photographie en tout dernier recours**, et jamais au milieu d'une
 grille de pictogrammes dans un exercice de discrimination (« entoure

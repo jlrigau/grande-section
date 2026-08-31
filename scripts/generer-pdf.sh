@@ -3,6 +3,7 @@
 #  - un PDF par document et par zone de vacances (A, B, C), via la vue imprimer.html
 #  - un PDF de fiches élève par période
 #  - un PDF d'imagier Montessori (faune et flore) par période
+#  - un PDF de cartes-corpus de vocabulaire par période
 # Usage : scripts/generer-pdf.sh <dossier-site-assemblé>
 # Variables : CHROME_BIN (défaut : google-chrome), PORT (défaut : 8931)
 set -euo pipefail
@@ -52,4 +53,10 @@ for N in 1 2 3 4 5; do
   imprime "http://127.0.0.1:$PORT/imagier/periode-$N.html" "$OUT/imagier-periode-$N.pdf" 30000
 done
 echo "Imagier faune et flore : 5 PDF"
+
+# Cartes-corpus : même densité d'images que l'imagier, même délai.
+for N in 1 2 3 4 5; do
+  imprime "http://127.0.0.1:$PORT/cartes-corpus/periode-$N.html" "$OUT/cartes-corpus-periode-$N.pdf" 30000
+done
+echo "Cartes-corpus de vocabulaire : 5 PDF"
 echo "Total : $(find "$OUT" -name '*.pdf' | wc -l) PDF générés dans $OUT"
