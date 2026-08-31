@@ -65,8 +65,14 @@ Palao — propriété du Gouvernement d'Aragon (Espagne) ».
 **3. Openverse en troisième recours** (un clipart introuvable en
 pictogramme — le flocon de neige comptable vient de là ; puis la clairière,
 le sous-bois, le pelage, le givre, la marée et la dune des cartes-corpus).
-`https://api.openverse.org/v1/images/?q=…&license_type=commercial`, sans
-clé. `chercher-pictos.py` s'en charge, mais **sur demande explicite** — la
+`https://api.openverse.org/v1/images/?q=…&license=cc0,pdm,by,by-sa`, sans
+clé. **Ne pas utiliser `license_type=commercial`** : il laisse passer les
+images **CC BY-ND**, qui autorisent bien le commerce mais interdisent les
+œuvres dérivées — et recadrer une photographie pour une carte, c'est
+dériver. Une photographie de givre est entrée ainsi, avec des crédits
+parfaitement corrects ; seul un contrôle relisant la licence l'a rattrapée.
+Énumérer les licences, donc, jamais se fier au filtre.
+`chercher-pictos.py` s'en charge, mais **sur demande explicite** — la
 requête est en anglais et va dans `OPENVERSE`, jamais dans le slug :
 
 ```sh
@@ -79,11 +85,13 @@ porte le nom du fichier candidat ; la table qui les rend complets ne garde
 que **la dernière recherche du slug**, donc un identifiant relevé sur une
 planche plus ancienne demande de relancer `chercher`.
 
-Trois pièges, tous outillés : les fichiers arrivent parfois en **WebP ou SVG
-sous une extension .jpg** (le type est lu dans les octets, pas dans le nom),
-les téléchargements sont coupés au-delà de 8 Mo, et Openverse **sert aussi
-Wikimedia Commons** — ces résultats-là sont écartés d'office, sans quoi la
-planche s'arrête en `429`.
+Quatre pièges, tous outillés : la licence ci-dessus, revérifiée à
+l'installation et par `chercher-pictos.py verifier` ; les fichiers qui
+arrivent parfois en **WebP ou SVG sous une extension .jpg** (le type est lu
+dans les octets, pas dans le nom) ; les téléchargements coupés au-delà de
+8 Mo ; et Openverse qui **sert aussi Wikimedia Commons** — ces résultats-là
+sont écartés d'office, sans quoi la planche s'arrête en `429`. Sans clé
+d'API, `page_size` est plafonné à 20 : au-delà, l'API répond `401`.
 
 Et un piège qui ne s'outille pas : **la requête décide de tout**. « sand
 dune beach » rend des dunes ; « coastal sand dunes » rend six gros plans de

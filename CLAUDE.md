@@ -104,16 +104,32 @@ moisson Commons : ne pas les relancer.
 ### Vérifier la licence avant de retenir une image
 
 Toute image entrant dans le dépôt doit porter une licence **compatible avec
-un usage commercial** — CC0, CC BY ou CC BY-SA — parce que le matériel est
-susceptible d'être diffusé au-delà du site gratuit. Une clause **NC** est
-disqualifiante : les 26 pictogrammes ARASAAC des fiches sont dans ce cas et
-restent à remplacer.
+un usage commercial et avec la modification** — CC0, la marque du domaine
+public, CC BY ou CC BY-SA — parce que le matériel est susceptible d'être
+diffusé au-delà du site gratuit, et qu'une carte recadre l'image.
+
+Deux clauses disqualifient :
+
+- **NC**, qui interdit l'usage commercial. Les **58 pictogrammes ARASAAC**
+  de la banque sont dans ce cas ; c'est accepté tant que le matériel reste
+  gratuit, et c'est la raison pour laquelle Mulberry passe toujours d'abord ;
+- **ND**, qui interdit les œuvres dérivées, et qui est le piège vicieux :
+  le filtre `license_type=commercial` d'Openverse **la laisse passer**,
+  puisqu'une image ND autorise bien le commerce. Une photographie de givre
+  est entrée ainsi, avec des crédits parfaitement corrects. Il faut énumérer
+  les licences (`license=cc0,pdm,by,by-sa`), et non se fier au filtre —
+  `chercher-pictos.py` le fait, à la recherche comme à l'installation, et
+  `chercher-pictos.py verifier` relit la licence de chaque crédit.
 
 `scripts/pictos-libres.py` interroge le registre **Global Symbols**
 (`globalsymbols.com`), qui fédère une trentaine de jeux de pictogrammes en
 publiant la licence de chacun, et ne retient que les jeux libres — Mulberry
-(le style de maison des fiches), OpenMoji, PiCom. Il retrouve ainsi 19 des
-26 concepts ; les 7 autres sont à dessiner. Deux pièges : le registre cherche
+(le style de maison des fiches), OpenMoji, PiCom. **Personne ne dessine les
+concepts qu'il ne retrouve pas** : on élargit les mots-clés, on cherche
+ailleurs dans l'ordre des sources, et on se rabat sur une photographie
+Openverse — un dessin fait ici est proscrit, le skill
+[`fiches-illustrations`](.claude/skills/fiches-illustrations/SKILL.md) le
+dit noir sur blanc. Deux pièges : le registre cherche
 en **sous-chaîne**, si bien que « lama » ramène *flamant* et « vague »
 *microwave* — d'où le filtre sur le mot entier ; et Blissymbolics, bien que
 libre, est un système d'écriture symbolique, inutilisable comme illustration.

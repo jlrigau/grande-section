@@ -165,8 +165,12 @@ def chercher(slug, cles_en):
         print("  %-40s %s" % (ident, lic))
 
 
-# Openverse fédère Flickr, Commons, Rawpixel… `license_type=commercial`
-# ne garde que CC0 / BY / BY-SA, les seules licences que le dépôt admette.
+# Openverse fédère Flickr, Commons, Rawpixel… ATTENTION : son filtre
+# `license_type=commercial` ne veut PAS dire « les licences du dépôt ». Il
+# laisse passer **CC BY-ND**, qui autorise bien l'usage commercial mais
+# interdit les œuvres dérivées — une carte du givre est entrée comme ça.
+# On énumère donc les licences admises, et `installer` revérifie : le filtre
+# de recherche et la règle du dépôt doivent être la même liste, pas deux.
 # Deux pièges, tous deux vécus : les fichiers arrivent parfois en **WebP ou
 # SVG sous une extension .jpg** — d'où `type_reel()`, qui lit les octets et
 # non le nom ; et le vivier contient des images énormes, coupées à 8 Mo.
@@ -174,6 +178,9 @@ def chercher(slug, cles_en):
 # dont l'adresse de sortie de l'agent est bridée à ~5 fichiers par 10 min.
 # Ces résultats-là sont écartés, sans quoi la planche s'arrête en 429.
 OPENVERSE_API = "https://api.openverse.org/v1/images/"
+# CC0, marque du domaine public, BY, BY-SA — et rien d'autre. NC est exclu
+# (usage commercial interdit), ND aussi (recadrer, c'est déjà dériver).
+LICENCES_OK = ("cc0", "pdm", "by", "by-sa")
 HOTES_BANNIS = ("upload.wikimedia.org", "commons.wikimedia.org")
 MAX_OCTETS = 8 * 1024 * 1024
 
@@ -193,7 +200,8 @@ def type_reel(donnees):
 
 def openverse_cherche(requete, nb=6):
     url = (OPENVERSE_API + "?q=" + urllib.parse.quote(requete)
-           + "&license_type=commercial&page_size=%d" % (nb * 3))
+           + "&license=" + ",".join(LICENCES_OK)
+           + "&page_size=%d" % min(nb * 3, 18))   # 20 max sans clé d'API
     d = json.loads(telecharge(url))
     gardes = []
     for r in d.get("results", []):
@@ -257,6 +265,9 @@ def installer(slug, choix):
         r = openverse_fiche(ident)
         if any(h in (r.get("url") or "") for h in HOTES_BANNIS):
             sys.exit("Wikimedia Commons : source bannie (bridage 429), en choisir une autre")
+        if (r.get("license") or "").lower() not in LICENCES_OK:
+            sys.exit("licence %s : hors de la liste du dépôt (%s)"
+                     % ((r.get("license") or "?").upper(), ", ".join(LICENCES_OK)))
         chemin, ext = openverse_telecharge(r, IMG, slug)
         dest = slug + ext
         credits[slug] = {"fichier": dest,
@@ -278,6 +289,18 @@ def installer(slug, choix):
     print("installé : img/%s — penser à : generer-credits.py, contrôle PDF" % dest)
 
 
+# ARASAAC est CC BY-NC-SA : la clause NC est acceptée pour ces fiches
+# diffusées gratuitement, c'est écrit dans le skill fiches-illustrations.
+# Toute autre restriction (ND en particulier) est refusée.
+ADMISES = ("cc0", "pdm", "domaine public", "by 2.0", "by 3.0", "by 4.0",
+           "by-sa", "by-nc-sa")
+
+
+def licence_admise(texte):
+    t = texte.lower().replace("cc ", "").strip()
+    return any(t.startswith(a) or t == a for a in ADMISES)
+
+
 AUTO = {"de-1", "de-2", "de-3", "de-4", "de-5", "de-6",
         "rond", "rond-plein", "triangle", "etoile-jaune", "seau", "pelle"}
 
@@ -292,6 +315,11 @@ def verifier():
         for champ in ("source", "licence", "auteur"):
             if not c.get(champ):
                 print("crédit incomplet :", slug, "(", champ, ")"); soucis += 1
+        # Les crédits complets ne suffisent pas : ils doivent aussi être
+        # admissibles. Une image CC BY-ND est passée avec des crédits
+        # parfaits, parce que rien ne relisait la licence après coup.
+        if c.get("licence") and not licence_admise(c["licence"]):
+            print("licence non admise :", slug, "—", c["licence"]); soucis += 1
     # La banque est PARTAGÉE : les fiches y puisent, mais aussi les
     # cartes-corpus (site/cartes-corpus/, chemins « ../fiches/img/… »). Ne
     # regarder que site/fiches/ ferait déclarer « jamais référencées » —
