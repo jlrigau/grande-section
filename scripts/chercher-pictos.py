@@ -11,10 +11,16 @@ Trois commandes :
   #        sauf si ARASAAC=<mot> le remplace (accents permis)
   #   → candidats dans /tmp/pictos/<slug>/, planche /tmp/pictos/<slug>.png
 
+  # 1 bis — Openverse, TROISIÈME RECOURS seulement : quand ni Mulberry ni
+  #     ARASAAC ne rendent la notion (« la clairière », « le pelage »).
+  #     OPENVERSE porte la requête, en anglais ; ce sont des photographies.
+  OPENVERSE="forest clearing" python3 scripts/chercher-pictos.py chercher clairiere ""
+
   # 2 — installer le candidat retenu : copie dans site/fiches/img/ et
   #     inscrit la source, la licence et l'auteur dans credits.json
   python3 scripts/chercher-pictos.py installer poule mulberry:hen
   python3 scripts/chercher-pictos.py installer poule arasaac:2403
+  python3 scripts/chercher-pictos.py installer clairiere openverse:2056bb48-…
 
   # 3 — vérifier la banque : crédits complets, fichiers orphelins,
   #     images référencées manquantes
@@ -105,6 +111,28 @@ def chercher(slug, cles_en):
         except Exception as e:
             print("  arasaac", pid, ":", e)
 
+    # — Openverse : troisième recours, sur demande explicite —
+    requete = os.environ.get("OPENVERSE")
+    if requete:
+        try:
+            resultats = openverse_cherche(requete)
+        except Exception as e:
+            print("  openverse :", e)
+            resultats = []
+        for r in resultats:
+            try:
+                f, _ = openverse_telecharge(r, dossier, "openverse_" + r["id"][:8])
+            except Exception as e:
+                print("  openverse", r["id"][:8], ":", e)
+                continue
+            trouves.append(("openverse:%s (%s)" % (r["id"], (r.get("title") or "")[:30]),
+                            f, (r.get("license") or "").upper() + " " + (r.get("license_version") or "")))
+        # Le nom du fichier ne porte que les 8 premiers caractères de l'UUID —
+        # sans cette table, l'identifiant complet est perdu dès que la sortie
+        # du terminal a défilé, et il faut relancer toute la recherche.
+        json.dump({r["id"][:8]: r["id"] for r in resultats},
+                  open(os.path.join(dossier, "openverse.json"), "w"))
+
     if not trouves:
         print("aucun candidat — élargir les mots-clés, ou Openverse en dernier recours")
         return
@@ -137,6 +165,62 @@ def chercher(slug, cles_en):
         print("  %-40s %s" % (ident, lic))
 
 
+# Openverse fédère Flickr, Commons, Rawpixel… `license_type=commercial`
+# ne garde que CC0 / BY / BY-SA, les seules licences que le dépôt admette.
+# Deux pièges, tous deux vécus : les fichiers arrivent parfois en **WebP ou
+# SVG sous une extension .jpg** — d'où `type_reel()`, qui lit les octets et
+# non le nom ; et le vivier contient des images énormes, coupées à 8 Mo.
+# Un troisième, propre à ce dépôt : Openverse sert aussi Wikimedia Commons,
+# dont l'adresse de sortie de l'agent est bridée à ~5 fichiers par 10 min.
+# Ces résultats-là sont écartés, sans quoi la planche s'arrête en 429.
+OPENVERSE_API = "https://api.openverse.org/v1/images/"
+HOTES_BANNIS = ("upload.wikimedia.org", "commons.wikimedia.org")
+MAX_OCTETS = 8 * 1024 * 1024
+
+
+def type_reel(donnees):
+    """L'extension ment ; les premiers octets, non."""
+    if donnees[:8] == b"\x89PNG\r\n\x1a\n":
+        return ".png"
+    if donnees[:3] == b"\xff\xd8\xff":
+        return ".jpg"
+    if donnees[:4] == b"RIFF" and donnees[8:12] == b"WEBP":
+        return ".webp"
+    if donnees[:5] in (b"<?xml", b"<svg ") or b"<svg" in donnees[:512]:
+        return ".svg"
+    return None
+
+
+def openverse_cherche(requete, nb=6):
+    url = (OPENVERSE_API + "?q=" + urllib.parse.quote(requete)
+           + "&license_type=commercial&page_size=%d" % (nb * 3))
+    d = json.loads(telecharge(url))
+    gardes = []
+    for r in d.get("results", []):
+        if any(h in (r.get("url") or "") for h in HOTES_BANNIS):
+            continue
+        gardes.append(r)
+        if len(gardes) == nb:
+            break
+    return gardes
+
+
+def openverse_fiche(ident):
+    return json.loads(telecharge(OPENVERSE_API + urllib.parse.quote(ident) + "/"))
+
+
+def openverse_telecharge(r, dossier, base):
+    donnees = telecharge(r["url"])
+    if len(donnees) > MAX_OCTETS:
+        raise ValueError("%.1f Mo — trop lourd" % (len(donnees) / 1048576))
+    ext = type_reel(donnees)
+    if ext is None:
+        raise ValueError("format inconnu")
+    chemin = os.path.join(dossier, base + ext)
+    open(chemin, "wb").write(donnees)
+    return chemin, ext
+
+
 CRED_MULBERRY = {"source": "Mulberry Symbols", "page": "https://mulberrysymbols.org/",
                  "licence": "CC BY-SA 4.0", "auteur": "Paxtoncrafts Charitable Trust"}
 
@@ -157,10 +241,34 @@ def installer(slug, choix):
                          "page": "https://arasaac.org/pictograms/fr/%d" % pid,
                          "licence": "CC BY-NC-SA",
                          "auteur": "Sergio Palao — propriété du Gouvernement d’Aragon (Espagne)"}
+    elif choix.startswith("openverse:"):
+        ident = choix.split(":", 1)[1].split()[0]
+        if len(ident) < 36:                    # préfixe court lu sur la planche
+            table = os.path.join(CACHE, slug, "openverse.json")
+            if not os.path.exists(table):
+                sys.exit("identifiant court sans table : relancer « chercher »")
+            complet = json.load(open(table)).get(ident[:8])
+            if not complet:
+                # la table ne garde que la DERNIÈRE recherche du slug : un
+                # identifiant lu sur une planche précédente n'y est plus.
+                sys.exit("« %s » absent de la table de %s — relancer « chercher »"
+                         % (ident, slug))
+            ident = complet
+        r = openverse_fiche(ident)
+        if any(h in (r.get("url") or "") for h in HOTES_BANNIS):
+            sys.exit("Wikimedia Commons : source bannie (bridage 429), en choisir une autre")
+        chemin, ext = openverse_telecharge(r, IMG, slug)
+        dest = slug + ext
+        credits[slug] = {"fichier": dest,
+                         "source": "« %s » (Openverse)" % (r.get("title") or ident),
+                         "page": r.get("foreign_landing_url") or r.get("url"),
+                         "licence": "CC %s %s" % ((r.get("license") or "").upper(),
+                                                  r.get("license_version") or ""),
+                         "auteur": r.get("creator") or "auteur non indiqué"}
     else:
-        sys.exit("choix attendu : mulberry:<nom> ou arasaac:<id>")
+        sys.exit("choix attendu : mulberry:<nom>, arasaac:<id> ou openverse:<id>")
     # une seule extension par slug : purger l'ancienne version
-    for ext in (".svg", ".png", ".jpg", ".jpeg"):
+    for ext in (".svg", ".png", ".jpg", ".jpeg", ".webp"):
         f = os.path.join(IMG, slug + ext)
         if os.path.exists(f) and slug + ext != dest:
             os.remove(f)
@@ -184,14 +292,22 @@ def verifier():
         for champ in ("source", "licence", "auteur"):
             if not c.get(champ):
                 print("crédit incomplet :", slug, "(", champ, ")"); soucis += 1
+    # La banque est PARTAGÉE : les fiches y puisent, mais aussi les
+    # cartes-corpus (site/cartes-corpus/, chemins « ../fiches/img/… »). Ne
+    # regarder que site/fiches/ ferait déclarer « jamais référencées » —
+    # donc supprimables — les images qui ne servent qu'aux cartes.
     references = set()
-    dossier_fiches = os.path.join(IMG, "..")
-    for nom in os.listdir(dossier_fiches):
-        if nom.endswith(".html"):
-            txt = open(os.path.join(dossier_fiches, nom), encoding="utf-8").read()
-            for m in re.findall(r'src="img/([^"]+)"', txt):
+    site = os.path.join(IMG, "..", "..")
+    for racine, _, noms in os.walk(site):
+        for nom in noms:
+            if not nom.endswith(".html"):
+                continue
+            txt = open(os.path.join(racine, nom), encoding="utf-8").read()
+            for m in re.findall(r'src="(?:\.\./)*(?:fiches/)?img/([^"]+)"', txt):
+                if "/" in m:               # ../imagier/img/… : une autre banque
+                    continue
                 references.add(m)
-                if m not in fichiers:
+                if m not in fichiers and racine.endswith("fiches"):
                     print("image référencée absente :", nom, "→", m); soucis += 1
     par_credit = {c["fichier"] for c in credits.values()}
     for f in sorted(fichiers - par_credit):
