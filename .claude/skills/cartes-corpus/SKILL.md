@@ -1,6 +1,6 @@
 ---
 name: cartes-corpus
-description: Les cartes-corpus de vocabulaire (site/cartes-corpus/) — les mots des trois corpus de chaque période, en cartes de nomenclature à découper, et le matériel des fiches d'évaluation X.1 et X.3. À utiliser pour ajouter un mot à un corpus, remplacer l'image d'une carte, refaire un cahier, produire les étiquettes de tri (les « boîtes-catégories » des fiches X.1), ou contrôler avant d'imprimer que chaque mot a sa carte. Couvre scripts/corpus-manifest.py, generer-cartes-corpus.py, verifier-cartes-corpus.py, revoir-cartes-corpus.py. Se déclenche même quand la demande ne nomme aucun fichier : « il manque le mot brouette dans le corpus de la campagne », « l'image de la ferme ne va pas sur la carte », « il faut les trois boîtes-catégories de la fiche 3.1 », « vérifie que tous les mots des corpus ont leur carte avant que j'imprime », « refais les cartes de vocabulaire de la période 2 ». Le **choix des images** ne se fait pas ici : il relève du skill fiches-illustrations, qui porte les sources, leur ordre et leurs pièges. Ne concerne pas les photographies d'espèces (voir imagier-photos).
+description: Les cartes-corpus de vocabulaire (site/cartes-corpus/) — les mots des trois corpus de chaque période, en cartes de nomenclature à découper, et le matériel des fiches d'évaluation X.1 et X.3. À utiliser pour ajouter un mot à un corpus, **remplacer ou corriger l'image d'une carte**, refaire un cahier, produire les étiquettes de tri (les « boîtes-catégories » des fiches X.1), ou contrôler avant d'imprimer que chaque mot a sa carte. Couvre scripts/corpus-manifest.py, generer-cartes-corpus.py, verifier-cartes-corpus.py, revoir-cartes-corpus.py. Se déclenche même quand la demande ne nomme aucun fichier : « il manque le mot brouette dans le corpus de la campagne », « l'image de la carte du sentier ne veut rien dire pour un GS », « le pictogramme d'une carte montre autre chose que le mot écrit dessous », « il faut les trois boîtes-catégories de la fiche 3.1 », « vérifie que tous les mots des corpus ont leur carte avant que j'imprime », « reprends le cahier de cartes de la période 4 ». Une image de carte qui ne va pas relève **aussi** de ce skill, jamais de fiches-illustrations seul : celui-ci dit comment choisir l'image, celui-là dit quoi régénérer et contrôler ensuite — les deux se chargent ensemble. Ne concerne pas les photographies d'espèces (voir imagier-photos).
 ---
 
 # Les cartes-corpus de vocabulaire
@@ -14,13 +14,21 @@ d'évaluation X.1 demande de préparer.
 Ils existent parce que les fiches X.1 (vocabulaire) et X.3 (phonologie)
 réclamaient « 12 cartes-images des corpus » que rien ne fabriquait.
 
-## Les images ne sont pas choisies ici
+## L'image d'une carte : deux skills, pas un
 
-**Charger le skill [`fiches-illustrations`](../fiches-illustrations/SKILL.md)
-avant de toucher à la moindre image.** Il porte l'ordre des sources (Mulberry
-d'abord, ARASAAC ensuite, Openverse en troisième recours), les pièges, les
-règles de choix et l'outil. Rien de tout cela n'est répété ici : une copie
-finit par diverger de l'original.
+Une demande du genre « le dessin du trottoir ne va pas » demande les deux, et
+dans cet ordre :
+
+1. **[`fiches-illustrations`](../fiches-illustrations/SKILL.md)** dit *quelle*
+   image — l'ordre des sources (Mulberry d'abord, ARASAAC ensuite, Openverse
+   en troisième recours), les pièges, les règles de choix, l'outil. Rien de
+   tout cela n'est répété ici : une copie finit par diverger de l'original.
+2. **Ce skill-ci** dit ce qu'il faut faire *ensuite* — régénérer les cahiers,
+   relancer le contrôle, regarder le PDF. Une image remplacée sans cela laisse
+   les pages HTML périmées, et le cahier imprimé montre encore l'ancienne.
+
+Charger `fiches-illustrations` avant de toucher à la moindre image ; revenir
+ici pour la boucle de travail ci-dessous.
 
 Ce qu'il faut en retenir pour ces cahiers :
 
